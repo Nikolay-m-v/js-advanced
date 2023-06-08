@@ -1,7 +1,7 @@
 "use strict";
 
 function circleArea(input) {
-  if (typeof input == "number") {
+  if (typeof input === "number") {
     let result = input * Math.PI * input;
     console.log(result.toFixed(2));
   } else {
