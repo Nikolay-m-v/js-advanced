@@ -11,7 +11,7 @@ function sameNumbers(number) {
 
   for (let i = 1; i < number.length; i++) {
     if (number[i] !== firstDigit) {
-      sameOrNot = false;
+      isSame = false;
     }
   }
   console.log(sum);
