@@ -2,8 +2,8 @@
 
 function smallestTwoNumbers(array) {
   let sorted = array.sort((a, b) => a - b);
-  let num1 = array.shift();
-  let num2 = array.shift();
+  let num1 = sorted.shift();
+  let num2 = sorted.shift();
   console.log(`${num1} ${num2}`);
 }
 
