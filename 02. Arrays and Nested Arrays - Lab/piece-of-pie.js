@@ -4,7 +4,7 @@ function pieceOfPie(pieFlavors, start, end) {
   let startIndex = pieFlavors.indexOf(start);
   let endIndex = pieFlavors.indexOf(end);
   let newArray = pieFlavors.slice(startIndex, endIndex + 1);
-  console.log(newArray);
+  console.log(newArray.join("\n"));
 }
 
 pieceOfPie(
