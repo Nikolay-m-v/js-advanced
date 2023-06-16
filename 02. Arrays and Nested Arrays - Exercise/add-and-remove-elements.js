@@ -13,7 +13,7 @@ function addAndRemoveElements(array) {
       newArray.pop();
     }
   }
-  if (newArray.leth < 1) {
+  if (newArray.length < 1) {
     console.log("Empty");
   } else {
     console.log(newArray);
