@@ -1,6 +1,6 @@
 "use strict";
 
-function extractParenthesis() {
+function extract(content) {
   const text = document.getElementById(content).textContent;
   let result = "";
 
@@ -11,4 +11,6 @@ function extractParenthesis() {
     result += match.groups.word + "; ";
     match = pattern.exec(text);
   }
+
+  return result.trim();
 }
