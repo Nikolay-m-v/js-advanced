@@ -11,3 +11,4 @@ function cityRecord(name, population, treasury) {
 }
 
 cityRecord("Tortuga", 7000, 15000);
+cityRecord("Balencia", 300, 1000);
