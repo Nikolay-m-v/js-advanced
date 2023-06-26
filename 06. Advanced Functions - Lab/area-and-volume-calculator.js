@@ -13,6 +13,7 @@ function areaAndVolumeCalc(area, vol, input) {
 
     result.push(current);
   }
+  return result;
 }
 
 areaAndVolumeCalc(
@@ -25,8 +26,12 @@ areaAndVolumeCalc(
   ]`
 );
 
-function area() {}
+function area() {
+  return Math.abs(this.x * this.y);
+}
 
-function vol() {}
+function vol() {
+  return Math.abs(this.x * this.y * this.z);
+}
 
 function solve() {}
