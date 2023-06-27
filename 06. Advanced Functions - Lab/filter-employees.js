@@ -3,7 +3,15 @@
 function filter(data, criteria) {
   let [criteriaWord, criteriaValue] = criteria.split("-");
 
-  JSON.parse(data).filter(employee[criteriaWord] === criteriaValue);
+  JSON.parse(data)
+    .filter((employee) => employee[criteriaWord] === criteriaValue)
+    .forEach((employee, number) =>
+      console.log(
+        `${number++}. ${employee.first_name} ${employee.last_name} - ${
+          employee.email
+        } `
+      )
+    );
 }
 
 filter(
