@@ -6,7 +6,7 @@ function heroicInventory(input) {
   for (let line of input) {
     let [name, level, items] = line.split(" / ");
     level = Number(level);
-    items = items.split(", ");
+    items = items ? items.split(", ") : [];
     register.push({ name, level, items });
   }
 
