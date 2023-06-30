@@ -5,19 +5,22 @@ function storeCatalogue(input) {
 
   for (let line of input) {
     let [product, price] = line.split(" : ");
-    let firstLetter = product[0];
-    if (!catalogue.hasOwnProperty(firstLetter)) {
-      catalogue[firstLetter] = {};
+    let letter = product[0];
+    if (!catalogue.hasOwnProperty(letter)) {
+      catalogue[letter] = {};
     }
-    catalogue[firstLetter][product] = { price };
+    catalogue[letter][product] = price;
   }
 
   let sorted = Object.keys(catalogue).sort((a, b) => a.localeCompare(b));
 
-  for (let letter of sorted) {
+  for (const letter of sorted) {
     console.log(letter);
-    let sortedProduct = Object.keys(catalogue[firstLetter][product]);
-    for (let product of sortedProduct) {
+    let sortedProduct = Object.keys(catalogue[letter]).sort((a, b) =>
+      a.localeCompare(b)
+    );
+    for (const product of sortedProduct) {
+      console.log(`${product}: ${catalogue[letter][product]}`);
     }
   }
 }
