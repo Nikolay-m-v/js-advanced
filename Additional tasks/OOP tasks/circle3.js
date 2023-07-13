@@ -22,4 +22,3 @@ function Circle(radius) {
 
 const circle = new Circle(10);
 circle.draw();
-circle.defaultLocation;
