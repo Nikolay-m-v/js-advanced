@@ -18,3 +18,11 @@ function Circle(radius) {
 }
 
 const another = new Circle(1);
+
+let number = 10;
+function increase(number) {
+  number++;
+}
+
+increase(number);
+console.log(number);
