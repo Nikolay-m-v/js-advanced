@@ -16,8 +16,14 @@ function Circle(radius) {
     get: function () {
       return defaultLocation;
     },
+    set: function (value) {
+      if (!value.x || !value.y) {
+        throw new Error("Invalid Location.");
+      }
+    },
   });
 }
 
 const circle = new Circle(10);
+circle.defaultLocation = 1;
 circle.draw();
