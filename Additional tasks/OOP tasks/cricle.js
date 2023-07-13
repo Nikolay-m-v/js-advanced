@@ -19,10 +19,10 @@ function Circle(radius) {
 
 const another = new Circle(1);
 
-let number = 10;
-function increase(number) {
-  number++;
+let obj = { value: 10 };
+function increase(obj) {
+  obj.value++;
 }
 
-increase(number);
-console.log(number);
+increase(obj);
+console.log(obj);
