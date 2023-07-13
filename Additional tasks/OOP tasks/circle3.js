@@ -4,7 +4,7 @@ function Circle(radius) {
 
   let defaultLocation = { x: 0, y: 0 };
 
-  this.defaultLocation = function () {
+  this.getDefaultLocation = function () {
     return defaultLocation;
   };
 
