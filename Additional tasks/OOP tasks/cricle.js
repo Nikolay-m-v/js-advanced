@@ -1,3 +1,4 @@
+// factory function
 function createCircle(radius) {
   return {
     radius,
@@ -8,6 +9,7 @@ function createCircle(radius) {
 }
 const circle = createCircle(1);
 
+// constructor function
 function Circle(radius) {
   this.radius = radius;
   this.draw = function () {
