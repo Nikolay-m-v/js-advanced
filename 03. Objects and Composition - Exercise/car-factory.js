@@ -43,3 +43,10 @@ carFactory({
   carriage: "hatchback",
   wheelsize: 14,
 });
+carFactory({
+  model: "Ferrari GT",
+  power: 200,
+  color: "red",
+  carriage: "hatchback",
+  wheelsize: 14,
+});
