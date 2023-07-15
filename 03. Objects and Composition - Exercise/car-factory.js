@@ -47,6 +47,6 @@ carFactory({
   model: "Ferrari GT",
   power: 200,
   color: "red",
-  carriage: "hatchback",
+  carriage: "coupe",
   wheelsize: 14,
 });
