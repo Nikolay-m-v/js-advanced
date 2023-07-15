@@ -48,5 +48,5 @@ carFactory({
   power: 200,
   color: "red",
   carriage: "coupe",
-  wheelsize: 14,
+  wheelsize: 13,
 });
