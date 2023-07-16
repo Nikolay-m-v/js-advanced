@@ -58,7 +58,7 @@ function solution() {
 
   function prepare(recipe, quantityMeals) {
     quantityMeals = Number(quantityMeals);
-    const order = Object.entries(recipe[recipe]);
+    const order = Object.entries(recipes[recipe]);
     order.forEach((ingridient) => (ingridient[1] *= quantityMeals));
 
     for (let [ingridient, requiredQuantity] of order) {
