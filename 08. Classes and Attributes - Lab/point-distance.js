@@ -16,5 +16,9 @@ class Point {
 const point1 = new Point(1, 1);
 const point2 = new Point(4, 5);
 
+let p1 = new Point(5, 5);
+let p2 = new Point(9, 8);
+console.log(Point.distance(p1, p2));
+
 console.log(point1, point2);
 console.log(Point.distance(point1, point2));
