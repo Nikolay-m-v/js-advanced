@@ -12,5 +12,5 @@ function subSum(arr, startIndex, endIndex) {
   console.log(sum);
 }
 
-subSum([10, 20, 30, 40, 50, 60], 3, 300);
-subSum([10, 30, 30, 40, 50, 60], 5, 200);
+// subSum([10, 20, 30, 40, 50, 60], 3, 300);
+subSum([10, 30, 30, 40, 50, 60], 4, 200);
