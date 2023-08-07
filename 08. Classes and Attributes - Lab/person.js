@@ -16,3 +16,5 @@ class Person {
 const petar = new Person("Petar", "Ivaylov", "29", "petarIv@abv.bg");
 
 console.log(petar.toString());
+
+console.log(petar instanceof Person);
