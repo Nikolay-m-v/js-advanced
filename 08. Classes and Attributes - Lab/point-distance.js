@@ -24,4 +24,4 @@ console.log(point1, point2);
 console.log(Point.distance(point1, point2));
 
 let pOne = new Point(9, 9);
-let pTwo = new Point();
+let pTwo = new Point(8, 7);
