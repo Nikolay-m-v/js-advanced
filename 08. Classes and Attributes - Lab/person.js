@@ -14,7 +14,10 @@ class Person {
 }
 
 const petar = new Person("Petar", "Ivaylov", "29", "petarIv@abv.bg");
+const ivan = new Person("Ivan", "Ivanov", "41", "ivanovPetar@abv.bg");
 
 console.log(petar.toString());
+console.log(ivan.toString());
 
 console.log(petar instanceof Person);
+console.log(ivan instanceof Person);
