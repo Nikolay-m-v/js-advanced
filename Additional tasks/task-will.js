@@ -125,31 +125,39 @@ function gatherBookingInformation() {
   };
 }
 
-const bookingRequirements = gatherBookingInformation();
+function processBookingInformation() {
+  const bookingRequirements = gatherBookingInformation();
 
-const roomToBook = vidinHotel.bookRoom(
-  bookingRequirements.numberOfPeople,
-  bookingRequirements.roomType
-);
-
-if (roomToBook === false) {
-  console.log("Could not find a suitable room for you. Apologies, try again");
-} else {
-  const confirmReservation = prompt(
-    `Do you confirm reservation for room: ${roomToBook.roomNumber}, ${roomToBook.type} for ${roomToBook.pricePerNight}$/night ? Y/N `
+  const roomToBook = vidinHotel.bookRoom(
+    bookingRequirements.numberOfPeople,
+    bookingRequirements.roomType
   );
 
-  if (
-    confirmReservation.toLowerCase() === "n" ||
-    confirmReservation.toLowerCase() === "no"
-  ) {
-    console.log("Thank you for using our services!");
-    process.exit(0);
+  if (roomToBook === false) {
+    console.log("Could not find a suitable room for you. Apologies, try again");
   } else {
-    vidinHotel.confirmReservation(roomToBook.roomNumber);
-
-    console.log(
-      JSON.stringify(vidingHotel.rooms.find((r) => r.roomNumber === roomNumber))
+    const confirmReservation = prompt(
+      `Do you confirm reservation for room: ${roomToBook.roomNumber}, ${roomToBook.type} for ${bookingRequirements.numberOfPeople} for ${roomToBook.pricePerNight}$/night ? Y/N `
     );
+
+    if (
+      confirmReservation.toLowerCase() === "n" ||
+      confirmReservation.toLowerCase() === "no"
+    ) {
+      console.log("Thank you for using our services!");
+      process.exit(0);
+    } else {
+      vidinHotel.confirmReservation(roomToBook.roomNumber);
+
+      console.log(JSON.stringify(vidinHotel.rooms, null, 2));
+    }
   }
+}
+
+let notBookedRooms = vidinHotel.rooms.filter((r) => r.isBooked === false);
+
+while (notBookedRooms.length > 0) {
+  processBookingInformation();
+
+  notBookedRooms = vidinHotel.rooms.filter((r) => r.isBooked === false);
 }
