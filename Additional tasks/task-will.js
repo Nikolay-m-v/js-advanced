@@ -68,7 +68,16 @@ class Hotel {
 
     roomToBook.isProcessingBooking = true;
 
-    return true;
+    return roomToBook;
+  }
+
+  confirmReservation(roomNumber) {
+    const room = this.rooms.find((r) => r.roomNumber === roomNumber);
+
+    if (room) {
+      room.isProcessingBooking = false;
+      room.isBooked = true;
+    }
   }
 }
 
@@ -112,10 +121,35 @@ function gatherBookingInformation() {
 
   return {
     roomType,
-    people,
+    numberOfPeople,
   };
 }
 
 const bookingRequirements = gatherBookingInformation();
 
-vidinHotel.bookRoom(bookingRequirements.people, bookingRequirements.room);
+const roomToBook = vidinHotel.bookRoom(
+  bookingRequirements.numberOfPeople,
+  bookingRequirements.roomType
+);
+
+if (roomToBook === false) {
+  console.log("Could not find a suitable room for you. Apologies, try again");
+} else {
+  const confirmReservation = prompt(
+    `Do you confirm reservation for room: ${roomToBook.roomNumber}, ${roomToBook.type} for ${roomToBook.pricePerNight}$/night ? Y/N `
+  );
+
+  if (
+    confirmReservation.toLowerCase() === "n" ||
+    confirmReservation.toLowerCase() === "no"
+  ) {
+    console.log("Thank you for using our services!");
+    process.exit(0);
+  } else {
+    vidinHotel.confirmReservation(roomToBook.roomNumber);
+
+    console.log(
+      JSON.stringify(vidingHotel.rooms.find((r) => r.roomNumber === roomNumber))
+    );
+  }
+}
