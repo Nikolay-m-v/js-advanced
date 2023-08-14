@@ -3,7 +3,7 @@
 
 // The Hotel
 // ----------
-// [[SU] [SI]]
+// [[SU] [SI] [SI]]
 // [[SI] [SU]]
 //    ====
 //    |  |
@@ -13,7 +13,7 @@
 const prompt = require("prompt-sync")({ sigint: true });
 
 class Room {
-  type; // single | suite | double | triple
+  type;
 
   constructor(type) {
     this.type = type;
@@ -33,12 +33,23 @@ class Hotel {
 const vidinHotel = new Hotel("Vidin Hotel", [
   new Room("single"),
   new Room("single"),
+  new Room("single"),
   new Room("suite"),
   new Room("suite"),
 ]);
 
 function gatherBookingInformation() {
+  const singleRoomsInHotel = vidinHotel.rooms.filter(
+    (r) => r.type === "single"
+  ).length;
+  const suiteRoomsInHotel = vidinHotel.rooms.filter(
+    (r) => r.type === "suite"
+  ).length;
+
   console.log(`Welcome to ${vidinHotel.name}!`);
+  console.log(
+    `We have ${singleRoomsInHotel} single rooms and ${suiteRoomsInHotel} suites available`
+  );
 
   const room = prompt("Would you like to stay in single bedroom or a suite? ");
   const people = prompt("How many of you would like to stay? ");
