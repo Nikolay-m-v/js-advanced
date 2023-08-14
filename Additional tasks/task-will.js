@@ -12,11 +12,26 @@
 //    ----
 const prompt = require("prompt-sync")({ sigint: true });
 
+function getRandomItem(list) {
+  return list[Math.floor(Math.random() * list.length)];
+}
+
 class Room {
   type;
+  isBooked;
+  isProcessingBooking;
+  pricePerNight;
+  roomNumber;
+  peopleCapacity;
 
-  constructor(type) {
+  constructor(roomNumber, type, pricePerNight, peopleCapacity, booked = false) {
+    this.roomNumber = roomNumber;
     this.type = type;
+    this.pricePerNight = pricePerNight;
+    this.peopleCapacity = peopleCapacity;
+    this.isBooked = booked;
+
+    this.isProcessingBooking = false;
   }
 }
 
@@ -28,14 +43,41 @@ class Hotel {
     this.name = name;
     this.rooms = rooms;
   }
+
+  bookRoom(numberOfPeople, roomType) {
+    const availableRooms = this.rooms.filter(
+      (r) =>
+        r.isBooked === false &&
+        r.isProcessingBooking === false &&
+        r.type === roomType
+    );
+
+    if (availableRooms.length === 0) {
+      return false;
+    }
+
+    const roomsThatCanFitPeople = availableRooms.filter(
+      (r) => r.peopleCapacity >= numberOfPeople
+    );
+
+    if (roomsThatCanFitPeople.length === 0) {
+      return false;
+    }
+
+    const roomToBook = getRandomItem(roomsThatCanFitPeople);
+
+    roomToBook.isProcessingBooking = true;
+
+    return true;
+  }
 }
 
 const vidinHotel = new Hotel("Vidin Hotel", [
-  new Room("single"),
-  new Room("single"),
-  new Room("single"),
-  new Room("suite"),
-  new Room("suite"),
+  new Room("1", "single", 120, 2),
+  new Room("2", "single", 200, 3),
+  new Room("3", "single", 100, 2),
+  new Room("4", "suite", 300, 4),
+  new Room("5", "suite", 400, 4),
 ]);
 
 function gatherBookingInformation() {
@@ -51,12 +93,14 @@ function gatherBookingInformation() {
     `We have ${singleRoomsInHotel} single rooms and ${suiteRoomsInHotel} suites available`
   );
 
-  const room = prompt("Would you like to stay in single bedroom or a suite? ");
-  const people = prompt("How many of you would like to stay? ");
+  const roomType = prompt(
+    "Would you like to stay in single bedroom or a suite? "
+  );
+  const numberOfPeople = prompt("How many of you would like to stay? ");
 
   console.log();
-  console.log(`You want to stay in ${room} type of room.`);
-  console.log(`You want to make a reservation for ${people} people.`);
+  console.log(`You want to stay in ${roomType} type of room.`);
+  console.log(`You want to make a reservation for ${numberOfPeople} people.`);
   console.log();
 
   const confirm = prompt("Do you wish to proceed further? Y/N ");
@@ -67,15 +111,11 @@ function gatherBookingInformation() {
   }
 
   return {
-    room,
+    roomType,
     people,
   };
 }
 
 const bookingRequirements = gatherBookingInformation();
 
-function processBookingRequirements(requirements) {
-  console.log(JSON.stringify(requirements, null, 2));
-}
-
-processBookingRequirements(bookingRequirements);
+vidinHotel.bookRoom(bookingRequirements.people, bookingRequirements.room);
