@@ -12,7 +12,34 @@
 //    ----
 const prompt = require("prompt-sync")({ sigint: true });
 
+class Room {
+  type; // single | suite | double | triple
+
+  constructor(type) {
+    this.type = type;
+  }
+}
+
+class Hotel {
+  name;
+  rooms;
+
+  constructor(name, rooms) {
+    this.name = name;
+    this.rooms = rooms;
+  }
+}
+
+const vidinHotel = new Hotel("Vidin Hotel", [
+  new Room("single"),
+  new Room("single"),
+  new Room("suite"),
+  new Room("suite"),
+]);
+
 function gatherBookingInformation() {
+  console.log(`Welcome to ${vidinHotel.name}!`);
+
   const room = prompt("Would you like to stay in single bedroom or a suite? ");
   const people = prompt("How many of you would like to stay? ");
 
