@@ -33,3 +33,4 @@ function getPersons() {
 getPersons();
 const personsArray = getPersons();
 console.log(personsArray);
+console.log(personsArray);
