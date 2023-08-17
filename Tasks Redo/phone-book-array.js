@@ -1,5 +1,3 @@
-"use strict";
-
 // Phone Book / Contacts
 
 // Indexes -> People
@@ -24,56 +22,98 @@ class Phonebook {
   entries;
 
   constructor() {
-    this.entries = [];
+    this.entries = {
+      a: [],
+      b: [],
+      c: [],
+      d: [],
+      e: [],
+      f: [],
+      g: [],
+      h: [],
+      i: [],
+      j: [],
+      k: [],
+      l: [],
+      m: [],
+      n: [],
+      o: [],
+      p: [],
+      q: [],
+      r: [],
+      s: [],
+      t: [],
+      u: [],
+      v: [],
+      w: [],
+      x: [],
+      y: [],
+      z: [],
+    };
   }
 
-  add(entry) {
-    this.entries.push(entry);
-    this.entries.sort((a, b) => a.firstName.localeCompare(b.firstName));
+  getFirstLetter(entry) {
+    const firstLetter = entry.firstName[0].toLowerCase();
+
+    return firstLetter;
   }
 
-  find(entryToSearch) {
-    const foundEntry = this.entries.find(
-      (e) => e.phoneNumber === entryToSearch.phoneNumber
-    );
+  isValid(entry) {
+    const firstLetter = this.getFirstLetter(entry);
+    const isValid = this.entries.hasOwnProperty(firstLetter);
 
-    if (!foundEntry) {
+    return isValid;
+  }
+
+  hasExistingEntry(entry) {
+    const existingEntry = Object.values(this.entries)
+      .flat()
+      .find((e) => e.phoneNumber === entry.phoneNumber);
+
+    if (!existingEntry) {
       return null;
     }
 
-    return foundEntry;
+    return existingEntry;
   }
 
-  findByIndex(entry) {
-    return this.entries.findIndex((e) => e.phoneNumber === entry.phoneNumber);
-  }
+  add(entry) {
+    const isValid = this.isValid(entry);
 
-  edit(entry) {
-    const existingEntry = this.find(entry);
+    if (!isValid) {
+      console.warn(`The entry with name ${entry.firstName} is invalid`);
 
-    if (entry !== null) {
-      const index = this.findByIndex(entry);
-
-      this.entries[index] = entry;
+      return;
     }
-  }
 
-  remove(entry) {
-    const existingEntry = this.find(entry);
+    const existingEntry = this.hasExistingEntry(entry);
 
     if (existingEntry !== null) {
-      const index = this.findByIndex(entry);
+      console.warn(`The entry already exists. Use the editing functionality`);
 
-      this.entries.splice(index, 1);
+      return;
     }
+
+    const firstLetter = this.getFirstLetter(entry);
+
+    this.entries[firstLetter].push(entry);
+    this.entries[firstLetter].sort((a, b) => a.localeCompare(b));
   }
 
+  find(entryToSearch) {}
+
+  edit(entry) {}
+
+  remove(entry) {}
+
   showAll() {
-    this.entries.forEach((entry) => {
-      console.log(
-        `${entry.firstName} ${entry.lastName} - ${entry.phoneNumber} / ${entry.phoneType}`
-      );
-    });
+    Object.values(this.entries)
+      .flat()
+      .forEach((entry) => {
+        console.log(
+          `${entry.firstName} ${entry.lastName} - ${entry.phoneNumber} / ${entry.phoneType}`
+        );
+      });
   }
 }
 
@@ -87,18 +127,25 @@ myPhonebook.add(
   new PhonebookEntry("William", "Kenov", "0887291725", "personal")
 );
 
-myPhonebook.showAll();
-
-console.log("--------------------------");
-
-myPhonebook.edit(new PhonebookEntry("William", "Abboud", "0887291725", "work"));
-
-myPhonebook.showAll();
-
-console.log("--------------------------");
-
-myPhonebook.remove(
-  new PhonebookEntry("Ivailo", "Kenov", "0887241765", "personal")
+// This is invalid entry
+// The first character is invalid aka not alphabetical and not supported (it should fail)
+myPhonebook.add(
+  new PhonebookEntry("@1123123", "Kenov", "0887281735", "personal")
 );
 
+// The phone number is a duplicate of Alexandars phone (it should fail)
+myPhonebook.add(new PhonebookEntry("Maria", "Kenov", "0886143765", "personal"));
+
 myPhonebook.showAll();
+
+// console.log('--------------------------')
+
+// myPhonebook.edit(new PhonebookEntry('William', 'Abboud', '0887291725', 'work'));
+
+// myPhonebook.showAll();
+
+// console.log('--------------------------')
+
+// myPhonebook.remove(new PhonebookEntry('Ivailo', 'Kenov', '0887241765', 'personal'));
+
+// myPhonebook.showAll();
