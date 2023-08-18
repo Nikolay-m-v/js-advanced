@@ -93,9 +93,11 @@ class Phonebook {
   sortAlphabetical(letter) {
     const firstLetter = this.getFirstLetter(letter);
 
-    this.entries[firstLetter].sort((a, b) =>
+    const sorted = this.entries[firstLetter].sort((a, b) =>
       a.phoneNumber.localeCompare(b.phoneNumber)
     );
+
+    return sorted;
   }
 
   add(entry) {
@@ -152,7 +154,7 @@ class Phonebook {
     const entryIndex = this.findByIndex(entryToEdit);
 
     this.entries[firstLetter].splice(entryIndex, 1, entryToEdit);
-    this.sortAlphabetical(firstLetter);
+    this.sortAlphabetical(entryToEdit);
     return entryToEdit;
   }
 
