@@ -133,7 +133,22 @@ class Phonebook {
     return existingEntry;
   }
 
-  remove(entry) {}
+  remove(entryToRemove) {
+    const firstLetter = this.getFirstLetter(entryToRemove);
+    const entryIndex = this.entries[firstLetter].findIndex(
+      (entry) => entry.phoneNumber === entryToRemove.phoneNumber
+    );
+
+    if (entryIndex === -1) {
+      console.warn(`Entry not found`);
+      return;
+    }
+
+    this.entries[firstLetter].splice(entryIndex, 1);
+    this.entries[firstLetter].sort((a, b) =>
+      a.phoneNumber.localeCompare(b.phoneNumber)
+    );
+  }
 
   showAll() {
     Object.values(this.entries)
@@ -173,11 +188,15 @@ myPhonebook.edit(new PhonebookEntry("William", "Abboud", "0887291725", "work"));
 
 myPhonebook.showAll();
 
-// myPhonebook.showAll();
+console.log("--------------------------");
 
-// console.log('--------------------------')
+myPhonebook.remove(
+  new PhonebookEntry("Ivailo", "Kenov", "0887241765", "personal")
+);
 
-// myPhonebook.remove(new PhonebookEntry('Ivailo', 'Kenov', '0887241765', 'personal'));
+myPhonebook.showAll();
+
+console.log("--------------------------");
 
 // myPhonebook.showAll();
 
