@@ -77,6 +77,27 @@ class Phonebook {
     return existingEntry;
   }
 
+  findByIndex(entry) {
+    const firstLetter = this.getFirstLetter(entry);
+    const index = this.entries[firstLetter].findIndex(
+      (e) => e.phoneNumber === entry.phoneNumber
+    );
+
+    if (index === -1) {
+      console.warn(`Entry not found`);
+      return;
+    }
+    return index;
+  }
+
+  sortAlphabetical(letter) {
+    const firstLetter = this.getFirstLetter(letter);
+
+    this.entries[firstLetter].sort((a, b) =>
+      a.phoneNumber.localeCompare(b.phoneNumber)
+    );
+  }
+
   add(entry) {
     const isValid = this.isValid(entry);
 
@@ -126,34 +147,18 @@ class Phonebook {
     // return foundEntry;
   }
 
-  edit(entry) {
-    const firstLetter = this.getFirstLetter(entry);
-    const entryIndex = this.entries[firstLetter].findIndex(
-      (e) => e.phoneNumber === entry.phoneNumber
-    );
+  edit(entryToEdit) {
+    const firstLetter = this.getFirstLetter(entryToEdit);
+    const entryIndex = this.findByIndex(entryToEdit);
 
-    if (entryIndex === -1) {
-      console.warn(`Entry not found`);
-      return;
-    }
-
-    this.entries[firstLetter].splice(entryIndex, 1, entry);
-    this.entries[firstLetter].sort((a, b) =>
-      a.phoneNumber.localeCompare(b.phoneNumber)
-    );
-    return entry;
+    this.entries[firstLetter].splice(entryIndex, 1, entryToEdit);
+    this.sortAlphabetical(firstLetter);
+    return entryToEdit;
   }
 
   remove(entryToRemove) {
     const firstLetter = this.getFirstLetter(entryToRemove);
-    const entryIndex = this.entries[firstLetter].findIndex(
-      (entry) => entry.phoneNumber === entryToRemove.phoneNumber
-    );
-
-    if (entryIndex === -1) {
-      console.warn(`Entry not found`);
-      return;
-    }
+    const entryIndex = this.findByIndex(entryToRemove);
 
     this.entries[firstLetter].splice(entryIndex, 1);
     this.entries[firstLetter].sort((a, b) =>
