@@ -101,18 +101,29 @@ class Phonebook {
   }
 
   find(entryToSearch) {
-    const foundEntry = Object.values(this.entries)
-      .flat()
-      .find((e) => e.phoneNumber === entryToSearch.phoneNumber);
+    const firstLetter = this.getFirstLetter(entryToSearch);
+
+    const foundEntry = this.entries[firstLetter].find(
+      (e) => e.phoneNumber === entryToSearch.phoneNumber
+    );
 
     if (!foundEntry) {
-      console.log("The number is not in our database.");
+      console.log(`The number is not in our database`);
       return null;
     }
-    // console.log(
-    //   `Number ${entryToSearch.phoneNumber} belongs to ${foundEntry.firstName} ${foundEntry.lastName}`
-    // );
     return foundEntry;
+    // const foundEntry = Object.values(this.entries)
+    //   .flat()
+    //   .find((e) => e.phoneNumber === entryToSearch.phoneNumber);
+
+    // if (!foundEntry) {
+    //   console.log("The number is not in our database.");
+    //   return null;
+    // }
+    // // console.log(
+    // //   `Number ${entryToSearch.phoneNumber} belongs to ${foundEntry.firstName} ${foundEntry.lastName}`
+    // // );
+    // return foundEntry;
   }
 
   edit(entry) {
