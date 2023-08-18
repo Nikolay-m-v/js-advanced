@@ -104,10 +104,34 @@ class Phonebook {
     const foundEntry = Object.values(this.entries)
       .flat()
       .find((e) => e.phoneNumber === entryToSearch.phoneNumber);
-    console.log(foundEntry);
+
+    if (!foundEntry) {
+      console.log("The number is not in our database.");
+      return null;
+    }
+    // console.log(
+    //   `Number ${entryToSearch.phoneNumber} belongs to ${foundEntry.firstName} ${foundEntry.lastName}`
+    // );
+    return foundEntry;
   }
 
-  edit(entry) {}
+  edit(entry) {
+    const existingEntry = this.find(entry);
+
+    if (!existingEntry) {
+      console.warn("Entry not found");
+      return;
+    }
+
+    existingEntry.firstName = entry.firstName;
+    existingEntry.lastName = entry.lastName;
+    existingEntry.phoneType = entry.phoneType;
+
+    this.entries[this.getFirstLetter(existingEntry)].sort((a, b) =>
+      a.phoneNumber.localeCompare(b.phoneNumber)
+    );
+    return existingEntry;
+  }
 
   remove(entry) {}
 
@@ -116,7 +140,7 @@ class Phonebook {
       .flat()
       .forEach((entry) => {
         console.log(
-          `${entry.firstName} ${entry.lastName} - ${entry.phoneNumber} / ${entry.phoneType}`
+          `${entry.firstName} ${entry.lastName} - ${entry.phoneNumber} / ${entry.phoneType} `
         );
       });
   }
@@ -143,9 +167,11 @@ myPhonebook.add(new PhonebookEntry("Maria", "Kenov", "0886143765", "personal"));
 
 myPhonebook.showAll();
 
-// console.log('--------------------------')
+console.log("--------------------------");
 
-// myPhonebook.edit(new PhonebookEntry('William', 'Abboud', '0887291725', 'work'));
+myPhonebook.edit(new PhonebookEntry("William", "Abboud", "0887291725", "work"));
+
+myPhonebook.showAll();
 
 // myPhonebook.showAll();
 
