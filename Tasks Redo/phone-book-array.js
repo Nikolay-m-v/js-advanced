@@ -100,7 +100,12 @@ class Phonebook {
     this.entries[firstLetter].sort((a, b) => a.localeCompare(b));
   }
 
-  find(entryToSearch) {}
+  find(entryToSearch) {
+    const foundEntry = Object.values(this.entries)
+      .flat()
+      .find((e) => e.phoneNumber === entryToSearch.phoneNumber);
+    console.log(foundEntry);
+  }
 
   edit(entry) {}
 
@@ -149,3 +154,7 @@ myPhonebook.showAll();
 // myPhonebook.remove(new PhonebookEntry('Ivailo', 'Kenov', '0887241765', 'personal'));
 
 // myPhonebook.showAll();
+
+myPhonebook.find(
+  new PhonebookEntry("Ivailo", "Kenov", "0887241765", "personal")
+);
