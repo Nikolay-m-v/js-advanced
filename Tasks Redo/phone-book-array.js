@@ -166,6 +166,7 @@ class Phonebook {
     this.entries[firstLetter].sort((a, b) =>
       a.phoneNumber.localeCompare(b.phoneNumber)
     );
+    return entryToRemove;
   }
 
   showAll() {
