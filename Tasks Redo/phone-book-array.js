@@ -127,21 +127,21 @@ class Phonebook {
   }
 
   edit(entry) {
-    const existingEntry = this.find(entry);
+    const firstLetter = this.getFirstLetter(entry);
+    const entryIndex = this.entries[firstLetter].findIndex(
+      (e) => e.phoneNumber === entry.phoneNumber
+    );
 
-    if (!existingEntry) {
-      console.warn("Entry not found");
+    if (entryIndex === -1) {
+      console.warn(`Entry not found`);
       return;
     }
 
-    existingEntry.firstName = entry.firstName;
-    existingEntry.lastName = entry.lastName;
-    existingEntry.phoneType = entry.phoneType;
-
-    this.entries[this.getFirstLetter(existingEntry)].sort((a, b) =>
+    this.entries[firstLetter].splice(entryIndex, 1, entry);
+    this.entries[firstLetter].sort((a, b) =>
       a.phoneNumber.localeCompare(b.phoneNumber)
     );
-    return existingEntry;
+    return entry;
   }
 
   remove(entryToRemove) {
