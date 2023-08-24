@@ -1,6 +1,6 @@
 "use strict";
 
-function personAndTeacher() {
+function inheritingAndReplacingToString() {
   return {
     Person,
     Teacher,
