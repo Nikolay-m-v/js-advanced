@@ -6,3 +6,19 @@ function extendPrototype(classToExtend) {
     return `I am a ${this.species}. ${this.toString()}`;
   };
 }
+
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+
+  toString() {
+    return this.name;
+  }
+}
+
+extendPrototype(Person);
+const person = new Person("Alice");
+
+console.log(person.species);
+console.log(person.toSpeciesString());
