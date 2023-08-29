@@ -19,10 +19,10 @@ class Garden {
 
   ripenPlant(plantName, quantity) {
     let plant = this.plants.find((p) => p.plantName === plantName);
-    if (this.plants.includes(plant) === false) {
+    if (!plant) {
       throw new Error(`There is no ${plantName} in the garden`);
     }
-    if (plant.ripe === true) {
+    if (plant.ripe) {
       throw new Error(`The ${plantName} is already ripe`);
     }
     if (quantity <= 0) {
@@ -33,7 +33,7 @@ class Garden {
     plant.quantity += quantity;
 
     if (quantity === 1) {
-      return `${quantity} ${plantName} has successfully rippened.`;
+      return `${quantity} ${plantName} has successfully ripened.`;
     } else {
       return `${quantity} ${plantName}s have sucesfully ripened`;
     }
@@ -41,7 +41,7 @@ class Garden {
 
   harvestPlant(plantName) {
     let plant = this.plants.find((p) => p.plantName === plantName);
-    if (this.plants.includes(plant) === false) {
+    if (!plant) {
       throw new Error(`There is no ${plantName} in the garden`);
     }
 
@@ -58,7 +58,7 @@ class Garden {
     };
     this.storage.push(harvestedPlant);
     this.spaceAvailable += plant.spaceRequired;
-    return `The ${plantName} has been sucessfully harvested.`;
+    return `The ${plantName} has been successfully harvested.`;
   }
 
   generateReport() {
@@ -71,7 +71,7 @@ class Garden {
     report.push(secondRow);
 
     let thirdRow = `Plants in the storage: The storage is emtpy`;
-    if (this.storage.length !== 0) {
+    if (this.storage.length === 0) {
       let plantsInStorage = this.storage.map(
         (p) => `${p.plantName} (${p.quantity})`
       );
