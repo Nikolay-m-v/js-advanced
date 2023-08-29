@@ -1,87 +1,85 @@
 "use strict";
 
-function solve() {
-  class Garden {
-    constructor(spaceAvailable) {
-      this.spaceAvailable = spaceAvailable;
-      this.plants = [];
-      this.storage = [];
+class Garden {
+  constructor(spaceAvailable) {
+    this.spaceAvailable = spaceAvailable;
+    this.plants = [];
+    this.storage = [];
+  }
+
+  addPlant(plantName, spaceRequired) {
+    if (this.spaceAvailable < spaceRequired) {
+      return "Not enough space in the garden";
+    }
+    let plant = { plantName, spaceRequired, ripe: false, quantity: 0 };
+    this.plants.push(plant);
+    return `The ${this.PlantName} has been successfully planted in the garden.`;
+  }
+
+  ripenPlant(plantName, quantity) {
+    if (!this.plants.includes(this.plantName)) {
+      throw new Error(`There is no ${this.plantName} in the garden`);
+    }
+    if (plant.ripe === true) {
+      throw new Error(`The ${plantName} is already ripe`);
+    }
+    if (quantity <= 0) {
+      throw new Error(`The quantity cannot be zero or negative`);
     }
 
-    addPlant(plantName, spaceRequired) {
-      if (this.spaceAvailable < spaceRequired) {
-        return "Not enough space in the garden";
-      }
-      let plant = { plantName, spaceRequired, ripe: false, quantity: 0 };
-      this.plants.push(plant);
-      return `The ${this.PlantName} has been successfully planted in the garden.`;
+    plant.ripe = true;
+    plant.quantity += quantity;
+
+    if (quantity === 1) {
+      return `${quantity} ${plantName} has successfully rippened.`;
+    } else {
+      return `${quantity} ${plantName}s have sucesfully ripened`;
+    }
+  }
+
+  harvestPlant(plantName) {
+    let plant = this.plants.find((p) => p.plantName === plantName);
+    if (this.plants.includes(plant) === false) {
+      throw new Error(
+        `The ${plantName} cannot be harvested before it is ripe.`
+      );
     }
 
-    rippenPlant(plantName, quantity) {
-      if (!this.plants.includes(this.plantName)) {
-        throw new Error(`There is no ${this.plantName} in the garden`);
-      }
-      if (plant.ripe === true) {
-        throw new Error(`The ${plantName} is already ripe`);
-      }
-      if (quantity <= 0) {
-        throw new Error(`The quantity cannot be zero or negative`);
-      }
-
-      plant.ripe = true;
-      plant.quantity += quantity;
-
-      if (quantity === 1) {
-        return `${quantity} ${plantName} has successfully rippened.`;
-      } else {
-        return `${quantity} ${plantName}s have sucesfully ripened`;
-      }
+    if (this.plant.ripe === false) {
+      throw new Error(
+        `The ${plantName} cannot be harvested before it is ripe.`
+      );
     }
+    let indexOfPlant = this.plants.indexOf(plant);
+    this.plants.splice(indexOfPlant, 1);
+    let harvestedPlant = {
+      plantName,
+      quantity: plant.quantity,
+    };
+    this.storage.push(harvestedPlant);
+    this.spaceAvailable += plant.spaceRequired;
+    return `The ${plantName} has been sucessfully harvested.`;
+  }
 
-    harvestPlant(plantName) {
-      let plant = this.plants.find((p) => p.plantName === plantName);
-      if (this.plants.includes(plant) === false) {
-        throw new Error(
-          `The ${plantName} cannot be harvested before it is ripe.`
-        );
-      }
+  generateReport() {
+    let report = [];
+    report.push(`The garden has ${this.spaceAvailable} free space left`);
 
-      if (this.plant.ripe === false) {
-        throw new Error(
-          `The ${plantName} cannot be harvested before it is ripe.`
-        );
-      }
-      let indexOfPlant = this.plants.indexOf(plant);
-      this.plants.splice(indexOfPlant, 1);
-      let harvestedPlant = {
-        plantName,
-        quantity: plant.quantity,
-      };
-      this.storage.push(harvestedPlant);
-      this.spaceAvailable += plant.spaceRequired;
-      return `The ${plantName} has been sucessfully harvested.`;
+    let plantsInGarden = this.plants.map((plant) => plant.plantName);
+    plantsInGarden.sort((a, b) => a.localeCompare(b));
+    let secondRow = `Plants in the garden: ${plantsInGarden.join(", ")}`;
+    report.push(secondRow);
+
+    let thirdRow = `Plants in the storage: The storage is emtpy`;
+    if (this.storage.length !== 0) {
+      let plantsInStorage = this.storage.map(
+        (p) => `${p.plantName} (${p.quantity})`
+      );
+      thirdRow = `Plants in storage ${plantsInStorage.join(", ")}`;
     }
+    report.push(thirdRow);
 
-    generateReport() {
-      let report = [];
-      report.push(`The garden has ${this.spaceAvailable} free space left`);
-
-      let plantsInGarden = this.plants.map((plant) => plant.plantName);
-      plantsInGarden.sort((a, b) => a.localeCompare(b));
-      let secondRow = `Plants in the garden: ${plantsInGarden.join(", ")}`;
-      report.push(secondRow);
-
-      let thirdRow = `Plants in the storage: The storage is emtpy`;
-      if (this.storage.length !== 0) {
-        let plantsInStorage = this.storage.map(
-          (p) => `${p.plantName} (${p.quantity})`
-        );
-        thirdRow = `Plants in storage ${plantsInStorage.join(", ")}`;
-      }
-      report.push(thirdRow);
-
-      return report.join("\n");
-    }
+    return report.join("\n");
   }
 }
 
