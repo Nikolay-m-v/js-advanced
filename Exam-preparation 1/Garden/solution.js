@@ -9,16 +9,18 @@ class Garden {
 
   addPlant(plantName, spaceRequired) {
     if (this.spaceAvailable < spaceRequired) {
-      return "Not enough space in the garden";
+      throw new Error("Not enough space in the garden.");
     }
     let plant = { plantName, spaceRequired, ripe: false, quantity: 0 };
     this.plants.push(plant);
-    return `The ${this.PlantName} has been successfully planted in the garden.`;
+    this.spaceAvailable -= plant.spaceRequired;
+    return `The ${plantName} has been successfully planted in the garden.`;
   }
 
   ripenPlant(plantName, quantity) {
-    if (!this.plants.includes(this.plantName)) {
-      throw new Error(`There is no ${this.plantName} in the garden`);
+    let plant = this.plants.find((p) => p.plantName === plantName);
+    if (this.plants.includes(plant) === false) {
+      throw new Error(`There is no ${plantName} in the garden`);
     }
     if (plant.ripe === true) {
       throw new Error(`The ${plantName} is already ripe`);
@@ -40,12 +42,10 @@ class Garden {
   harvestPlant(plantName) {
     let plant = this.plants.find((p) => p.plantName === plantName);
     if (this.plants.includes(plant) === false) {
-      throw new Error(
-        `The ${plantName} cannot be harvested before it is ripe.`
-      );
+      throw new Error(`There is no ${plantName} in the garden`);
     }
 
-    if (this.plant.ripe === false) {
+    if (plant.ripe === false) {
       throw new Error(
         `The ${plantName} cannot be harvested before it is ripe.`
       );
