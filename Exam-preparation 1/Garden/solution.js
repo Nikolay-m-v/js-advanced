@@ -98,3 +98,4 @@ console.log(myGarden.ripenPlant("orange", 1));
 console.log(myGarden.harvestPlant("orange"));
 
 console.log(myGarden.generateReport());
+console.log(myGarden.generateReport());
