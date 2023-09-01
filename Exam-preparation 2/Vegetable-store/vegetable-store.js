@@ -80,6 +80,22 @@ class VegetableStore {
       return `Some quantity of ${type} has been removed.`;
     }
   }
+
+  revision() {
+    let revision = [];
+    revision.push(`Available vegetables:`);
+    let sorted = this.availableProducts.sort((a, b) => a.price - b.price);
+    let secondRow = sorted.map(
+      (vegetable) =>
+        `${vegetable.type}-${vegetable.quantity}-${vegetable.price}`
+    );
+    revision.push(secondRow);
+
+    let thirdRow = `The onwer of the store is ${this.owner}, and the location is ${this.location}`;
+    revision.push(thirdRow);
+
+    return revision.join("\n");
+  }
 }
 
 let vegStore = new VegetableStore("Jerrie Munro", "1463 Pette Kyosheta, Sofia");
