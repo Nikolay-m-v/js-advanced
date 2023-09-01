@@ -42,20 +42,16 @@ class VegetableStore {
       let [type, quantity] = line.split(" ");
       quantity = Number(quantity);
       let product = this.availableProducts.find(
-        (vegetable) => (vegetable.type = type)
+        (vegetable) => vegetable.type === type
       );
-      if (product === undefined) {
+      if (product === undefined || quantity > product.quantity) {
         throw new Error(
-          `${type} is not available in the store, your current bil is ${totalPrice.toFixed(
+          `The quantity ${quantity} is not available in the store, for the vegetable ${type} your current bil is ${totalPrice.toFixed(
             2
           )}`
         );
       }
-      if (quantity > product.quantity) {
-        throw new Error(
-          `The quantity ${quantity} for the vegetable ${type} is not available in the store, your current bill is ${totalPrice}`
-        );
-      }
+
       totalPrice += product.price * quantity;
       product.quantity -= quantity;
     }
@@ -121,6 +117,19 @@ class VegetableStore {
 // console.log(vegStore.buyingVegetables(["Beans 8", "Okra 1.5"]));
 // console.log(vegStore.buyingVegetables(["Banana 1", "Beans 2"]));
 
+// let vegStore = new VegetableStore("Jerrie Munro", "1463 Pette Kyosheta, Sofia");
+// console.log(
+//   vegStore.loadingVegetables([
+//     "Okra 2.5 3.5",
+//     "Beans 10 2.8",
+//     "Celery 5.5 2.2",
+//     "Celery 0.5 2.5",
+//   ])
+// );
+// console.log(vegStore.rottingVegetable("Okra", 1));
+// console.log(vegStore.rottingVegetable("Okra", 2.5));
+// console.log(vegStore.buyingVegetables(["Beans 8", "Okra 1.5"]));
+
 let vegStore = new VegetableStore("Jerrie Munro", "1463 Pette Kyosheta, Sofia");
 console.log(
   vegStore.loadingVegetables([
@@ -132,4 +141,5 @@ console.log(
 );
 console.log(vegStore.rottingVegetable("Okra", 1));
 console.log(vegStore.rottingVegetable("Okra", 2.5));
-console.log(vegStore.buyingVegetables(["Beans 8", "Okra 1.5"]));
+console.log(vegStore.buyingVegetables(["Beans 8", "Celery 1.5"]));
+console.log(vegStore.revision());
