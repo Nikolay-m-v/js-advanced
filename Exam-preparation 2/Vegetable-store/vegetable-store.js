@@ -63,6 +63,23 @@ class VegetableStore {
       2
     )}`;
   }
+
+  rottingVegetables(type, quantity) {
+    quantity = Number(quantity);
+    let product = this.availableProducts.find(
+      (vegetable) => vegetable.type === type
+    );
+    if (product === undefined) {
+      throw new Error(`${type} is not available in the store.`);
+    }
+    if (quantity > product.quantity) {
+      product.quantity = 0;
+      return `The entire quantity of the ${type} has been removed.`;
+    } else {
+      product.quantity -= quantity;
+      return `Some quantity of ${type} has been removed.`;
+    }
+  }
 }
 
 let vegStore = new VegetableStore("Jerrie Munro", "1463 Pette Kyosheta, Sofia");
