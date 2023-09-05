@@ -143,3 +143,4 @@ console.log(vegStore.rottingVegetable("Okra", 1));
 console.log(vegStore.rottingVegetable("Okra", 2.5));
 console.log(vegStore.buyingVegetables(["Beans 8", "Celery 1.5"]));
 console.log(vegStore.revision());
+console.log(vegStore.revision());
