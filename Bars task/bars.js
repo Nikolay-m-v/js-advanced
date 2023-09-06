@@ -19,9 +19,9 @@ let crowd = {
 
   cheering(action) {
     if (action === "pull ups") {
-      console.log(`${this.amountOfPeople} are shouting pull harder!`);
+      console.log(`${this.amountOfPeople} people are shouting pull harder!`);
     } else {
-      console.log(`${this.amountOfPeople} are shouting push harder!`);
+      console.log(`${this.amountOfPeople} people are shouting push harder!`);
     }
   },
 };
@@ -32,7 +32,12 @@ function pullUp(person, setOfPullUps) {
     if (currentPullUp === "chin above bar") {
       person.amountOfPullUps++;
       console.log(`${person.name} has done a successfull pull up`);
+      console.log(
+        `Total pull ups for current set are: ${person.amountOfPullUps}`
+      );
     } else {
+      crowd.amountOfPeople = person.amountOfPullUps - 1;
+      crowd.cheering("pull ups");
       console.log(
         `${person.name} has failed to pull up his chin above the bar \nTotal amount of pull ups ${person.name} did is: ${person.amountOfPullUps}`
       );
@@ -47,9 +52,12 @@ function dips(person, setOfDips) {
     if (currentDip === "90 degrees to almost extension") {
       person.amountOfDips++;
       console.log(`${person.name} has done a successfull dip`);
+      console.log(`Total dips for current set are: ${person.amountOfDips}`);
     } else {
+      crowd.amountOfPeople = person.amountOfDips - 1;
+      crowd.cheering("dips");
       console.log(
-        `${person.name} has failed to a dip with full range of motion, therefore he fails. \nThe total amount of dips ${person.name} did is: ${person.amountOfDips} `
+        `${person.name} has failed to a dip with full range of motion, therefore he fails. \nThe total amount of dips ${person.name} did are: ${person.amountOfDips} `
       );
       break;
     }
@@ -83,3 +91,6 @@ dips(personTwo, [
   "90 degrees to almost extension",
   "unable to go full range of motion.",
 ]);
+
+// crowd.amountOfPeople = 5;
+// crowd.cheering("pull ups");
