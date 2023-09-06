@@ -39,7 +39,7 @@ function pullUp(person, setOfPullUps) {
       crowd.amountOfPeople = person.amountOfPullUps - 1;
       crowd.cheering("pull ups");
       console.log(
-        `${person.name} has failed to pull up his chin above the bar \nTotal amount of pull ups ${person.name} did is: ${person.amountOfPullUps}`
+        `${person.name} has failed to pull up his chin above the bar \nTotal amount of pull ups ${person.name} did are: ${person.amountOfPullUps}`
       );
       break;
     }
