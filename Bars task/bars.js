@@ -14,6 +14,18 @@ let personTwo = {
   amountOfDips: 0,
 };
 
+let crowd = {
+  amountOfPeople: 0,
+
+  cheering(action) {
+    if (action === "pull ups") {
+      console.log(`${this.amountOfPeople} are shouting pull harder!`);
+    } else {
+      console.log(`${this.amountOfPeople} are shouting push harder!`);
+    }
+  },
+};
+
 function pullUp(person, setOfPullUps) {
   for (let i = 0; i < setOfPullUps.length; i++) {
     let currentPullUp = setOfPullUps[i];
@@ -39,6 +51,7 @@ function dips(person, setOfDips) {
       console.log(
         `${person.name} has failed to a dip with full range of motion, therefore he fails. \nThe total amount of dips ${person.name} did is: ${person.amountOfDips} `
       );
+      break;
     }
   }
 }
