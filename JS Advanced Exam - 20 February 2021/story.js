@@ -12,28 +12,31 @@ class Story {
     if (this._likes.length === 0) {
       return `${this.title} has 0 likes`;
     } else if (this._likes.length === 1) {
-      return `${this_likes[0]} has liked this story!`;
+      return `${this._likes[0]} likes this story!`;
     } else {
       return `${this._likes[0]} and ${
-        _likes.length - 1
-      } other like this story!`;
+        this._likes.length - 1
+      } others like this story!`;
     }
   }
 
   like(username) {
     if (this._likes.includes(username)) {
       throw new Error(`You can't like the same story twice!`);
-    } else if (username === this.creator) {
-      throw new Error("You can't like your own story!");
-    } else {
-      return `${username} liked ${this.title}`;
     }
+    if (username === this.creator) {
+      throw new Error("You can't like your own story!");
+    }
+    this._likes.push(username);
+    return `${username} liked ${this.title}`;
   }
 
   dislike(username) {
-    if (!this._likes.includes(username)) {
+    if (this._likes.includes(username) === false) {
       throw new Error("You can't dislike this story!");
     } else {
+      let index = this._likes.indexOf(username);
+      this._likes.splice(index, 1);
       return `${username} disliked ${this.title}`;
     }
   }
@@ -42,7 +45,7 @@ class Story {
     let findId = this._comments.find((comment) => comment.id === id);
     if (findId === undefined) {
       this._comments.push({
-        id: this.comments.length + 1,
+        id: this._comments.length + 1,
         username,
         content,
         replies: [],
@@ -50,7 +53,7 @@ class Story {
       return `${username} commented on ${this.title}`;
     } else {
       findId.replies.push({
-        id: `${findId.id}.${findid.replies.length + 1},
+        id: `${findId.id}.${findId.replies.length + 1},
       username,
       content,`,
       });
@@ -105,7 +108,22 @@ class Story {
           );
         }
       });
+    } else if (sortingType === "username") {
+      this._comments.sort((a, b) => a.username.localeCompare(b.username));
+      this._comments.forEach((comment) => {
+        if (comment.replies.length === 0) {
+          result.push(
+            `-- ${comment.id}. ${comment.username}: ${comment.content}`
+          );
+        } else {
+          comment.replies.sort((a, b) => a.username.localeCompare(b.username));
+          let repliesArr = comment.replies.map(
+            (reply) => `--- ${reply.id}. ${reply.username}: ${reply.content}`
+          );
+        }
+      });
     }
+    return result.join("\n");
   }
 }
 
