@@ -43,4 +43,31 @@ class CarDealership {
     this.totalIncome += car.price;
     return `${model} was sold for ${car.price.toFixed(2)}$`;
   }
+
+  currentCar() {
+    if (this.availableCars.length === 0) {
+      return `There are no available cars`;
+    }
+    let result = [`-Available cars:`];
+    this.availableCars.forEach((car) =>
+      result.push(
+        `---${car.model} - ${car.horsePower} HP - ${car.mileage.toFixed(
+          2
+        )} km - ${car.price.toFixed(2)}$`
+      )
+    );
+    return result.join("\n");
+  }
+
+  salesReport(criteria) {
+    if (criteria !== "horsepower" && criteria !== "model") {
+      throw new Error(`Invalid criteria!`);
+    }
+    let sorted = this.soldCars.sort((a, b) => )
+  }
 }
+
+let dealership = new CarDealership("SoftAuto");
+console.log(dealership.addCar("Toyota Corolla", 100, 3500, 190000));
+console.log(dealership.addCar("Mercedes C63", 300, 29000, 187000));
+console.log(dealership.addCar("", 120, 4900, 240000));
