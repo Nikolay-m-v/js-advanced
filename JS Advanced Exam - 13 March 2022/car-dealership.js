@@ -63,7 +63,21 @@ class CarDealership {
     if (criteria !== "horsepower" && criteria !== "model") {
       throw new Error(`Invalid criteria!`);
     }
-    let sorted = this.soldCars.sort((a, b) => )
+    if (criteria === "horsepower") {
+      this.soldCars.sort((a, b) => a.horsePower - b.horsePower);
+    } else {
+      this.soldCars.sort((a, b) => a.model.localeCompare(b.model));
+    }
+    let result = [
+      `--${this.name} has a total income of ${this.totalIncome.toFixed(2)}`,
+      `-${this.soldCars.length} cars sold:`,
+    ];
+    this.soldCars.forEach((car) =>
+      result.push(
+        `---${car.model} - ${car.horsePower} HP - ${car.price.toFixed(2)}`
+      )
+    );
+    result.join("\n");
   }
 }
 
