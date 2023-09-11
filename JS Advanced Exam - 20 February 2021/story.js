@@ -38,5 +38,32 @@ class Story {
     }
   }
 
-  comment(username, content, id) {}
+  comment(username, content, id) {
+    let findId = this._comments.find((comment) => comment.id === id);
+    if (findId === undefined) {
+      this._comments.push({
+        id: this.comments.length + 1,
+        username,
+        content,
+        replies: [],
+      });
+      return `${username} commented on ${this.title}`;
+    }
+  }
 }
+
+let art = new Story("My Story", "Anny");
+art.like("John");
+console.log(art.likes);
+art.dislike("John");
+console.log(art.likes);
+art.comment("Sammy", "Some Content");
+console.log(art.comment("Ammy", "New Content"));
+art.comment("Zane", "Reply", 1);
+art.comment("Jessy", "Nice :)");
+console.log(art.comment("SAmmy", "Reply@", 1));
+console.log();
+console.log(art.toString("username"));
+console.log();
+art.like("Zane");
+console.log(art.toString("desc"));
