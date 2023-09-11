@@ -48,6 +48,63 @@ class Story {
         replies: [],
       });
       return `${username} commented on ${this.title}`;
+    } else {
+      findId.replies.push({
+        id: `${findId.id}.${findid.replies.length + 1},
+      username,
+      content,`,
+      });
+      return `You replied successfully`;
+    }
+  }
+
+  toString(sortingType) {
+    let result = [];
+    result.push(`Title: ${this.title}`);
+    result.push(`Creator: ${this.creator}`);
+    result.push(`Likes: ${this._likes.length}`);
+    result.push(`Comments:`);
+
+    if (this._comments.length === 0) {
+      return result.join("\n");
+    } else if (sortingType === "asc") {
+      this._comments.sort((a, b) => a.id - b.id);
+      this._comments.forEach((comment) => {
+        if (comment.replies.length === 0) {
+          result.push(
+            `-- ${comment.id}. ${comment.username}: ${comment.content}`
+          );
+        } else {
+          comment.replies.sort((a, b) => a.id - b.id);
+          let repliesArr = comment.replies.map(
+            (reply) => `--- ${reply.id}. ${reply.username}: ${reply.content}`
+          );
+          result.push(
+            `-- ${comment.id}. ${comment.username}: ${
+              comment.content
+            }\n${repliesArr.join("\n")}`
+          );
+        }
+      });
+    } else if (sortingType === "desc") {
+      this._comments.sort((a, b) => b.id - a.id);
+      this._comments.forEach((comment) => {
+        if (comment.replies.length === 0) {
+          result.push(
+            `-- ${comment.id}. ${comment.username}: ${comment.content}`
+          );
+        } else {
+          comment.replies.sort((a, b) => b.id - a.id);
+          let repliesArr = comment.replies.map(
+            (reply) => `--- ${reply.id}. ${reply.username}: ${reply.content}`
+          );
+          result.push(
+            `-- ${comment.id}. ${comment.username}: ${
+              comment.content
+            }\n${repliesArr.join("\n")}`
+          );
+        }
+      });
     }
   }
 }
