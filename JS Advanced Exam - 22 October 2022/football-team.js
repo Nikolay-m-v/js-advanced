@@ -52,6 +52,26 @@ class footballTeam {
     }
     return `Congratulations! You sign a contract with ${name} for ${playerOffer} million dollars`;
   }
+
+  ageLimit(name, age) {
+    const foundPlayer = this.invitedPlayers.find(
+      (player) => player.name === name
+    );
+    if (!foundPlayer) {
+      throw new Error(`${name} is not invited to the selection list!`);
+    }
+
+    if (foundPlayer.age < age) {
+      const ageDifference = age - foundPlayer.age;
+      if (ageDifference < 5) {
+        return `${name} will sign a contract for ${ageDifference} years with ${this.clubName} in ${this.country}`;
+      } else if (ageDifference > 5) {
+        return `${name} will sign a full 5 years contract for ${this.clubName} in ${this.country}`;
+      }
+    } else {
+      return `${name} is above age limit!`;
+    }
+  }
 }
 
 let fTeam = new footballTeam("Barcelona", "Spain");
