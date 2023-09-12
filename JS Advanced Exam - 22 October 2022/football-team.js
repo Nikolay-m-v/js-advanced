@@ -1,7 +1,5 @@
 "use strict";
 
-const bootstrap = require("bootstrap");
-
 class footballTeam {
   constructor(clubName, country) {
     this.clubName = clubName;
@@ -71,6 +69,16 @@ class footballTeam {
     } else {
       return `${name} is above age limit!`;
     }
+  }
+
+  transferWindowResult() {
+    let result = [`Players list:`];
+    this.invitedPlayers
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .forEach((player) =>
+        result.push(`Player ${player.name}--${player.value}`)
+      );
+    return result.join("\n");
   }
 }
 
