@@ -53,9 +53,9 @@ class Story {
       return `${username} commented on ${this.title}`;
     } else {
       findId.replies.push({
-        id: `${findId.id}.${findId.replies.length + 1},
-      username,
-      content,`,
+        id: `${findId.id}.${findId.replies.length + 1}`,
+        username,
+        content,
       });
       return `You replied successfully`;
     }
@@ -119,6 +119,11 @@ class Story {
           comment.replies.sort((a, b) => a.username.localeCompare(b.username));
           let repliesArr = comment.replies.map(
             (reply) => `--- ${reply.id}. ${reply.username}: ${reply.content}`
+          );
+          result.push(
+            `-- ${comment.id}. ${comment.username}: ${
+              comment.content
+            }\n${repliesArr.join("\n")}`
           );
         }
       });
