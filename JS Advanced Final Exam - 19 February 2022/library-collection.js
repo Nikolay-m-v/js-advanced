@@ -67,7 +67,7 @@ class LibraryCollection {
       return output.join("\n");
     } else {
       const foundAuthor = this.books.find(
-        (author) => book.bookAuthor === bookAuthor
+        (book) => book.bookAuthor === bookAuthor
       );
       if (foundAuthor === undefined) {
         throw new Error(`${bookAuthor} is not in the collection.`);
@@ -76,8 +76,8 @@ class LibraryCollection {
         if (foundAuthor.payed === false) {
           paidOrNot = "Not Paid";
         }
+        return `${foundAuthor.bookName} == ${foundAuthor.bookAuthor} - ${paidOrNot}`;
       }
-      return `${foundAuthor.bookName} == ${foundAuthor.bookAuthor} - ${paidOrNot}`;
     }
   }
 }
@@ -92,9 +92,13 @@ class LibraryCollection {
 // console.log(library.payBook("In Search of Lost Time"));
 // console.log(library.payBook("Don Quixote"));
 
+// const library = new LibraryCollection(2);
+// library.addBook("In Search of Lost Time", "Marcel Proust");
+// library.addBook("Don Quixote", "Miguel de Cervantes");
+// library.payBook("Don Quixote");
+// console.log(library.removeBook("Don Quixote"));
+// console.log(library.removeBook("In Search of Lost Time"));
+
 const library = new LibraryCollection(2);
-library.addBook("In Search of Lost Time", "Marcel Proust");
-library.addBook("Don Quixote", "Miguel de Cervantes");
-library.payBook("Don Quixote");
-console.log(library.removeBook("Don Quixote"));
-console.log(library.removeBook("In Search of Lost Time"));
+console.log(library.addBook("Don Quixote", "Miguel de Cervantes"));
+console.log(library.getStatistics("Miguel de Cervantes"));
