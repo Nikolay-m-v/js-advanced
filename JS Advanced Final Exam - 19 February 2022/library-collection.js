@@ -47,7 +47,39 @@ class LibraryCollection {
     return `${bookName} remove from the collection.`;
   }
 
-  getStatistics(bookAuthor) {}
+  getStatistics(bookAuthor) {
+    if (!bookAuthor) {
+      const output = [
+        `The book collection has ${
+          this.capacity - this.books.length
+        } empty spots left.`,
+      ];
+
+      this.books
+        .sort((a, b) => a.bookName.localeCompare(b.bookName))
+        .forEach((book) => {
+          let paidOrNot = "Has Paid";
+          if (book.payed === false) {
+            paidOrNot = "Not Paid";
+          }
+          output.push(`${book.bookName} == ${book.bookAuthor} - ${paidOrNot}`);
+        });
+      return output.join("\n");
+    } else {
+      const foundAuthor = this.books.find(
+        (author) => book.bookAuthor === bookAuthor
+      );
+      if (foundAuthor === undefined) {
+        throw new Error(`${bookAuthor} is not in the collection.`);
+      } else {
+        let paidOrNot = "Has Paid.";
+        if (foundAuthor.payed === false) {
+          paidOrNot = "Not Paid";
+        }
+      }
+      return `${foundAuthor.bookName} == ${foundAuthor.bookAuthor} - ${paidOrNot}`;
+    }
+  }
 }
 
 const library = new LibraryCollection(2);
