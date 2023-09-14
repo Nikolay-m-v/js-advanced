@@ -28,8 +28,26 @@ class LibraryCollection {
   }
 
   removeBook(bookName) {
-    const foundBook 
+    const foundBook = this.books.find((book) => book.bookName === bookName);
+    const bookFoundIndex = this.books.findIndex(
+      (book) => book.bookName === bookName
+    );
+
+    if (foundBook === undefined) {
+      throw new Error(`The book, you're looking for, is not found`);
+    }
+
+    if (foundBook.payed === false) {
+      throw new Error(
+        `${bookName} need to be paid before removing from the collection.`
+      );
+    }
+
+    this.books.splice(bookFoundIndex, 1);
+    return `${bookName} remove from the collection.`;
   }
+
+  getStatistics(bookAuthor) {}
 }
 
 const library = new LibraryCollection(2);
