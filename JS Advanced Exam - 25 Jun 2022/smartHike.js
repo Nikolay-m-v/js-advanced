@@ -69,7 +69,14 @@ class SmartHike {
   }
 }
 
+// const user = new SmartHike("Vili");
+// console.log(user.addGoal("Musala", 2925));
+// console.log(user.addGoal("Rui", 1706));
+// console.log(user.addGoal("Musala", 2925));
+
 const user = new SmartHike("Vili");
 console.log(user.addGoal("Musala", 2925));
 console.log(user.addGoal("Rui", 1706));
-console.log(user.addGoal("Musala", 2925));
+console.log(user.hike("Musala", 8, "hard"));
+console.log(user.hike("Rui", 3, "easy"));
+console.log(user.hike("Everest", 12, "hard"));
