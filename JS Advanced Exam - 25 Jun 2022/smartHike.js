@@ -43,6 +43,21 @@ class SmartHike {
       `You have rested for ${time} hours and gained ${time * 10} resources`;
     }
   }
+
+  showRecord(criteria) {
+    if (this.listOfHikes.length === 0) {
+      return `${username} has not done any hiking yet`;
+    }
+
+    if (criteria === "all") {
+      let result = ["All hiking records:"];
+      this.listOfHikes.forEach((hike) =>
+        result.push(`${this.username} hiked ${peak} for ${time} hours`)
+      );
+    }
+
+    this.listOfHikes.find((criteria) => thi);
+  }
 }
 
 const user = new SmartHike("Vili");
