@@ -54,9 +54,18 @@ class SmartHike {
       this.listOfHikes.forEach((hike) =>
         result.push(`${this.username} hiked ${peak} for ${time} hours`)
       );
+      return result.join("\n");
     }
 
-    this.listOfHikes.find((criteria) => thi);
+    this.listOfHikes.sort((a, b) => a.time - b.time);
+    const bestHike = this.listOfHikes.find(
+      (hike) => hike.difficultyLevel === criteria
+    );
+    if (bestHike === undefined) {
+      return `${this.username} has not done any ${criteria} hikings yet`;
+    } else {
+      return `${this.username}'s best ${criteria} hike is ${bestHike.peak} peak, for ${bestHike.time} hours`;
+    }
   }
 }
 
