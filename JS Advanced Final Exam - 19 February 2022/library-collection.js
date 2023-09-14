@@ -17,8 +17,8 @@ class LibraryCollection {
 
   payBook(bookName) {
     const foundBook = this.books.find((book) => book.bookName === bookName);
-    if (foundBook === undfined) {
-      throw new Error(`${bookname} is not in the collection.`);
+    if (foundBook === undefined) {
+      throw new Error(`${bookName} is not in the collection.`);
     }
     if (foundBook.payed) {
       throw new Error(`${bookName} has already been paid.`);
@@ -82,7 +82,12 @@ class LibraryCollection {
   }
 }
 
+// const library = new LibraryCollection(2);
+// console.log(library.addBook("In Search of Lost Time", "Marcel Proust"));
+// console.log(library.addBook("Don Quixote", "Miguel de Cervantes"));
+// console.log(library.addBook("Ulysses", "James Joyce"));
+
 const library = new LibraryCollection(2);
-console.log(library.addBook("In Search of Lost Time", "Marcel Proust"));
-console.log(library.addBook("Don Quixote", "Miguel de Cervantes"));
-console.log(library.addBook("Ulysses", "James Joyce"));
+library.addBook("In Search of Lost Time", "Marcel Proust");
+console.log(library.payBook("In Search of Lost Time"));
+console.log(library.payBook("Don Quixote"));
