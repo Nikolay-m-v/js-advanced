@@ -52,7 +52,9 @@ class SmartHike {
     if (criteria === "all") {
       let result = ["All hiking records:"];
       this.listOfHikes.forEach((hike) =>
-        result.push(`${this.username} hiked ${peak} for ${time} hours`)
+        result.push(
+          `${this.username} hiked ${hike.peak} for ${hike.time} hours`
+        )
       );
       return result.join("\n");
     }
