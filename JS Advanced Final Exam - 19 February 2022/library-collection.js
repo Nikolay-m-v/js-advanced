@@ -87,7 +87,14 @@ class LibraryCollection {
 // console.log(library.addBook("Don Quixote", "Miguel de Cervantes"));
 // console.log(library.addBook("Ulysses", "James Joyce"));
 
+// const library = new LibraryCollection(2);
+// library.addBook("In Search of Lost Time", "Marcel Proust");
+// console.log(library.payBook("In Search of Lost Time"));
+// console.log(library.payBook("Don Quixote"));
+
 const library = new LibraryCollection(2);
 library.addBook("In Search of Lost Time", "Marcel Proust");
-console.log(library.payBook("In Search of Lost Time"));
-console.log(library.payBook("Don Quixote"));
+library.addBook("Don Quixote", "Miguel de Cervantes");
+library.payBook("Don Quixote");
+console.log(library.removeBook("Don Quixote"));
+console.log(library.removeBook("In Search of Lost Time"));
