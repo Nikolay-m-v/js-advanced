@@ -70,7 +70,17 @@ class SummerCamp {
     }
   }
 
-  toString() {}
+  toString() {
+    let output = [
+      `${this.organizer} will take ${this.listOfParticipants.length} participants on camping to ${this.location}`,
+    ];
+    let sorted = this.listOfParticipants.sort((a, b) => b.wins - a.wins);
+    sorted.forEach((participant) =>
+      output.push(
+        `${participant.name} - ${participant.condition} - ${participant.power} - ${participant.wins}`
+      )
+    );
+  }
 }
 
 const summerCamp = new SummerCamp(
