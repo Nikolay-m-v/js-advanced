@@ -64,7 +64,7 @@ class SummerCamp {
       }
 
       if (player1.condition !== player2.condition) {
-        return `Choose players with equal condition.`;
+        return `Choose players with equal condition.`; /// should be throw new error
         throw new Error(`Choose players with equal condition.`);
       }
 
