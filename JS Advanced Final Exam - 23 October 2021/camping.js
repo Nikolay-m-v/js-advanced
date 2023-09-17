@@ -40,7 +40,13 @@ class SummerCamp {
   }
 
   timeToPlay(typeOfGame, participant1, participant2) {
-    if (typeOfGame === "WaterBalloonFights") {
+    if (typeOfGame === "Battleship") {
+      if (!this.listOfParticipants.includes(participant1)) {
+        throw new Error(`Invalid entered name/s`);
+      }
+      participant1.power += 20;
+      return `The ${participant1.name} successfully completed the game ${typeOfGame}`;
+    } else if (typeOfGame === "WaterBalloonFights") {
       if (
         !this.listOfParticipants.includes(participant1) ||
         !this.listOfParticipants.includes(participant2)
@@ -51,12 +57,14 @@ class SummerCamp {
       if (!participant1[condition] === participant2[condition]) {
         throw new Error(`Choose players with equal condition.`);
       }
-    } else if (typeOfGame === "Battleship") {
-      if (!this.listOfParticipants.includes(participant1)) {
-        throw new Error(`Invalid entered name/s`);
+
+      if (participant1.power > participant2.power) {
+        participant1[wins] += 1;
+        return `The ${participant1.name} is winner in the game ${typeOfGame}`;
+      } else if (participant2.power > participant1.power) {
+        participant2[wins] += 1;
+        return `The ${participant2.name} is winner in the game ${typeOfGame}`;
       }
-      participant1[power] += 20;
-      return `The ${participant1.name} successfully completed the game ${typeOfGame}`;
     }
   }
 }
