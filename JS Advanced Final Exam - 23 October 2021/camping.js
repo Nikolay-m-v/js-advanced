@@ -64,14 +64,15 @@ class SummerCamp {
       }
 
       if (player1.condition !== player2.condition) {
+        return `Choose players with equal condition.`;
         throw new Error(`Choose players with equal condition.`);
       }
 
       if (player1.power > player2.power) {
-        player1[wins] += 1;
+        player1.wins += 1;
         return `The ${player1.name} is winner in the game ${typeOfGame}`;
       } else if (player2.power > player1.power) {
-        participant2[wins] += 1;
+        participant2.wins += 1;
         return `The ${player2.name} is winner in the game ${typeOfGame}`;
       } else if (player1.power === player2.power) {
         return `There is no winner`;
