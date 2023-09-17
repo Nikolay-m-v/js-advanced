@@ -29,42 +29,51 @@ class SummerCamp {
   }
 
   unregisterParticipant(name) {
+    const foundName = this.listOfParticipants.find(
+      (name) => participant.name === name
+    );
     const foundNameIndex = this.listOfParticipants.findIndex(
       (participant) => participant.name === name
     );
     if (foundNameIndex === -1) {
-      return `The ${name} is not registered in the camp.`; /// should be throw new Error but it exits my application and doesnt output the third outcome.
+      throw new Error(`The ${name} is not registered in the camp.`); /// should be throw new Error but it exits my application and doesnt output the third outcome.
     }
     this.listOfParticipants.splice(foundNameIndex, 1);
     return `The ${name} was removed successfully.`;
   }
 
   timeToPlay(typeOfGame, participant1, participant2) {
+    const player1 = this.listOfParticipants.find(
+      (participant) => participant.name === participant1
+    );
+    const player2 = this.listOfParticipants.find(
+      (participant) => participant.name === participant2
+    );
     if (typeOfGame === "Battleship") {
-      if (!this.listOfParticipants.includes(participant1)) {
+      if (player1 === undefined) {
         throw new Error(`Invalid entered name/s`);
       }
-      participant1.power += 20;
-      return `The ${participant1.name} successfully completed the game ${typeOfGame}`;
+      player1.power += 20;
+      return `The ${player1.name} successfully completed the game ${typeOfGame}`;
     } else if (typeOfGame === "WaterBalloonFights") {
       if (
-        !this.listOfParticipants.includes(participant1) ||
-        !this.listOfParticipants.includes(participant2)
+        !this.listOfParticipants.includes(player1) ||
+        !this.listOfParticipants.includes(player2)
       ) {
         throw new Error(`Invalid entered name/s`);
       }
 
-      if (participant1[condition] !== participant2[condition]) {
+      if (player1.condition !== player2.condition) {
         throw new Error(`Choose players with equal condition.`);
       }
 
-      if (participant1.power > participant2.power) {
-        participant1[wins] += 1;
-        return `The ${participant1.name} is winner in the game ${typeOfGame}`;
-      } else if (participant2.power > participant1.power) {
+      if (player1.power > player2.power) {
+        player1[wins] += 1;
+        return `The ${player1.name} is winner in the game ${typeOfGame}`;
+      } else if (player2.power > player1.power) {
         participant2[wins] += 1;
-        return `The ${participant2.name} is winner in the game ${typeOfGame}`;
-      } else if (participant1.power === participant2.power) {
+        return `The ${player2.name} is winner in the game ${typeOfGame}`;
+      } else if (player1.power === player2.power) {
         return `There is no winner`;
       }
     }
@@ -93,10 +102,33 @@ class SummerCamp {
 // console.log(summerCamp.registerParticipant("Petar Petarson", "student", 300));
 // console.log(summerCamp.registerParticipant("Leila Wolfe", "childd", 200));
 
+// const summerCamp = new SummerCamp(
+//   "Jane Austen",
+//   "Pancharevo Sofia 1137, Bulgaria"
+// );
+// console.log(summerCamp.registerParticipant("Petar Petarson", "student", 300));
+// console.log(summerCamp.unregisterParticipant("Petar"));
+// console.log(summerCamp.unregisterParticipant("Petar Petarson"));
+
 const summerCamp = new SummerCamp(
   "Jane Austen",
   "Pancharevo Sofia 1137, Bulgaria"
 );
 console.log(summerCamp.registerParticipant("Petar Petarson", "student", 300));
-console.log(summerCamp.unregisterParticipant("Petar"));
-console.log(summerCamp.unregisterParticipant("Petar Petarson"));
+console.log(summerCamp.timeToPlay("Battleship", "Petar Petarson"));
+console.log(summerCamp.registerParticipant("Sara Dickinson", "child", 200));
+console.log(
+  summerCamp.timeToPlay(
+    "WaterBalloonFights",
+    "Petar Petarson",
+    "Sara Dickinson"
+  )
+);
+console.log(summerCamp.registerParticipant("Dimitur Kostov", "student", 300));
+console.log(
+  summerCamp.timeToPlay(
+    "WaterBalloonFights",
+    "Petar Petarson",
+    "Dimitur Kostov"
+  )
+);
