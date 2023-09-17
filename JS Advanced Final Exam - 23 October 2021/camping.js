@@ -64,9 +64,13 @@ class SummerCamp {
       } else if (participant2.power > participant1.power) {
         participant2[wins] += 1;
         return `The ${participant2.name} is winner in the game ${typeOfGame}`;
+      } else if (participant1.power === participant2.power) {
+        return `There is no winner`;
       }
     }
   }
+
+  toString() {}
 }
 
 const summerCamp = new SummerCamp(
