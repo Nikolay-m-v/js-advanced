@@ -13,7 +13,10 @@ class SummerCamp {
       throw new Error(`Unsuccessful registration at the camp.`);
     }
 
-    if (this.listOfParticipants.includes(name)) {
+    const foundName = this.listOfParticipants.find(
+      (participant) => participant.name === name
+    );
+    if (this.listOfParticipants.includes(foundName)) {
       return `The ${name} is already registered at the camp.`;
     }
 
