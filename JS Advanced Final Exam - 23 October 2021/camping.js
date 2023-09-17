@@ -33,7 +33,7 @@ class SummerCamp {
       (participant) => participant.name === name
     );
     if (foundNameIndex === -1) {
-      return `The ${name} is not registered in the camp.`;
+      return `The ${name} is not registered in the camp.`; /// should be throw new Error but it exits my application and doesnt output the third outcome.
     }
     this.listOfParticipants.splice(foundNameIndex, 1);
     return `The ${name} was removed successfully.`;
