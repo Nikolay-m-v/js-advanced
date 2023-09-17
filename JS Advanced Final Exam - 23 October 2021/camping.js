@@ -38,6 +38,27 @@ class SummerCamp {
     this.listOfParticipants.splice(foundNameIndex, 1);
     return `The ${name} was removed successfully.`;
   }
+
+  timeToPlay(typeOfGame, participant1, participant2) {
+    if (typeOfGame === "WaterBalloonFights") {
+      if (
+        !this.listOfParticipants.includes(participant1) ||
+        !this.listOfParticipants.includes(participant2)
+      ) {
+        throw new Error(`Invalid entered name/s`);
+      }
+
+      if (!participant1[condition] === participant2[condition]) {
+        throw new Error(`Choose players with equal condition.`);
+      }
+    } else if (typeOfGame === "Battleship") {
+      if (!this.listOfParticipants.includes(participant1)) {
+        throw new Error(`Invalid entered name/s`);
+      }
+      participant1[power] += 20;
+      return `The ${participant1.name} successfully completed the game ${typeOfGame}`;
+    }
+  }
 }
 
 const summerCamp = new SummerCamp(
