@@ -28,14 +28,14 @@ class SummerCamp {
     return `The ${name} was successfully registered.`;
   }
 
-  unregisteredParticipant(name) {
+  unregisterParticipant(name) {
     const foundName = this.listOfParticipants.find(
       (participant) => participant.name === name
     );
     const foundNameIndex = this.listOfParticipants.findIndex(
       (participant) => participant.name === name
     );
-    if (!this.listOfParticipants.includes(name)) {
+    if (foundName === undefined) {
       throw new Error(`The ${name} is not registered in the camp.`);
     }
     this.listOfParticipants.splice(foundNameIndex, 1);
@@ -86,11 +86,19 @@ class SummerCamp {
   }
 }
 
+// const summerCamp = new SummerCamp(
+//   "Jane Austen",
+//   "Pancharevo Sofia 1137, Bulgaria"
+// );
+// console.log(summerCamp.registerParticipant("Petar Petarson", "student", 200));
+// console.log(summerCamp.registerParticipant("Petar Petarson", "student", 300));
+// console.log(summerCamp.registerParticipant("Petar Petarson", "student", 300));
+// console.log(summerCamp.registerParticipant("Leila Wolfe", "childd", 200));
+
 const summerCamp = new SummerCamp(
   "Jane Austen",
   "Pancharevo Sofia 1137, Bulgaria"
 );
-console.log(summerCamp.registerParticipant("Petar Petarson", "student", 200));
 console.log(summerCamp.registerParticipant("Petar Petarson", "student", 300));
-console.log(summerCamp.registerParticipant("Petar Petarson", "student", 300));
-console.log(summerCamp.registerParticipant("Leila Wolfe", "childd", 200));
+console.log(summerCamp.unregisterParticipant("Petar"));
+console.log(summerCamp.unregisterParticipant("Petar Petarson"));
