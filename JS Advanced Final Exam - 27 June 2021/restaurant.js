@@ -95,13 +95,37 @@ class Restaurant {
 }
 
 let kitchen = new Restaurant(1000);
+// console.log(
+//   kitchen.loadProducts([
+//     "Banana 10 5",
+//     "Banana 20 10",
+//     "Strawberries 50 30",
+//     "Yogurt 10 10",
+//     "Yogurt 500 1500",
+//     "Honey 5 50",
+//   ])
+// );
+
 console.log(
-  kitchen.loadProducts([
-    "Banana 10 5",
-    "Banana 20 10",
-    "Strawberries 50 30",
-    "Yogurt 10 10",
-    "Yogurt 500 1500",
-    "Honey 5 50",
-  ])
+  kitchen.addToMenu(
+    "frozenYogurt",
+    ["Yogurt 1", "Honey 1", "Banana 1", "Strawberries 10"],
+    9.99
+  )
+);
+console.log(
+  kitchen.addToMenu(
+    "Pizza",
+    [
+      "Flour 0.5",
+      "Oil 0.2",
+      "Yeast 0.5",
+      "Salt 0.1",
+      "Sugar 0.1",
+      "Tomato sauce 0.5",
+      "Pepperoni 1",
+      "Cheese 1.5",
+    ],
+    15.55
+  )
 );
