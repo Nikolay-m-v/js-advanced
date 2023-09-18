@@ -130,5 +130,19 @@ class Restaurant {
 //   )
 // );
 
+// let kitchen = new Restaurant(1000);
+// console.log(kitchen.showTheMenu());
+
 let kitchen = new Restaurant(1000);
-console.log(kitchen.showTheMenu());
+kitchen.loadProducts([
+  "Yogurt 30 3",
+  "Honey 50 4",
+  "Strawberries 20 10",
+  "Banana 5 1",
+]);
+kitchen.addToMenu(
+  "frozenYogurt",
+  ["Yogurt 1", "Honey 1", "Banana 1", "Strawberries 10"],
+  9.99
+);
+console.log(kitchen.makeTheOrder("frozenYogurt"));
