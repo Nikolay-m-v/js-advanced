@@ -73,9 +73,34 @@ class VegetableStore {
     if (product === undefined) {
       throw new Error(`${type} is not available in the store`);
     }
-    if (quantity > product.quantity) {
+    if (quantity >= product.quantity) {
       product.quantity = 0;
       return `The entire quantity of the ${type} has been removed.`;
     }
+    product.quantity -= quantity;
+    return `Some quantity of the ${type} has been removed.`;
+  }
+
+  revision() {
+    let output = [`Available vegetables:`];
+    this.availableProducts
+      .sort((a, b) => a.price - b.price)
+      .forEach((product) =>
+        output.push(`${product.type} - ${product.quantity} - ${product.price}`)
+      );
+    output.push(
+      `The owner of the store is ${this.owner}, and the location is ${this.location}`
+    );
+    return output.join("\n");
   }
 }
+
+let vegStore = new VegetableStore("Jerrie Munro", "1463 Pette Kyosheta, Sofia");
+console.log(
+  vegStore.loadingVegetables([
+    "Okra 2.5 3.5",
+    "Beans 10 2.8",
+    "Celery 5.5 2.2",
+    "Celery 0.5 2.5",
+  ])
+);
