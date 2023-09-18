@@ -35,4 +35,18 @@ class VegetableStore {
     }
     return `Successfully added ${uniqueTypes.join(", ")}`;
   }
+
+  buyingVegetables(selectedProducts) {
+    let totalPrice = 0;
+    for (let line of selectedProducts) {
+      let [type, quantity] = line.split(" ");
+      quantity = Number(quantity);
+
+      if (this.availableProducts.includes(type) === false) {
+        throw new Error(
+          `${type} is not available in the store, your current bill is ${totalPrice}`
+        );
+      }
+    }
+  }
 }
