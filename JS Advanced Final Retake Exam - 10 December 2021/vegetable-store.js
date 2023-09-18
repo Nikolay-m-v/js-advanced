@@ -65,4 +65,17 @@ class VegetableStore {
       2
     )}`;
   }
+
+  rottingVegetable(type, quantity) {
+    let product = this.availableProducts.find(
+      (vegetable) => product.type === type
+    );
+    if (product === undefined) {
+      throw new Error(`${type} is not available in the store`);
+    }
+    if (quantity > product.quantity) {
+      product.quantity = 0;
+      return `The entire quantity of the ${type} has been removed.`;
+    }
+  }
 }
