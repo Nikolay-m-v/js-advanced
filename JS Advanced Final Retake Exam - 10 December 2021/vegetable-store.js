@@ -55,7 +55,9 @@ class VegetableStore {
 
       if (quantity > product.quantity) {
         throw new Error(
-          `The quantity ${quantity} for the vegetable ${type} is not available in the store, your current bill is ${totalPrice}`
+          `The quantity ${quantity} for the vegetable ${type} is not available in the store, your current bill is $${totalPrice.toFixed(
+            2
+          )}`
         );
       }
       totalPrice += product.price * quantity;
@@ -68,7 +70,7 @@ class VegetableStore {
 
   rottingVegetable(type, quantity) {
     let product = this.availableProducts.find(
-      (vegetable) => product.type === type
+      (vegetable) => vegetable.type === type
     );
     if (product === undefined) {
       throw new Error(`${type} is not available in the store`);
@@ -105,6 +107,19 @@ class VegetableStore {
 //   ])
 // );
 
+// let vegStore = new VegetableStore("Jerrie Munro", "1463 Pette Kyosheta, Sofia");
+// console.log(
+//   vegStore.loadingVegetables([
+//     "Okra 2.5 3.5",
+//     "Beans 10 2.8",
+//     "Celery 5.5 2.2",
+//     "Celery 0.5 2.5",
+//   ])
+// );
+// console.log(vegStore.buyingVegetables(["Okra 1"]));
+// console.log(vegStore.buyingVegetables(["Beans 8", "Okra 1.5"]));
+// console.log(vegStore.buyingVegetables(["Banana 1", "Beans 2"]));
+
 let vegStore = new VegetableStore("Jerrie Munro", "1463 Pette Kyosheta, Sofia");
 console.log(
   vegStore.loadingVegetables([
@@ -114,6 +129,6 @@ console.log(
     "Celery 0.5 2.5",
   ])
 );
-console.log(vegStore.buyingVegetables(["Okra 1"]));
+console.log(vegStore.rottingVegetable("Okra", 1));
+console.log(vegStore.rottingVegetable("Okra", 2.5));
 console.log(vegStore.buyingVegetables(["Beans 8", "Okra 1.5"]));
-console.log(vegStore.buyingVegetables(["Banana 1", "Beans 2"]));
