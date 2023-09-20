@@ -17,4 +17,22 @@ class Garden {
       return `The ${plantName} has been successfully planted in the garden.`;
     }
   }
+
+  ripenPlant(plantName, quantity) {
+    let plant = this.plants.find((p) => p.plantName === plantName);
+    if (this.plants.includes(plant) === false) {
+      throw new Error(`There is no ${plantName} in the garden.`);
+    } else if (quantity <= 0) {
+      throw new Error(`The quantity cannot be zero or negative.`);
+    } else if (plant.ripe === true) {
+      throw new Error(`The ${plantName} is already ripe.`);
+    }
+    plant.ripe = true;
+    plant.quantity += quantity;
+    if (quantity === 1) {
+      return `${quantity} ${plantName} has been successfully ripened.`;
+    } else {
+      return `${quantity} ${plantName}s have been succesffully ripened.`;
+    }
+  }
 }
