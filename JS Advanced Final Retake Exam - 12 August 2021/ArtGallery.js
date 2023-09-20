@@ -91,7 +91,12 @@ class ArtGallery {
   }
 }
 
+// const artGallery = new ArtGallery("Curtis Mayfield");
+// console.log(artGallery.addArticle("picture", "Mona Liza", 3));
+// console.log(artGallery.addArticle("Item", "Ancient vase", 2));
+// console.log(artGallery.addArticle("PICTURE", "Mona Liza", 1));
+
 const artGallery = new ArtGallery("Curtis Mayfield");
-console.log(artGallery.addArticle("picture", "Mona Liza", 3));
-console.log(artGallery.addArticle("Item", "Ancient vase", 2));
-console.log(artGallery.addArticle("PICTURE", "Mona Liza", 1));
+console.log(artGallery.inviteGuest("John", "Vip"));
+console.log(artGallery.inviteGuest("Peter", "Middle"));
+console.log(artGallery.inviteGuest("John", "Middle"));
