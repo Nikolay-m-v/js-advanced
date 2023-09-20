@@ -35,4 +35,24 @@ class Garden {
       return `${quantity} ${plantName}s have been succesffully ripened.`;
     }
   }
+
+  harvestPlant(plantName) {
+    const plant = this.plants.find((p) => (p.plantName = plantName));
+    if (this.plants.includes(plant) === false) {
+      throw new Error(`There is no ${plantName} in the garden.`);
+    }
+    if (!plant.ripe) {
+      throw new Error(
+        `The ${plantName} cannot be harvested before it is ripe.`
+      );
+    }
+    let indexOfPlant = this.plants.indexOf(plant);
+    this.plants.splice(indexOfPlant, 1);
+    let harvestedPlant = {
+      plantName,
+      quantity: plant.quantity,
+    };
+    this.storage.push(harvestedPlant);
+    return `The ${plantName} has been successfully harvested.`;
+  }
 }
