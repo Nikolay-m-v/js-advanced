@@ -72,3 +72,8 @@ class Triathlon {
     }
   }
 }
+
+const contest = new Triathlon("Dynamos");
+console.log(contest.addParticipant("Peter", "male"));
+console.log(contest.addParticipant("Sasha", "female"));
+console.log(contest.addParticipant("Peter", "male"));
