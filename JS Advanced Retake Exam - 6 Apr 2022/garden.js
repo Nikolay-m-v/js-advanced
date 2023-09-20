@@ -55,4 +55,22 @@ class Garden {
     this.storage.push(harvestedPlant);
     return `The ${plantName} has been successfully harvested.`;
   }
+
+  generateReport() {
+    let output = [`The garden has ${this.spaceAvailable} free space left.`];
+
+    let plantsInTheGarden = this.plants.map((plant) => plant.plantName);
+    plantsInTheGarden.sort((a, b) => a.localeCompare(b));
+    let secondRow = `Plants in the garden: ${plantsInTheGarden.join("\n")}`;
+    output.push(secondRow);
+    let thirdRow = `Plants in the storage: The storage is empty.`;
+    if (this.storage.length !== 0) {
+      let plantsInStorage = this.storage.map(
+        (p) => `${p.plantName} (${p.quantity})`
+      );
+      thirdRow = `Plants in storage: ${plantsInStorage.join(", ")}`;
+    }
+    output.push(thirdRow);
+    return output.join("\n");
+  }
 }
