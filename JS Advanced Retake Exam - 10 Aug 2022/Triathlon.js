@@ -51,7 +51,7 @@ class Triathlon {
     }
   }
 
-  showRecord(crtieria) {
+  showRecord(criteria) {
     if (this.listOfFinalists.length === 0) {
       return `There are no finalists in this competition`;
     }
@@ -62,10 +62,13 @@ class Triathlon {
         .sort((a, b) => a.participantName.localeCompare(b.participantName))
         .forEach((finalist) => output.push(finalist.participantName));
     }
-    if (criteria === "male") {
-      if (this.listOfFinalists.length === 0) {
-        return `There are no ${participantGender}'s that finished the competition`;
-      }
+    const foundFinalist = this.listOfFinalists.find(
+      (finalist) => finalist.participantGender === criteria
+    );
+    if (!foundFinalist) {
+      return `There are no ${criteria}'s that finished the competition.`;
+    } else {
+      return `${foundFinalist.participantName} is the first ${criteria} that finished the ${this.competitionName} triathlon`;
     }
   }
 }
