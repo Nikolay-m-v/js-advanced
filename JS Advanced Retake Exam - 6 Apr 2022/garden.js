@@ -37,7 +37,7 @@ class Garden {
   }
 
   harvestPlant(plantName) {
-    const plant = this.plants.find((p) => (p.plantName = plantName));
+    const plant = this.plants.find((p) => p.plantName === plantName);
     if (this.plants.includes(plant) === false) {
       throw new Error(`There is no ${plantName} in the garden.`);
     }
@@ -96,10 +96,19 @@ class Garden {
 // console.log(myGarden.ripenPlant("orange", 1));
 // console.log(myGarden.ripenPlant("olive", 30));
 
+// const myGarden = new Garden(250);
+// console.log(myGarden.addPlant("apple", 20));
+// console.log(myGarden.addPlant("orange", 100));
+// console.log(myGarden.addPlant("cucumber", 30));
+// console.log(myGarden.ripenPlant("apple", 10));
+// console.log(myGarden.ripenPlant("orange", 1));
+// console.log(myGarden.ripenPlant("cucumber", -5));
+
 const myGarden = new Garden(250);
 console.log(myGarden.addPlant("apple", 20));
-console.log(myGarden.addPlant("orange", 100));
-console.log(myGarden.addPlant("cucumber", 30));
+console.log(myGarden.addPlant("orange", 200));
+console.log(myGarden.addPlant("raspberry", 10));
 console.log(myGarden.ripenPlant("apple", 10));
 console.log(myGarden.ripenPlant("orange", 1));
-console.log(myGarden.ripenPlant("cucumber", -5));
+console.log(myGarden.harvestPlant("apple"));
+console.log(myGarden.harvestPlant("olive"));
