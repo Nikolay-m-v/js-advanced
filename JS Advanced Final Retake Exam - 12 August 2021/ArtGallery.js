@@ -9,11 +9,11 @@ class ArtGallery {
   }
 
   addArticle(articleModel, articleName, quantity) {
-    articleModel = artGallery.toLowerCase();
+    articleModel = articleModel.toLowerCase();
     if (this.possibleArticles.hasOwnProperty(articleModel) === false) {
       throw new Error(`This article model is not included in this gallery!`);
     }
-    const foundArticle = this.possibleArticles.find(
+    const foundArticle = this.listOfArticles.find(
       (article) => article.articleModel === articleModel
     );
     if (foundArticle !== undefined) {
