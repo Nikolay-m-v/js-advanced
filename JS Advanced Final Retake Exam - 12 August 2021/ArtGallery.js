@@ -3,7 +3,7 @@
 class ArtGallery {
   constructor(creator) {
     this.creator = creator;
-    this.possibleArticles = { picture: 200, phoot: 50, item: 250 };
+    this.possibleArticles = { picture: 200, photo: 50, item: 250 };
     this.listOfArticles = [];
     this.guests = [];
   }
@@ -40,6 +40,36 @@ class ArtGallery {
       this.guests.push({ guestName, points: 50, purchaseArticle: 0 });
     }
     return `You have successfully invited ${guestName}`;
+  }
+
+  buyArticle(articleModel, articleName, guestName) {
+    const foundArticle = this.listOfArticles.find(
+      (article) => article.articleName === articleName
+    );
+    if (
+      foundArticle === undefined ||
+      foundArticle.articleModel !== articleModel
+    ) {
+      throw new error(`This article is not found.`);
+    }
+    if (foundArticle.quantity === 0) {
+      return `The ${articleName} is not available.`;
+    }
+    const foundGuest = this.guests.find(
+      (guest) => guests.guestName === guestName
+    );
+    if (foundGuest === undefined) {
+      return `This guest is not invited.`;
+    }
+
+    if (foundGuest.points < this.possibleArticles[articleModel]) {
+      reutrn`You need more points to purchase the article.`;
+    } else {
+      foundGuest.points -= this.possibleArticles[articleModel];
+      foundGuest.purchaseArticle++;
+      foundArticle.quantity--;
+      return `${guestName} successfully purchased the article worth ${foundArticle.points} points;`;
+    }
   }
 }
 
