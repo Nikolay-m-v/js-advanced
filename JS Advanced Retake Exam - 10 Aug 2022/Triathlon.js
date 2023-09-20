@@ -50,4 +50,22 @@ class Triathlon {
       return `${participantName} was rewarded with a trophy for his performance.`;
     }
   }
+
+  showRecord(crtieria) {
+    if (this.listOfFinalists.length === 0) {
+      return `There are no finalists in this competition`;
+    }
+
+    if (criteria === "all") {
+      let output = [`List of all ${this.competitionName} finalists`];
+      this.listOfFinalists
+        .sort((a, b) => a.participantName.localeCompare(b.participantName))
+        .forEach((finalist) => output.push(finalist.participantName));
+    }
+    if (criteria === "male") {
+      if (this.listOfFinalists.length === 0) {
+        return `There are no ${participantGender}'s that finished the competition`;
+      }
+    }
+  }
 }
