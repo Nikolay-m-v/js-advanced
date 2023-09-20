@@ -61,6 +61,7 @@ class Triathlon {
       this.listOfFinalists
         .sort((a, b) => a.participantName.localeCompare(b.participantName))
         .forEach((finalist) => output.push(finalist.participantName));
+      return output.join("\n");
     }
     const foundFinalist = this.listOfFinalists.find(
       (finalist) => finalist.participantGender === criteria
@@ -94,5 +95,14 @@ class Triathlon {
 // console.log(contest.rewarding("Peter"));
 // console.log(contest.rewarding("Sasha"));
 
+// const contest = new Triathlon("Dynamos");
+// console.log(contest.showRecord("all"));
+
 const contest = new Triathlon("Dynamos");
+console.log(contest.addParticipant("Peter", "male"));
+console.log(contest.addParticipant("Sasha", "female"));
+console.log(contest.completeness("Peter", 100));
+console.log(contest.completeness("Sasha", 90));
+console.log(contest.rewarding("Peter"));
+console.log(contest.rewarding("Sasha"));
 console.log(contest.showRecord("all"));
