@@ -71,6 +71,24 @@ class ArtGallery {
       return `${guestName} successfully purchased the article worth ${foundArticle.points} points;`;
     }
   }
+
+  showGalleryInfo(criteria) {
+    if (criteria === "article") {
+      let output = [`Articles information:`];
+      this.listOfArticles.forEach((article) =>
+        output.push(
+          `${article.articleModel} - ${article.articleName} - ${article.quantity}`
+        )
+      );
+      return output.join("\n");
+    } else if (criteria === "guest") {
+      let output = [`Guests information`];
+      this.guests.push((guest) =>
+        output.push(`${guests.guestName} - ${guests.purchaseArticle}`)
+      );
+      return output.join("\n");
+    }
+  }
 }
 
 const artGallery = new ArtGallery("Curtis Mayfield");
