@@ -113,11 +113,20 @@ class Garden {
 // console.log(myGarden.harvestPlant("apple"));
 // console.log(myGarden.harvestPlant("olive"));
 
+// const myGarden = new Garden(250);
+// console.log(myGarden.addPlant("apple", 20));
+// console.log(myGarden.addPlant("orange", 200));
+// console.log(myGarden.addPlant("raspberry", 10));
+// console.log(myGarden.ripenPlant("apple", 10));
+// console.log(myGarden.ripenPlant("orange", 1));
+// console.log(myGarden.harvestPlant("apple"));
+// console.log(myGarden.harvestPlant("raspberry"));
+
 const myGarden = new Garden(250);
 console.log(myGarden.addPlant("apple", 20));
 console.log(myGarden.addPlant("orange", 200));
 console.log(myGarden.addPlant("raspberry", 10));
 console.log(myGarden.ripenPlant("apple", 10));
 console.log(myGarden.ripenPlant("orange", 1));
-console.log(myGarden.harvestPlant("apple"));
-console.log(myGarden.harvestPlant("raspberry"));
+console.log(myGarden.harvestPlant("orange"));
+console.log(myGarden.generateReport());
