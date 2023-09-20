@@ -23,6 +23,24 @@ class ArtGallery {
     }
     return `Successfully added article ${articleName} with a new quantity-${quantity}`;
   }
+
+  inviteGuest(guestName, personality) {
+    const foundGuest = this.guests.find(
+      (guest) => guest.guestName === guestName
+    );
+    if (foundGuest !== undefined) {
+      throw new Error(`${guestName} has already been invited.`);
+    }
+
+    if (personality === "Vip") {
+      this.guests.push({ guestName, points: 500, purchaseArticle: 0 });
+    } else if (personality === "Middle") {
+      this.guests.push({ guestName, points: 250, purchaseArticle: 0 });
+    } else {
+      this.guests.push({ guestName, points: 50, purchaseArticle: 0 });
+    }
+    return `You have successfully invited ${guestName}`;
+  }
 }
 
 const artGallery = new ArtGallery("Curtis Mayfield");
