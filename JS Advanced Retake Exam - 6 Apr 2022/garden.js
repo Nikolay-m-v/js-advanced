@@ -74,3 +74,8 @@ class Garden {
     return output.join("\n");
   }
 }
+
+const myGarden = new Garden(250);
+console.log(myGarden.addPlant("apple", 20));
+console.log(myGarden.addPlant("orange", 200));
+console.log(myGarden.addPlant("olive", 50));
