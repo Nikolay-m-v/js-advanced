@@ -50,13 +50,13 @@ class ArtGallery {
       foundArticle === undefined ||
       foundArticle.articleModel !== articleModel
     ) {
-      throw new error(`This article is not found.`);
+      throw new Error(`This article is not found.`);
     }
     if (foundArticle.quantity === 0) {
       return `The ${articleName} is not available.`;
     }
     const foundGuest = this.guests.find(
-      (guest) => guests.guestName === guestName
+      (guest) => guest.guestName === guestName
     );
     if (foundGuest === undefined) {
       return `This guest is not invited.`;
@@ -96,7 +96,17 @@ class ArtGallery {
 // console.log(artGallery.addArticle("Item", "Ancient vase", 2));
 // console.log(artGallery.addArticle("PICTURE", "Mona Liza", 1));
 
+// const artGallery = new ArtGallery("Curtis Mayfield");
+// console.log(artGallery.inviteGuest("John", "Vip"));
+// console.log(artGallery.inviteGuest("Peter", "Middle"));
+// console.log(artGallery.inviteGuest("John", "Middle"));
+
 const artGallery = new ArtGallery("Curtis Mayfield");
-console.log(artGallery.inviteGuest("John", "Vip"));
-console.log(artGallery.inviteGuest("Peter", "Middle"));
-console.log(artGallery.inviteGuest("John", "Middle"));
+artGallery.addArticle("picture", "Mona Liza", 3);
+artGallery.addArticle("Item", "Ancient vase", 2);
+artGallery.addArticle("picture", "Mona Liza", 1);
+artGallery.inviteGuest("John", "Vip");
+artGallery.inviteGuest("Peter", "Middle");
+console.log(artGallery.buyArticle("picture", "Mona Liza", "John"));
+console.log(artGallery.buyArticle("item", "Ancient vase", "Peter"));
+console.log(artGallery.buyArticle("item", "Mona Liza", "John"));
