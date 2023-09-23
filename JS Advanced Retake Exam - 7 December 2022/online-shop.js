@@ -47,16 +47,17 @@ class OnlineShop {
     if (this.sales.length === 0) {
       throw new Error(`There are no sales today!`);
     }
-    const result = [`Products in the warehouse:`];
     let soldProduct = 0;
+    const result = [];
     this.sales.forEach((sale) => (soldProduct += sale.quantity));
     result.push(
-      `You sould ${soldProduct} products today!`,
+      `You sold ${soldProduct} products today!`,
       "Products in the warehouse:"
     );
     this.products.forEach((p) =>
       result.push(`${p.product}-${p.quantity} more left`)
     );
+    return result.join("\n");
   }
 }
 
@@ -73,6 +74,17 @@ class OnlineShop {
 // console.log(myOnlineShop.quantityCheck("laptop", 10));
 // console.log(myOnlineShop.quantityCheck("TV", 40));
 
+// const myOnlineShop = new OnlineShop(500);
+// console.log(myOnlineShop.loadingStore("headphones", 10, 200));
+// console.log(myOnlineShop.loadingStore("laptop", 5, 200));
+
+// console.log(myOnlineShop.quantityCheck("headphones", 10));
+// console.log(myOnlineShop.quantityCheck("laptop", 10));
+
+// console.log(myOnlineShop.sellProduct("headphones"));
+// console.log(myOnlineShop.sellProduct("laptop"));
+// console.log(myOnlineShop.sellProduct("keyboard"));
+
 const myOnlineShop = new OnlineShop(500);
 console.log(myOnlineShop.loadingStore("headphones", 10, 200));
 console.log(myOnlineShop.loadingStore("laptop", 5, 200));
@@ -82,4 +94,4 @@ console.log(myOnlineShop.quantityCheck("laptop", 10));
 
 console.log(myOnlineShop.sellProduct("headphones"));
 console.log(myOnlineShop.sellProduct("laptop"));
-console.log(myOnlineShop.sellProduct("keyboard"));
+console.log(myOnlineShop.revision());
