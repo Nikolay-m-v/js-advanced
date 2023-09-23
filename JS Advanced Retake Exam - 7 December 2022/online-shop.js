@@ -32,4 +32,15 @@ class OnlineShop {
       foundProduct.quantity - minimalQuantity
     } more from the ${minimalQuantity - foundProduct.quantity} products.`;
   }
+
+  sellProduct(product) {
+    const foundProduct = this.products.find((p) => p.product === product);
+    if (foundProduct === undefined) {
+      throw new Error(`There is no ${product} in the warehouse.`);
+    }
+    foundProduct.quantity--;
+    this.sales.push({ product, quantity: 1 });
+
+    return `The ${foundProduct} has been successfully sold.`;
+  }
 }
