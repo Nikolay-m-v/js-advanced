@@ -11,5 +11,8 @@ class OnlineShop {
     if (spaceRequired > this.warehouseSpace) {
       throw new Error(`Not enough space in the warehouse.`);
     }
+    this.products.push({ product, quantity });
+    this.warehouseSpace -= spaceRequired;
+    return `The ${product} has been successfully delivered in the warehouse.`;
   }
 }
