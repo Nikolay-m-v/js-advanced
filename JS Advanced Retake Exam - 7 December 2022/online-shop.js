@@ -25,12 +25,11 @@ class OnlineShop {
       throw new Error(`The quantity cannot be zero or negative.`);
     }
     if (minimalQuantity <= foundProduct.quantity) {
-      return `You have enough from product ${foundProduct}`;
+      return `You have enough from product ${foundProduct.product}`;
     }
+    let difference = minimalQuantity - foundProduct.quantity;
     foundProduct.quantity = minimalQuantity;
-    return `You added ${
-      foundProduct.quantity - minimalQuantity
-    } more from the ${minimalQuantity - foundProduct.quantity} products.`;
+    return `You added ${difference} more from the ${foundProduct.product} products.`;
   }
 
   sellProduct(product) {
@@ -61,7 +60,15 @@ class OnlineShop {
   }
 }
 
+// const myOnlineShop = new OnlineShop(500);
+// console.log(myOnlineShop.loadingStore("headphones", 10, 200));
+// console.log(myOnlineShop.loadingStore("laptop", 5, 200));
+// console.log(myOnlineShop.loadingStore("TV", 40, 500));
+
 const myOnlineShop = new OnlineShop(500);
 console.log(myOnlineShop.loadingStore("headphones", 10, 200));
 console.log(myOnlineShop.loadingStore("laptop", 5, 200));
-console.log(myOnlineShop.loadingStore("TV", 40, 500));
+
+console.log(myOnlineShop.quantityCheck("headphones", 10));
+console.log(myOnlineShop.quantityCheck("laptop", 10));
+console.log(myOnlineShop.quantityCheck("TV", 40));
