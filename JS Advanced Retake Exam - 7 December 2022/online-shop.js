@@ -43,4 +43,20 @@ class OnlineShop {
 
     return `The ${foundProduct} has been successfully sold.`;
   }
+
+  revision() {
+    if (this.sales.length === 0) {
+      throw new Error(`There are no sales today!`);
+    }
+    const result = [`Products in the warehouse:`];
+    let soldProduct = 0;
+    this.sales.forEach((sale) => (soldProduct += sale.quantity));
+    result.push(
+      `You sould ${soldProduct} products today!`,
+      "Products in the warehouse:"
+    );
+    this.products.forEach((p) =>
+      result.push(`${p.product}-${p.quantity} more left`)
+    );
+  }
 }
