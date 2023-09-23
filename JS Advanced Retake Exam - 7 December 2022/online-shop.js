@@ -34,13 +34,13 @@ class OnlineShop {
 
   sellProduct(product) {
     const foundProduct = this.products.find((p) => p.product === product);
-    if (foundProduct === undefined) {
+    if (!foundProduct) {
       throw new Error(`There is no ${product} in the warehouse.`);
     }
     foundProduct.quantity--;
     this.sales.push({ product, quantity: 1 });
 
-    return `The ${foundProduct} has been successfully sold.`;
+    return `The ${foundProduct.product} has been successfully sold.`;
   }
 
   revision() {
@@ -65,10 +65,21 @@ class OnlineShop {
 // console.log(myOnlineShop.loadingStore("laptop", 5, 200));
 // console.log(myOnlineShop.loadingStore("TV", 40, 500));
 
+// const myOnlineShop = new OnlineShop(500);
+// console.log(myOnlineShop.loadingStore("headphones", 10, 200));
+// console.log(myOnlineShop.loadingStore("laptop", 5, 200));
+
+// console.log(myOnlineShop.quantityCheck("headphones", 10));
+// console.log(myOnlineShop.quantityCheck("laptop", 10));
+// console.log(myOnlineShop.quantityCheck("TV", 40));
+
 const myOnlineShop = new OnlineShop(500);
 console.log(myOnlineShop.loadingStore("headphones", 10, 200));
 console.log(myOnlineShop.loadingStore("laptop", 5, 200));
 
 console.log(myOnlineShop.quantityCheck("headphones", 10));
 console.log(myOnlineShop.quantityCheck("laptop", 10));
-console.log(myOnlineShop.quantityCheck("TV", 40));
+
+console.log(myOnlineShop.sellProduct("headphones"));
+console.log(myOnlineShop.sellProduct("laptop"));
+console.log(myOnlineShop.sellProduct("keyboard"));
