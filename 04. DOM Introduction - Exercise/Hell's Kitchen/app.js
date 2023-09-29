@@ -13,7 +13,7 @@ function solve() {
 
     for (let inputElement of inputArr) {
       let restaurantInfo = inputElement.split(" - ");
-      let restaurantName = inputElement.shift();
+      let restaurantName = restaurantInfo.shift();
       let workersData = restaurantInfo[0].split(", ");
 
       for (let worker of workersData) {
@@ -51,13 +51,14 @@ function solve() {
       (a, b) => b[1] - a[1]
     );
 
-    result.forEach((w) => (print += `Name: ${w[0]} With Slary: ${w[1]}`));
+    result.forEach((w) => (print += `Name: ${w[0]} With Salary: ${w[1]} `));
 
     document.querySelector(
-      "bestRestaurant p"
+      "#bestRestaurant p"
     ).textContent = `Name: ${bestRestaurant} Average Salary: ${currentAverageSalary.toFixed(
       2
     )} Best Salary: ${result[0][1].toFixed(2)}`;
+
     document.querySelector("#workers p").textContent = print;
   }
 }
