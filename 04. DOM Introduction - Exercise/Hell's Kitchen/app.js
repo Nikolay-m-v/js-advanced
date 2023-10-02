@@ -60,6 +60,5 @@ function solve() {
     )} Best Salary: ${result[0][1].toFixed(2)}`;
 
     document.querySelector("#workers p").textContent = print;
-    document.querySelector("#workers p").textContent = print;
   }
 }
