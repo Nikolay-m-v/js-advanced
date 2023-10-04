@@ -20,4 +20,5 @@ div div {
 
 .focused {
   background: #999999;
+  border: 2px solid blue;
 }
