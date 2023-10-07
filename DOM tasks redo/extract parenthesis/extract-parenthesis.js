@@ -1,16 +1,11 @@
 "use strict";
 
-function extract(content) {
-  const text = document.getElementById(content).textContent;
-  let result = "";
-
-  const pattern = /\((?<word>\w+(\s*\w+)*)\)/g;
-  let match = pattern.exec(text);
-
-  while (match !== null) {
-    result += match.groups.word + "; ";
-    match = pattern.exec(text);
-  }
-
-  return result.trim();
+function extract() {
+  const pattern = /\((.+?)\)/g;
+  const text = document.getElementById("content");
+  const matches = Array.from(text.textContent.matchAll(pattern));
+  const extractedWords = matches.map((match) => match[1]);
+  let result = extractedWords.join(";");
+  console.log(result);
+  return result;
 }
