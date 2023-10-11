@@ -10,11 +10,31 @@ body {
 }
 
 header {
-  margin: 0 auto;
+  margin: 50px auto;
   display: flex;
 }
 
 header h1 {
   margin: 0 auto;
   font-size: 38px;
+}
+
+.fighters {
+  display: flex;
+  justify-content: center;
+}
+
+.fighters div {
+  background-color: aliceblue;
+  width: 100px;
+  height: 100px;
+  padding: 15px;
+  margin: 15px;
+  box-shadow: 5px 5px rgb(103, 103, 108);
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.chosen {
+  border: 2px solid green;
 }
