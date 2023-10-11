@@ -8,6 +8,7 @@ function solve() {
   while (sentences.length > 0) {
     let textParagraph = sentences.splice(0, 3).join(". ") + ".";
     let p = document.createElement("p");
+
     p.textContent = textParagraph;
     output.appendChild(p);
   }
