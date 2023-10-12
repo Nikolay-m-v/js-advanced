@@ -20,6 +20,17 @@ function generateReport() {
         }
         continue;
       }
+
+      if (checkedCols.includes(y)) {
+        let propertyName = inputElements[y].name;
+        obj[propertyName] = element.textContent;
+      }
+    }
+
+    if (i !== 0) {
+      resultArr.push(obj);
     }
   }
+
+  document.getElementById(`output`).value = JSON.stringify(resultArr);
 }
