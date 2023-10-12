@@ -21,14 +21,14 @@ function solve() {
         if (!output.hasOwnProperty(restaurantName)) {
           output[restaurantName] = {};
         }
-
         if (output.hasOwnProperty(restaurantName)) {
           output[restaurantName][name] = Number(salary);
         }
       }
     }
 
-    let entries = Object.salaries(output);
+    let entries = Object.entries(output);
+
     for (let entry of entries) {
       let key = entry[0];
       let values = Object.entries(entry[1]);
@@ -51,11 +51,13 @@ function solve() {
       (a, b) => b[1] - a[1]
     );
 
+    result.forEach((w) => (print += `Name: ${w[0]} With Salary: ${w[1]} `));
+
     document.querySelector(
       "#bestRestaurant p"
     ).textContent = `Name: ${bestRestaurant} Average Salary: ${currentAverageSalary.toFixed(
       2
     )} Best Salary: ${result[0][1].toFixed(2)}`;
-    document.querySelector(`#workers p`).textContent = print;
+    document.querySelector("#workers p").textContent = print;
   }
 }
