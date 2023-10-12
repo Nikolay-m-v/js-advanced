@@ -27,5 +27,23 @@ function solve() {
         }
       }
     }
+
+    let entries = Object.salaries(output);
+    for (let entry of entries) {
+      let key = entry[0];
+      let values = Object.entries(entry[1]);
+
+      for (let [name, salary] of values) {
+        totalSalary += salary;
+      }
+
+      averageSalary = totalSalary / values.length;
+
+      if (averageSalary > currentAverageSalary) {
+        currentAverageSalary = averageSalary;
+        bestRestaurant = key;
+        totalSalary = 0;
+      }
+    }
   }
 }
