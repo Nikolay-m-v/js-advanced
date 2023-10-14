@@ -19,6 +19,7 @@ function solve() {
   document
     .getElementsByTagName("button")[0]
     .addEventListener("click", calculate);
+
   function calculate() {
     if (selectMenuTo.value === "binary") {
       result.value = Number(input.value).toString(2);
