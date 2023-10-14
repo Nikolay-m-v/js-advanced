@@ -33,6 +33,4 @@ function generateReport() {
   }
 
   document.getElementById(`output`).value = JSON.stringify(resultArr);
-  document.getElementById(`output`).value = JSON.stringify(resultArr);
-  document.getElementById(`output`).value = JSON.stringify(resultArr);
 }
