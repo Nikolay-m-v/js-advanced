@@ -1,17 +1,15 @@
 "use strict";
 
 function validate() {
-  const emailInput = document.getElementById("email");
+  const email = document.getElementById("email");
+  email.addEventListener("change", onChange);
 
-  const emailRegex = /^[a-z]+@[a-z]+\.[a-z]+$/;
-
-  emailInput.addEventListener("change", function () {
-    const emailValue = this.value;
-
-    if (emailRegex.test(emailValue)) {
-      this.classList.remove("error");
+  function onChange(event) {
+    const pattern = /^[a-z]+@[a-z]+\.[a-z]+$/g;
+    if (pattern.test(event.target.value)) {
+      event.target.classList.remove("error");
     } else {
-      this.classList.add("error");
+      event.target.classList.add("error");
     }
-  });
+  }
 }
