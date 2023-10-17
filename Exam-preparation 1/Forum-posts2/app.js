@@ -35,5 +35,22 @@ function solve() {
     </article>
     <button class="action-btn edit>Edit</button>
     <button class="action-btn approve>Aprove</button>`;
+
+    lists.review.appendChild(li);
+
+    inputs.title.value = "";
+    inputs.content.value = "";
+    inputs.category.value = "";
+
+    const editBtn = li.querySelector(".edit");
+    const approveBtn = li.querySelector(".approve");
+    editBtn.addEventListener("click", edit);
+    approveBtn.addEventListener("click", edit);
+
+    function edit() {
+      inputs.title.value = title;
+      inputs.content.value = value;
+      inputs.category.value = category;
+    }
   }
 }
