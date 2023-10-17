@@ -33,8 +33,8 @@ function solve() {
     <p>Category: ${category}</p>
     <p>Content: ${content}</p>
     </article>
-    <button class="action-btn edit>Edit</button>
-    <button class="action-btn approve>Aprove</button>`;
+    <button class="action-btn edit">Edit</button>
+    <button class="action-btn approve">Aprove</button>`;
 
     lists.review.appendChild(li);
 
