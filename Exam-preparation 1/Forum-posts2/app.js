@@ -51,6 +51,19 @@ function solve() {
       inputs.title.value = title;
       inputs.content.value = value;
       inputs.category.value = category;
+
+      li.remove();
     }
+
+    function approve() {
+      lists.published.appendChild(li);
+
+      editBtn.remove();
+      approveBtn.remove();
+    }
+  }
+
+  function clear() {
+    lists.published.innerHTML = "";
   }
 }
