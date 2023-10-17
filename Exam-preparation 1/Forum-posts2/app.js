@@ -1,10 +1,10 @@
-bwindow.addEventListener("load", solve);
+window.addEventListener("load", solve);
 
 function solve() {
   const inputs = {
-    postTitle: document.getElementById("post-title"),
-    postCategory: document.getElementById("post-category"),
-    postContent: document.getElementById("post-content"),
+    title: document.getElementById("post-title"),
+    category: document.getElementById("post-category"),
+    content: document.getElementById("post-content"),
   };
 
   const lists = {
@@ -45,7 +45,7 @@ function solve() {
     const editBtn = li.querySelector(".edit");
     const approveBtn = li.querySelector(".approve");
     editBtn.addEventListener("click", edit);
-    approveBtn.addEventListener("click", edit);
+    approveBtn.addEventListener("click", approve);
 
     function edit() {
       inputs.title.value = title;
