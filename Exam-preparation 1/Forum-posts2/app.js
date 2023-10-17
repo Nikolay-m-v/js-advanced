@@ -49,7 +49,7 @@ function solve() {
 
     function edit() {
       inputs.title.value = title;
-      inputs.content.value = value;
+      inputs.content.value = content;
       inputs.category.value = category;
 
       li.remove();
