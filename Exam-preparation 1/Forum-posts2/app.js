@@ -15,5 +15,15 @@ function solve() {
   document.getElementById("publish-btn").addEventListener("click", publish);
   document.getElementById("clear-btn").addEventListener("click", clear);
 
-  function publish(event) {}
+  function publish(event) {
+    event.preventDefault();
+
+    const title = inputs.title.value;
+    const category = inputs.category.value;
+    const content = inputs.content.value;
+
+    if (title === "" || category === "" || content === "") {
+      return;
+    }
+  }
 }
