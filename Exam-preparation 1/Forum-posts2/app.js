@@ -1,4 +1,4 @@
-window.addEventListener("load", solve);
+bwindow.addEventListener("load", solve);
 
 function solve() {
   const inputs = {
@@ -25,5 +25,15 @@ function solve() {
     if (title === "" || category === "" || content === "") {
       return;
     }
+
+    const li = document.createElement("li");
+    li.className = "rpost";
+    li.innerHTML = `<article>
+    <h4>${title}</h4>
+    <p>Category: ${category}</p>
+    <p>Content: ${content}</p>
+    </article>
+    <button class="action-btn edit>Edit</button>
+    <button class="action-btn approve>Aprove</button>`;
   }
 }
