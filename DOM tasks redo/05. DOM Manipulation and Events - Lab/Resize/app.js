@@ -42,7 +42,7 @@
     elements.resetBtn.addEventListener("click", () => {
       resetObject(elements.objectToManipulate);
     });
-    elements.resetColor.addEventListener("click", () => {
+    elements.resetColorBtn.addEventListener("click", () => {
       resetColor(elements.objectToManipulate);
     });
   }
@@ -63,7 +63,7 @@
       colorInput,
       objectToManipulate,
       resetBtn,
-      resetColor,
+      resetColorBtn,
     };
   }
 
