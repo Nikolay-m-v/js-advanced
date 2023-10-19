@@ -1,8 +1,11 @@
 body {
   background-color: rgb(51, 51, 50);
 }
+label {
+  color: rgb(197, 179, 179);
+}
 
-.resizeObject {
+.objectToManipulate {
   width: 100px;
   height: 100px;
   background-color: aliceblue;
