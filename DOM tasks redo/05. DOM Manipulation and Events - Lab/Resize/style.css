@@ -6,12 +6,17 @@ label {
 }
 
 .objectToManipulate {
-  width: 200px;
-  height: 200px;
+  width: 130px;
+  height: 130px;
   background-color: aliceblue;
   border-radius: 0;
 }
 
 .circle {
   border-radius: 50%;
+}
+
+.bigger {
+  height: 250px;
+  width: 250px;
 }

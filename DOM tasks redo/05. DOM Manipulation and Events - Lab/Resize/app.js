@@ -12,12 +12,14 @@
   }
 
   function changeSize(element) {
-    const currentWidth = parseInt(element.style.width);
-    const currentHeight = parseInt(element.style.height);
-    if (currentWidth === 200) {
-      element.style.width = "300px";
-      element.style.height = "300px";
-    }
+    element.classList.add("bigger");
+  }
+
+  function resetAll(element) {
+    element.classList.forEach((className) => {
+      element.classList.remove(className);
+    });
+    element.classList.add("objectToManipulate");
   }
 
   function eventsHandling(elements) {
@@ -34,6 +36,10 @@
     elements.changeSizeBtn.addEventListener("click", () => {
       changeSize(elements.objectToManipulate);
     });
+
+    elements.resetBtn.addEventListener("click", () => {
+      resetAll();
+    });
   }
 
   function gatherElements() {
@@ -42,6 +48,7 @@
     const changeSizeBtn = document.querySelector(".changeSize");
     const colorInput = document.querySelector(".color-input");
     const objectToManipulate = document.querySelector(".objectToManipulate");
+    const resetBtn = document.querySelector(".reset");
 
     return {
       changeColorBtn,
@@ -49,6 +56,7 @@
       changeSizeBtn,
       colorInput,
       objectToManipulate,
+      resetBtn,
     };
   }
 
