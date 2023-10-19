@@ -19,6 +19,15 @@ label {
   border-radius: 50%;
 }
 
+.triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.gravestone {
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
+
 .large {
   height: 250px;
   width: 250px;

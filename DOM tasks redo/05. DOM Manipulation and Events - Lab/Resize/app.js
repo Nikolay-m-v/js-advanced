@@ -1,6 +1,18 @@
 (function main() {
   function changeShape(element) {
-    element.classList.add("circle");
+    if (element.classList.contains("square")) {
+      element.classList.remove("square");
+      element.classList.add("circle");
+    } else if (element.classList.contains("circle")) {
+      element.classList.remove("circle");
+      element.classList.add("gravestone");
+    } else if (element.classList.contains("gravestone")) {
+      element.classList.remove("gravestone");
+      element.classList.add("triangle");
+    } else if (element.classList.contains("triangle")) {
+      element.classList.remove("triangle");
+      element.classList.add("square");
+    }
   }
 
   function changeColor(element, color) {
