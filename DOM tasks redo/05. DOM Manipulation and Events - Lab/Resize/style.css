@@ -5,8 +5,9 @@ label {
   color: rgb(197, 179, 179);
 }
 
-.objectToManipulate {
+#objectToManipulate {
   width: 100px;
   height: 100px;
   background-color: aliceblue;
+  border-radius: 0;
 }

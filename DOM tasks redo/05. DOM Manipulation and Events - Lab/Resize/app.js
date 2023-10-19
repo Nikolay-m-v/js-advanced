@@ -1,9 +1,11 @@
 (function main() {
   function changeShape(element) {
-    if (element.style.borderRadius > 0) {
-      element.style.borderRadius = 15;
-    } else if ((element.style.borderRadius = 15)) {
-      element.style.borderRadius = 50;
+    element.style.borderRadius = "50px";
+    const currentBorderRadius = parseInt(element.style.borderRadius);
+    if (currentBorderRadius > 0) {
+      element.style.borderRadius = "15px";
+    } else if (currentBorderRadius === 15) {
+      element.style.borderRadius = "50px";
     }
   }
 

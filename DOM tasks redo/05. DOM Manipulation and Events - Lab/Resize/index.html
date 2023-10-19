@@ -7,16 +7,19 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="objectToManipulate"></div>
+    <div id="objectToManipulate"></div>
     <label>
-      Color: <input type="color" name="color-input" id="chooseColor" />
+      Color: <input type="color" name="color-input" id="color-input" />
+      <button id="changeColor">change color</button>
     </label>
     <label>
       Shape:
-      <button class="changeShape">change shape</button>
+      <button id="changeShape">change shape</button>
     </label>
-    <button class="changeSize">change size</button>
-    <button class="changeColor">change color</button>
+    <label>
+      Size:
+      <button id="changeSize">change size</button>
+    </label>
     <script src="./app.js"></script>
   </body>
 </html>
