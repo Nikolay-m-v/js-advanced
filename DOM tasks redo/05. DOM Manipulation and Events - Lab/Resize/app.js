@@ -17,6 +17,15 @@
     return input.value;
   }
 
+  function changeSize(element, size) {
+    const currentWidth = parseInt(element.style.width);
+    const currentHeight = parseInt(element.style.height);
+    if (currentWidth === "200px") {
+      element.style.width = "300px";
+    }
+    element.style.width = "300px";
+  }
+
   function eventsHandling(elements) {
     elements.changeShapeBtn.addEventListener("click", () => {
       changeShape(elements.objectToManipulate);
@@ -26,6 +35,10 @@
       const colorToShow = extractColorFromInput(elements.colorInput);
 
       changeColor(elements.objectToManipulate, colorToShow);
+    });
+
+    elements.changeShapeBtn.addEventListener("click", () => {
+      changeSize(elements.objectToManipulate);
     });
   }
 
