@@ -15,11 +15,13 @@
     element.classList.add("bigger");
   }
 
-  function resetAll(element) {
-    element.classList.forEach((className) => {
-      element.classList.remove(className);
-    });
+  function resetObject(element) {
+    element.classList = [];
     element.classList.add("objectToManipulate");
+  }
+
+  function resetColor(element, color = "white") {
+    element.style.backgroundColor = color;
   }
 
   function eventsHandling(elements) {
@@ -38,7 +40,10 @@
     });
 
     elements.resetBtn.addEventListener("click", () => {
-      resetAll();
+      resetObject(elements.objectToManipulate);
+    });
+    elements.resetColor.addEventListener("click", () => {
+      resetColor(elements.objectToManipulate);
     });
   }
 
@@ -49,6 +54,7 @@
     const colorInput = document.querySelector(".color-input");
     const objectToManipulate = document.querySelector(".objectToManipulate");
     const resetBtn = document.querySelector(".reset");
+    const resetColorBtn = document.querySelector(".resetColor");
 
     return {
       changeColorBtn,
@@ -57,6 +63,7 @@
       colorInput,
       objectToManipulate,
       resetBtn,
+      resetColor,
     };
   }
 
