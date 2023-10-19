@@ -11,7 +11,10 @@
       element.classList.add("triangle");
     } else if (element.classList.contains("triangle")) {
       element.classList.remove("triangle");
+      element.classList.add("star");
+    } else if (element.classList.contains("star")) {
       element.classList.add("square");
+      element.classList.remove("star");
     }
   }
 
