@@ -12,7 +12,16 @@
   }
 
   function changeSize(element) {
-    element.classList.add("bigger");
+    if (element.classList.contains("small")) {
+      element.classList.remove("small");
+      element.classList.add("large");
+    } else if (element.classList.contains("large")) {
+      element.classList.remove("large");
+      element.classList.add("very-large");
+    } else if (element.classList.contains("very-large")) {
+      element.classList.remove("very-large");
+      element.classList.add("small");
+    }
   }
 
   function resetObject(element) {
