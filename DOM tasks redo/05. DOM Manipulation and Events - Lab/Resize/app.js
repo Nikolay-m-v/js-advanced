@@ -1,12 +1,6 @@
 (function main() {
   function changeShape(element) {
-    element.style.borderRadius = "50px";
-    const currentBorderRadius = parseInt(element.style.borderRadius);
-    if (currentBorderRadius > 0) {
-      element.style.borderRadius = "15px";
-    } else if (currentBorderRadius === 15) {
-      element.style.borderRadius = "50px";
-    }
+    element.classList.add("circle");
   }
 
   function changeColor(element, color) {
@@ -17,13 +11,13 @@
     return input.value;
   }
 
-  function changeSize(element, size) {
+  function changeSize(element) {
     const currentWidth = parseInt(element.style.width);
     const currentHeight = parseInt(element.style.height);
-    if (currentWidth === "200px") {
+    if (currentWidth === 200) {
       element.style.width = "300px";
+      element.style.height = "300px";
     }
-    element.style.width = "300px";
   }
 
   function eventsHandling(elements) {
@@ -37,17 +31,17 @@
       changeColor(elements.objectToManipulate, colorToShow);
     });
 
-    elements.changeShapeBtn.addEventListener("click", () => {
+    elements.changeSizeBtn.addEventListener("click", () => {
       changeSize(elements.objectToManipulate);
     });
   }
 
   function gatherElements() {
-    const changeColorBtn = document.getElementById("changeColor");
-    const changeShapeBtn = document.getElementById("changeShape");
-    const changeSizeBtn = document.getElementById("changeSize");
-    const colorInput = document.getElementById("color-input");
-    const objectToManipulate = document.getElementById("objectToManipulate");
+    const changeColorBtn = document.querySelector(".changeColor");
+    const changeShapeBtn = document.querySelector(".changeShape");
+    const changeSizeBtn = document.querySelector(".changeSize");
+    const colorInput = document.querySelector(".color-input");
+    const objectToManipulate = document.querySelector(".objectToManipulate");
 
     return {
       changeColorBtn,

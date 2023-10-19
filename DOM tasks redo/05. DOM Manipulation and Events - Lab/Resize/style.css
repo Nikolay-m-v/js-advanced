@@ -5,9 +5,13 @@ label {
   color: rgb(197, 179, 179);
 }
 
-#objectToManipulate {
-  width: 100px;
-  height: 100px;
+.objectToManipulate {
+  width: 200px;
+  height: 200px;
   background-color: aliceblue;
   border-radius: 0;
+}
+
+.circle {
+  border-radius: 50%;
 }
