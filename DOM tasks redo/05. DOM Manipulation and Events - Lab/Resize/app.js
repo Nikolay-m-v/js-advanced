@@ -42,6 +42,7 @@
   function resetObject(element) {
     element.classList = [];
     element.classList.add("objectToManipulate");
+    element.classList.add("small");
   }
 
   function resetColor(element, color = "white") {
@@ -91,5 +92,6 @@
     };
   }
 
+  eventsHandling(gatherElements());
   eventsHandling(gatherElements());
 })();
