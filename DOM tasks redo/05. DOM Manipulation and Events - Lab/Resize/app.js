@@ -93,5 +93,4 @@
   }
 
   eventsHandling(gatherElements());
-  eventsHandling(gatherElements());
 })();
