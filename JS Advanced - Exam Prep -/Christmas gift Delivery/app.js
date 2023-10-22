@@ -8,6 +8,7 @@ function solution() {
   function addGift() {
     const gift = giftName.value;
     const ulList = document.querySelectorAll("ul")[0];
+
     if (gift === "") {
       return;
     }
