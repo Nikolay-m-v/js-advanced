@@ -11,9 +11,22 @@ function solution() {
 
   addBtn.addEventListener("click", add);
 
-  function add() {
-    if (inputs.recipientName === "" || inputs.title === "" || message === "") {
+  function add(event) {
+    event.preventDefault();
+
+    let recipientName = inputs.recipientName.value;
+    let title = inputs.title.value;
+    let message = inputs.message.value;
+
+    if (recipientName === "" || title === "" || message === "") {
       return;
     }
+
+    let li = document.createElement("li");
+    let h4 = document.createElement("h4");
+    let span = document.createElement("span");
+    let div = document.createElement("div");
+    let sendBtn = document.createElement("button");
+    let deleteBtn = document.createElement("button");
   }
 }
