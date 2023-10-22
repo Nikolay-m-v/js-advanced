@@ -36,24 +36,24 @@ function solve() {
 
     const li = document.createElement("li");
 
-    let titleH4 = document.createElement("h4");
+    const titleH4 = document.createElement("h4");
     titleH4.textContent = `Title: ${title}`;
 
-    let nameH4 = document.createElement("h4");
+    const nameH4 = document.createElement("h4");
     nameH4.textContent = `Recipient Name: ${recipientName}`;
 
-    let span = document.createElement("span");
+    const span = document.createElement("span");
     span.textContent = message;
 
-    let div = document.createElement("div");
+    const div = document.createElement("div");
     div.id = "list-action";
 
-    let sendBtn = document.createElement("button");
+    const sendBtn = document.createElement("button");
     sendBtn.type = "submit";
     sendBtn.id = "send";
     sendBtn.textContent = "Send";
 
-    let deleteBtn = document.createElement("button");
+    const deleteBtn = document.createElement("button");
     deleteBtn.type = "submit";
     deleteBtn.id = "delete";
     deleteBtn.textContent = "Delete";
@@ -74,6 +74,7 @@ function solve() {
 
     function send() {
       li.remove();
+      sendBtn.remove();
 
       const ulSent = document.querySelector(".sent-list");
 
@@ -141,3 +142,5 @@ function solve() {
     }
   }
 }
+
+solve();
