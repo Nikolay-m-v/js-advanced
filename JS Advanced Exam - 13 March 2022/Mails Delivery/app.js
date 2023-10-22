@@ -24,9 +24,9 @@ function solve() {
   function add(event) {
     event.preventDefault();
 
-    let recipientName = inputs.recipientName.value;
-    let title = inputs.title.value;
-    let message = inputs.message.value;
+    const recipientName = inputs.recipientName.value;
+    const title = inputs.title.value;
+    const message = inputs.message.value;
 
     if (recipientName === "" || title === "" || message === "") {
       return;
@@ -78,6 +78,66 @@ function solve() {
       const ulSent = document.querySelector(".sent-list");
 
       const liSent = document.createAttribute("li");
+
+      const spanTo = document.createElement("span");
+      spanTo.textContent = `To ${recipientName}`;
+
+      const spanTitle = document.createElement("span");
+      spanTitle.textContent = `Title: ${title}`;
+
+      const divSent = document.createElement("div");
+      divSent.classList.add("btn");
+
+      const deleteSentBtn = document.createElement("button");
+      deleteSentBtn.type = "submit";
+      deleteSentBtn.classList.add("delete");
+      deleteSentBtn.textContent = "Delete";
+
+      ulSent.appendChild(li);
+      liSent.appendChild(spanTo);
+      liSent.appendChild(spanTitle);
+      liSent.appendChild(divSent);
+      divSent.appendChild(deleteSentBtn);
+
+      deleteSentBtn.addEventListener("click", deleteSentBtnFunction);
+
+      function deleteSentBtnFunction() {
+        liSent.remove();
+
+        const ulDeleteList = document.querySelector(".delete-list");
+
+        const liDeleteList = document.createElement("li");
+
+        const spanDeleteListTo = document.createElement("span");
+        spanDeleteListTo.textContent = `To: ${recipientName}`;
+
+        const spanDeleteListTitle = document.createElement("span");
+        spanDeleteListTitle.textContent = `Title: ${title}`;
+
+        ulDeleteList.appendChild(liDeleteList);
+        liDeleteList.appendChild(spanDeleteListTo);
+        liDeleteList.appendChild(spanDeleteListTitle);
+      }
+    }
+
+    deleteBtn.addEventListener("click", deletedBtnFunction);
+
+    function deletedBtnFunction() {
+      li.remove();
+
+      const ulDeleteList = document.querySelector(".delete-list");
+
+      const liDeleteList = document.createElement("li");
+
+      const spanDeleteListTo = document.createElement("span");
+      spanDeleteListTo.textContent = `To: ${recipient}`;
+
+      const spanDeleteListTitle = document.createElement("span");
+      spanDeleteListTitle.textContent = `Title: ${title}`;
+
+      ulDeleteList.appendChild(liDeleteList);
+      liDeleteList.appendChild(spanDeleteListTo);
+      liDeleteList.appendChild(spanDeleteListTitle);
     }
   }
 }
