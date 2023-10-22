@@ -76,5 +76,10 @@ function solve() {
       startBtn.remove();
       finishBtn.remove();
     }
+
+    clearBtn.addEventListener("click", clear);
+    function clear() {
+      orders.completed.innerHTML = "";
+    }
   }
 }
