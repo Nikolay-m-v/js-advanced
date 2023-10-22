@@ -8,6 +8,9 @@ function solution() {
   function addGift() {
     const gift = giftName.value;
     const ulList = document.querySelectorAll("ul")[0];
+    if (gift === "") {
+      return;
+    }
 
     let li = document.createElement("li");
     li.classList.add("gift");
