@@ -78,7 +78,7 @@ function solve() {
 
       const ulSent = document.querySelector(".sent-list");
 
-      const liSent = document.createAttribute("li");
+      const liSent = document.createElement("li");
 
       const spanTo = document.createElement("span");
       spanTo.textContent = `To ${recipientName}`;
@@ -131,7 +131,7 @@ function solve() {
       const liDeleteList = document.createElement("li");
 
       const spanDeleteListTo = document.createElement("span");
-      spanDeleteListTo.textContent = `To: ${recipient}`;
+      spanDeleteListTo.textContent = `To: ${recipientName}`;
 
       const spanDeleteListTitle = document.createElement("span");
       spanDeleteListTitle.textContent = `Title: ${title}`;
