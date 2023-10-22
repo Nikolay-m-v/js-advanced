@@ -50,5 +50,31 @@ function solve() {
     finishBtn.classList.add("finish-btn");
     finishBtn.disabled = true;
     finishBtn.textContent = "Finish repair";
+
+    div.appendChild(h2);
+    div.appendChild(h3);
+    div.appendChild(h4);
+    div.appendChild(startBtn);
+    div.appendChild(finishBtn);
+    orders.received.appendChild(div);
+
+    inputs.description.value = "";
+    inputs.name.value = "";
+    inputs.phone.value = "";
+    inputs.type.value = "";
+
+    startBtn.addEventListener("click", start);
+
+    function start(event) {
+      startBtn.disabled = true;
+      finishBtn.disabled = false;
+    }
+
+    finishBtn.addEventListener("click", finish);
+    function finish() {
+      orders.completed.appendChild(div);
+      startBtn.remove();
+      finishBtn.remove();
+    }
   }
 }
