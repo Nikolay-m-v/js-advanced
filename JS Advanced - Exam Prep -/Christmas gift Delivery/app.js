@@ -1,6 +1,6 @@
 "use strict";
 
-function solve() {
+function solution() {
   const giftName = document.querySelector("input");
   const addGiftBtn = document.querySelector("button");
 
