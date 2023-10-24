@@ -144,4 +144,3 @@ function solve() {
 }
 
 solve();
-solve();
