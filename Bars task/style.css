@@ -22,15 +22,13 @@ header h1 {
 .fighters {
   display: flex;
   justify-content: center;
+  gap: 32px;
 }
 
 .fighters div {
   background-color: aliceblue;
   width: 100px;
   height: 100px;
-  padding: 15px;
-  margin: 15px;
-  box-shadow: 5px 5px rgb(103, 103, 108);
   border-radius: 40px;
   cursor: pointer;
 }
@@ -38,3 +36,12 @@ header h1 {
 .chosen {
   border: 2px solid green;
 }
+
+.fighters img {
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* .william img {
+} */
