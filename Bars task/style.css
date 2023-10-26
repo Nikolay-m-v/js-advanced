@@ -4,7 +4,7 @@
 }
 
 body {
-  background-color: rgb(137, 137, 129);
+  background-color: rgb(55 84 110);
   width: 1200px;
   margin: 0 auto;
   display: flex;
@@ -67,6 +67,19 @@ header h1 {
   display: none;
 }
 
+.nick-face::before {
+  content: "The one your girlfriend tells you not to worry about";
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.nick-face:hover::before {
+  display: block;
+}
+
 .veso-body {
   width: 360px;
   position: absolute;
@@ -108,8 +121,11 @@ header h1 {
 }
 
 .arena {
+  display: flex;
+  flex-flow: column;
   position: absolute;
-  bottom: 25%;
+  bottom: 19%;
+  cursor: pointer;
 }
 
 .arena-img {
@@ -121,8 +137,16 @@ header h1 {
 
 .arena-text {
   position: absolute;
-  bottom: 22%;
+  bottom: 16%;
   font-size: 1.5rem;
+}
+
+.arena-battle-img {
+  display: none;
+}
+
+.inside-the-arena {
+  display: block;
 }
 
 .chosenFighters {
@@ -135,6 +159,11 @@ header h1 {
 
 .chosenFighters img {
   width: 100px;
+}
+
+.face-img-arena {
+  z-index: 0;
+  padding-top: 140px;
 }
 
 /* .william img {
