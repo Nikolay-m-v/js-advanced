@@ -54,6 +54,7 @@ header h1 {
   left: -157px;
   border-radius: 25px;
   opacity: 0;
+  display: none;
 }
 
 .nick-body {
@@ -63,6 +64,7 @@ header h1 {
   left: -99px;
   border-radius: 25px;
   opacity: 0;
+  display: none;
 }
 
 .veso-body {
@@ -72,6 +74,7 @@ header h1 {
   left: -95px;
   border-radius: 25px;
   opacity: 0;
+  display: none;
 }
 
 .face-img:hover {
@@ -106,7 +109,7 @@ header h1 {
 
 .arena {
   position: absolute;
-  bottom: 20%;
+  bottom: 25%;
 }
 
 .arena-img {
@@ -118,8 +121,20 @@ header h1 {
 
 .arena-text {
   position: absolute;
-  bottom: 17%;
+  bottom: 22%;
   font-size: 1.5rem;
+}
+
+.chosenFighters {
+  display: flex;
+  height: 300px;
+  gap: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.chosenFighters img {
+  width: 100px;
 }
 
 /* .william img {
