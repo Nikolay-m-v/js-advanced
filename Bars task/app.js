@@ -1,13 +1,16 @@
 "use strict";
 
 function chooseFighter() {
-  const fighterOne = document.querySelector(".fighter-one");
-  const fighterTwo = document.querySelector(".fighter-two");
-  const fighterThree = document.querySelector(".fighter-three");
-  const chosenFighterOne = document.querySelector(".chosenFighterOne");
+  const fightersArray = Array.from(document.querySelectorAll(".fighter"));
+  const chosenFighters = document.querySelector(".chosenFighters");
 
-  fighterOne.addEventListener("click", () => {
-    chosenFighterOne.appendChild(fighterOne);
+  fightersArray.forEach((fighter) => {
+    fighter.addEventListener("click", () => {
+      if (chosenFighters.children.length > 1) {
+        return;
+      }
+      chosenFighters.appendChild(fighter);
+    });
   });
 }
 
