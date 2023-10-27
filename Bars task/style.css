@@ -28,6 +28,10 @@ header h1 {
   gap: 76px;
 }
 
+.fighter {
+  z-index: 0;
+}
+
 .fighters div {
   background-color: aliceblue;
   width: 100px;
