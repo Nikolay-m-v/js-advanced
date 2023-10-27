@@ -15,7 +15,7 @@
     }
   }
 
-  function toTheArena(chosenFighters, arenaBattleImage, arenaImg) {
+  function toTheArena(elements) {
     if (elements.chosenFighters.children.length >= 2) {
       alert("Entering the arena!");
       elements.arenaBattleImage.classList.add("inside-the-arena");
@@ -23,11 +23,13 @@
       Array.from(elements.chosenFighters.children).forEach((child) => {
         child.classList.add("face-img-arena");
       });
+      elements.fighters.style.display = "none";
+    } else {
+      alert("You must select 2 fighters!");
     }
   }
 
   function resetBtnFunction(elements) {
-    elements.chosenFighters.innerHTML = "";
     elements.arenaBattleImage.classList.remove("inside-the-arena");
     elements.arenaImg.style.display = "block";
   }
@@ -44,11 +46,7 @@
     });
 
     elements.arenaImg.addEventListener("click", () => {
-      toTheArena(
-        elements.chosenFighters,
-        elements.arenaBattleImage,
-        elements.arenaImg
-      );
+      toTheArena(elements);
     });
   }
 

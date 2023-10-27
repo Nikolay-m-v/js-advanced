@@ -143,6 +143,7 @@ header h1 {
 
 .arena-battle-img {
   display: none;
+  width: 800px;
 }
 
 .inside-the-arena {
@@ -164,6 +165,16 @@ header h1 {
 .face-img-arena {
   z-index: 0;
   padding-top: 140px;
+}
+
+#resetBtn {
+  position: absolute;
+  top: 1%;
+  right: 10%;
+  font-size: 1.6rem;
+  font-family: sans-serif;
+  padding: 5px;
+  background-color: rgb(203, 177, 177);
 }
 
 /* .william img {
