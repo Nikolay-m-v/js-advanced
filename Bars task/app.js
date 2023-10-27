@@ -107,5 +107,6 @@
       chosenFightersArray,
     };
   }
+
   eventHandling(getElements());
 })();
