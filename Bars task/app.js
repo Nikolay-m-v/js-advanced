@@ -20,6 +20,8 @@
       alert("Entering the arena!");
       elements.arenaBattleImage.classList.add("inside-the-arena");
       elements.arenaImg.style.display = "none";
+      elements.arenaText.textContent = "Good Luck";
+      elements.arenaText.style.color = "red";
       Array.from(elements.chosenFighters.children).forEach((child) => {
         child.classList.add("face-img-arena");
       });
@@ -56,12 +58,12 @@
 
   function elementGathering() {
     const fightersArray = Array.from(document.querySelectorAll(".fighter"));
-
     const chosenFighters = document.querySelector(".chosenFighters");
     const fighters = document.querySelector(".fighters");
     const arenaImg = document.querySelector(".arena-img");
     const arenaBattleImage = document.querySelector(".arena-battle-img");
     const resetBtn = document.getElementById("resetBtn");
+    const arenaText = document.querySelector(".arena-text");
 
     return {
       fightersArray,
@@ -70,6 +72,7 @@
       arenaImg,
       arenaBattleImage,
       resetBtn,
+      arenaText,
     };
   }
   eventHandling(elementGathering());

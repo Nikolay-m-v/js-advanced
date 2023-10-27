@@ -164,6 +164,7 @@ header h1 {
 
 .face-img-arena {
   z-index: 0;
+  margin-top: 300px;
 }
 
 #resetBtn {
