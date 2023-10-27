@@ -1,6 +1,10 @@
 "use strict";
 (function main() {
+  let inArena = false;
   function chooseFighter(elements, fighter) {
+    if (inArena) {
+      return;
+    }
     if (
       elements.chosenFighters.children.length >= 2 &&
       !fighter.parentElement.classList.contains("chosenFighters")
@@ -30,6 +34,7 @@
         child.classList.add("face-img-arena");
       });
       elements.fighters.style.display = "none";
+      inArena = true;
     } else {
       alert("You must select 2 fighters!");
     }
@@ -69,9 +74,12 @@
     });
   }
 
-  function elementGathering() {
+  function getElements() {
     const fightersArray = Array.from(document.querySelectorAll(".fighter"));
     const chosenFighters = document.querySelector(".chosenFighters");
+    const chosenFightersArray = Array.from(
+      document.querySelectorAll(".face-img-arena")
+    );
     const fighters = document.querySelector(".fighters");
     const arenaImg = document.querySelector(".arena-img");
     const arenaBattleImage = document.querySelector(".arena-battle-img");
@@ -90,7 +98,8 @@
       arenaText,
       heading,
       bodies,
+      chosenFightersArray,
     };
   }
-  eventHandling(elementGathering());
+  eventHandling(getElements());
 })();

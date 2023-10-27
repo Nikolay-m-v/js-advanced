@@ -100,6 +100,7 @@ header h1 {
   transition-duration: 1.5s;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+  cursor: pointer;
 }
 
 .face-img:hover ~ .will-body {
@@ -129,7 +130,6 @@ header h1 {
   flex-flow: column;
   position: absolute;
   bottom: 19%;
-  cursor: pointer;
 }
 
 .arena-img {
@@ -137,6 +137,7 @@ header h1 {
   border-radius: 50px;
   justify-self: center;
   align-self: center;
+  cursor: pointer;
 }
 
 .arena-img:hover {
