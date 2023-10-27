@@ -121,10 +121,6 @@ header h1 {
   opacity: 1;
 }
 
-.william:hover {
-  rotate: x var(--rotation);
-}
-
 .arena {
   display: flex;
   flex-flow: column;
@@ -203,6 +199,8 @@ header h1 {
   font-family: sans-serif;
   padding: 5px;
   background-color: rgb(203, 177, 177);
+  box-shadow: 2px 2px 2px red;
+  border-radius: 5px;
 }
 
 /* .william img {

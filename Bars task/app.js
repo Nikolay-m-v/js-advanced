@@ -1,10 +1,12 @@
 "use strict";
 (function main() {
   let inArena = false;
+
   function chooseFighter(elements, fighter) {
     if (inArena) {
       return;
     }
+
     if (
       elements.chosenFighters.children.length >= 2 &&
       !fighter.parentElement.classList.contains("chosenFighters")
@@ -16,6 +18,9 @@
       elements.fighters.appendChild(fighter);
     } else {
       elements.chosenFighters.appendChild(fighter);
+      elements.bodies.forEach((body) => {
+        body.style.display = "none";
+      });
     }
   }
 
@@ -47,6 +52,7 @@
     elements.arenaText.textContent = "To The Arena!!!";
     elements.arenaText.style.color = "black";
     elements.heading.style.display = "block";
+    inArena = false;
     elements.bodies.forEach((body) => {
       body.style.display = "block";
     });
