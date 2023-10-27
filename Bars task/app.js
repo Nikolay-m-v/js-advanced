@@ -32,6 +32,10 @@
   function resetBtnFunction(elements) {
     elements.arenaBattleImage.classList.remove("inside-the-arena");
     elements.arenaImg.style.display = "block";
+    elements.fighters.style.display = "flex";
+    elements.fightersArray.forEach((fighter) =>
+      elements.fighters.appendChild(fighter)
+    );
   }
 
   function eventHandling(elements) {
@@ -52,6 +56,7 @@
 
   function elementGathering() {
     const fightersArray = Array.from(document.querySelectorAll(".fighter"));
+
     const chosenFighters = document.querySelector(".chosenFighters");
     const fighters = document.querySelector(".fighters");
     const arenaImg = document.querySelector(".arena-img");
