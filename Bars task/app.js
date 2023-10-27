@@ -22,6 +22,7 @@
       elements.arenaImg.style.display = "none";
       elements.arenaText.textContent = "Good Luck";
       elements.arenaText.style.color = "red";
+      elements.heading.style.display = "none";
       Array.from(elements.chosenFighters.children).forEach((child) => {
         child.classList.add("face-img-arena");
       });
@@ -37,6 +38,7 @@
     elements.fighters.style.display = "flex";
     elements.arenaText.textContent = "To The Arena!!!";
     elements.arenaText.style.color = "black";
+    elements.heading.style.display = "block";
     elements.fightersArray.forEach((fighter) => {
       elements.fighters.appendChild(fighter);
     });
@@ -69,6 +71,7 @@
     const arenaBattleImage = document.querySelector(".arena-battle-img");
     const resetBtn = document.getElementById("resetBtn");
     const arenaText = document.querySelector(".arena-text");
+    const heading = document.querySelector(".heading");
 
     return {
       fightersArray,
@@ -78,6 +81,7 @@
       arenaBattleImage,
       resetBtn,
       arenaText,
+      heading,
     };
   }
   eventHandling(elementGathering());
