@@ -35,6 +35,8 @@
     elements.arenaBattleImage.classList.remove("inside-the-arena");
     elements.arenaImg.style.display = "block";
     elements.fighters.style.display = "flex";
+    elements.arenaText.textContent = "To The Arena!!!";
+    elements.arenaText.style.color = "black";
     elements.fightersArray.forEach((fighter) => {
       elements.fighters.appendChild(fighter);
     });
