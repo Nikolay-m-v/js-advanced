@@ -35,9 +35,12 @@
     elements.arenaBattleImage.classList.remove("inside-the-arena");
     elements.arenaImg.style.display = "block";
     elements.fighters.style.display = "flex";
-    elements.fightersArray.forEach((fighter) =>
-      elements.fighters.appendChild(fighter)
-    );
+    elements.fightersArray.forEach((fighter) => {
+      elements.fighters.appendChild(fighter);
+    });
+    Array.from(elements.fighters.children).forEach((child) => {
+      child.classList.remove("face-img-arena");
+    });
   }
 
   function eventHandling(elements) {

@@ -144,6 +144,8 @@ header h1 {
 .arena-battle-img {
   display: none;
   width: 800px;
+  transition: 2s;
+  opacity: 1;
 }
 
 .inside-the-arena {
