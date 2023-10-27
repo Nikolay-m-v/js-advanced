@@ -38,7 +38,9 @@
     });
 
     elements.fightersArray.forEach((fighter) => {
-      fighter.addEventListener("click", chooseFighter(elements, fighter));
+      fighter.addEventListener("click", () => {
+        chooseFighter(elements, fighter);
+      });
     });
 
     elements.arenaImg.addEventListener("click", () => {
