@@ -115,12 +115,12 @@
     for (let i = 0; i < rounds; i++) {
       let randomNum1 = Math.floor(Math.random() * 30) + 1;
       if (fighterOneFails > 0) {
-        return;
+        continue;
       }
       if (randomNum1 < 4) {
         fighterOneFails++;
         console.log(
-          `${fighterOneName} has failed to do the exercise, therefore ${fighterTwoName} Wins the match \nThe total amount of reps ${fighterOneName} did are: ${fighterOneReps} and the total amount of reps ${fighterTwoName} did are: ${fighterTwoReps} `
+          `${fighterOneName} has failed to do the exercise, therefore ${fighterOneName} stops at ${fighterOneReps} reps `
         );
       } else {
         fighterOneReps++;
@@ -134,13 +134,25 @@
       if (randomNum2 < 3) {
         fighterTwoFails++;
         console.log(
-          `${fighterTwoName} has failed to do the exercise, therefore ${fighterOneName} Wins the match \nThe total amount of reps ${fighterTwoName} did are: ${fighterTwoReps} and the total amount of reps ${fighterOneName} did are: ${fighterOneReps} `
+          `${fighterTwoName} has failed to do the exercise, therefore ${fighterTwoName} stops at ${fighterTwoReps} reps  `
         );
         return;
       } else {
         fighterTwoReps++;
         console.log(`${fighterTwoName} has successfully performed one rep!`);
       }
+    }
+    console.log(
+      `The reps our fighters were able to do are: \n${fighterOneName} did: ${fighterOneReps} \n ${fighterTwoName} did: ${fighterTwoReps}`
+    );
+    if (fighterOneReps > fighterTwoReps) {
+      console.log(`The winner of this fight is ${fighterOneName}`);
+    } else if (fighterTwoReps > fighterOneReps) {
+      console.log(`The winner of this fight is ${fighterTwoName}`);
+    } else if ((fighterOneReps = fighterTwoReps)) {
+      console.log(
+        `Both fighters failed on the same rep, therefore its a draw!!!`
+      );
     }
   }
 
