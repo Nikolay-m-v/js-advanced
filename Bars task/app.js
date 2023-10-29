@@ -80,19 +80,28 @@
     }
   }
 
-  function extractFighterNames(elements) {
-    let fightersNamesArray = [];
-    elements.chosenFightersArray.forEach((fighter) => {
-      let name = fighter.childNodes[1].className;
-      fightersNamesArray.push(name);
-    });
+  // function extractFighterNames(elements) {
+  //   let fightersNamesArray = [];
+  //   elements.chosenFightersArray.forEach((fighter) => {
+  //     let name = fighter.children[1].className;
+  //     console.log(name);
+  //     fightersNamesArray.push(name);
+  //   });
 
-    console.log(fightersNamesArray);
-    return fightersNamesArray;
-  }
+  //   console.log(fightersNamesArray);
+  //   return fightersNamesArray;
+  // }
 
   function battle(elements) {
-    const fightersNamesArray = extractFighterNames(elements);
+    // const fighterOne = elements.chosenFightersArray[0];
+    // const fighterOneName =
+    //   elements.chosenFighters[0].children.children.className;
+    // console.log(fighterOneName);
+    // const fighterTwo = elements.chosenFightersArray[1];
+    // const fighterTwoName = fighterTwo.children.className;
+    // console.log(fighterTwoName);
+    console.log(elements.chosenFighters.children[0].child);
+
     elements.startBtn.style.display = "none";
     let rounds = 10;
 
@@ -101,13 +110,13 @@
       let fighterOneReps = 0;
       if (randomNum1 < 3) {
         console.log(
-          `${fightersNamesArray} has failed to do the exercise, therefore ${fightersNamesArray[1]} Wins the match`
+          `${elements.chosenFightersArray[0].child.className} has failed to do the exercise, therefore ${elements.chosenFightersArray[1].child.className} Wins the match`
         );
         return;
       } else {
         fighterOneReps++;
         console.log(
-          `${fightersNamesArray} has successfully performed one rep!`
+          `${elements.chosenFightersArray[0].children.className} has successfully performed one rep!`
         );
       }
 
@@ -115,12 +124,12 @@
       let fighterTwoReps = 0;
       if (randomNum2 < 2) {
         console.log(
-          `${fightersNamesArray[1]} has failed to do the exercise, therefore ${fightersNamesArray[0]} Wins the match`
+          `${elements.chosenFightersArray[1].child.className} has failed to do the exercise, therefore ${elements.chosenFightersArray[0].child.className} Wins the match`
         );
       } else {
         fighterTwoReps++;
         console.log(
-          `${fightersNamesArray[1]} has successfully performed one rep!`
+          `${elements.chosenFightersArray[1].child.className} has successfully performed one rep!`
         );
       }
     }
@@ -175,6 +184,7 @@
 
     elements.startBtn.addEventListener("click", () => {
       battle(elements);
+      extractFighterNames(elements);
     });
   }
 
