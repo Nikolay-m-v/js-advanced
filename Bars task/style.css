@@ -210,4 +210,26 @@ header h1 {
   position: absolute;
   bottom: 20%;
   left: 20%;
+  display: none;
+}
+
+#dips-bars {
+  width: 100px;
+  cursor: pointer;
+  z-index: 0;
+  position: absolute;
+  bottom: 20%;
+  left: 44%;
+  display: none;
+}
+
+#push-ups-bars {
+  width: 100px;
+  height: 90px;
+  cursor: pointer;
+  z-index: 0;
+  position: absolute;
+  bottom: 20%;
+  left: 67%;
+  display: none;
 }
