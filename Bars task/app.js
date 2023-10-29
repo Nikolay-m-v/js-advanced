@@ -17,6 +17,7 @@
     if (fighter.parentElement === elements.chosenFighters) {
       elements.fighters.appendChild(fighter);
     } else {
+      fighter.classList.add("chosen");
       elements.chosenFighters.appendChild(fighter);
       elements.bodies.forEach((body) => {
         body.style.display = "none";
@@ -52,7 +53,7 @@
     }
   }
 
-  function battle(elements, category) {
+  function battlePrep(elements, category) {
     elements.chosenCategorySpan.textContent = "The chosen Category is: ";
     elements.heading.style.display = "none";
     elements.startBtn.style.display = "block";
@@ -76,6 +77,52 @@
 
         break;
       default:
+    }
+  }
+
+  function extractFighterNames(elements) {
+    let fightersNamesArray = [];
+    elements.chosenFightersArray.forEach((fighter) => {
+      let name = fighter.childNodes[1].className;
+      fightersNamesArray.push(name);
+    });
+
+    console.log(fightersNamesArray);
+    return fightersNamesArray;
+  }
+
+  function battle(elements) {
+    const fightersNamesArray = extractFighterNames(elements);
+    elements.startBtn.style.display = "none";
+    let rounds = 10;
+
+    for (let i = 0; i < rounds; i++) {
+      let randomNum1 = Math.floor(Math.random() * 30) + 1;
+      let fighterOneReps = 0;
+      if (randomNum1 < 3) {
+        console.log(
+          `${fightersNamesArray} has failed to do the exercise, therefore ${fightersNamesArray[1]} Wins the match`
+        );
+        return;
+      } else {
+        fighterOneReps++;
+        console.log(
+          `${fightersNamesArray} has successfully performed one rep!`
+        );
+      }
+
+      let randomNum2 = Math.floor(Math.random() * 25) + 1;
+      let fighterTwoReps = 0;
+      if (randomNum2 < 2) {
+        console.log(
+          `${fightersNamesArray[1]} has failed to do the exercise, therefore ${fightersNamesArray[0]} Wins the match`
+        );
+      } else {
+        fighterTwoReps++;
+        console.log(
+          `${fightersNamesArray[1]} has successfully performed one rep!`
+        );
+      }
     }
   }
 
@@ -122,8 +169,12 @@
 
     elements.categoriesArray.forEach((category) => {
       category.addEventListener("click", () => {
-        battle(elements, category);
+        battlePrep(elements, category);
       });
+    });
+
+    elements.startBtn.addEventListener("click", () => {
+      battle(elements);
     });
   }
 
