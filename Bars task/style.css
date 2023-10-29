@@ -28,7 +28,7 @@ header h1 {
 
 .choose-category {
   position: absolute;
-  top: 54%;
+  top: 51%;
   left: 42%;
   z-index: 3;
 }
@@ -258,4 +258,23 @@ header h1 {
 #pull-up-bar:hover {
   transition: 1.5s ease;
   transform: scale(1.3);
+}
+
+.chosen-category {
+  position: absolute;
+  top: -40%;
+  left: -7%;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+#start-btn {
+  position: absolute;
+  font-size: 2rem;
+  border-radius: 1rem;
+  padding: 5px;
+  bottom: 45%;
+  box-shadow: 2px 2px 2px rgb(121, 49, 203);
+  cursor: pointer;
+  display: none;
 }

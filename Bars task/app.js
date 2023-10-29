@@ -36,6 +36,9 @@
       elements.arenaText.style.color = "red";
       elements.heading.textContent = "Choose the torture!";
       elements.heading.classList.add("choose-category");
+      elements.categoriesArray.forEach((category) => {
+        category.classList.remove("chosen-category");
+      });
       elements.bodies.forEach((body) => {
         body.style.display = "none";
       });
@@ -49,14 +52,43 @@
     }
   }
 
+  function battle(elements, category) {
+    elements.chosenCategorySpan.textContent = "The chosen Category is: ";
+    elements.heading.style.display = "none";
+    elements.startBtn.style.display = "block";
+
+    switch (category.id) {
+      case "pull-up-bar":
+        elements.categoriesArray[1].style.display = "none";
+        elements.categoriesArray[2].style.display = "none";
+        elements.categoriesArray[0].classList.add("chosen-category");
+        break;
+      case "dips-bars":
+        elements.categoriesArray[0].style.display = "none";
+        elements.categoriesArray[2].style.display = "none";
+        elements.categoriesArray[1].classList.add("chosen-category");
+
+        break;
+      case "push-ups-bars":
+        elements.categoriesArray[0].style.display = "none";
+        elements.categoriesArray[1].style.display = "none";
+        elements.categoriesArray[2].classList.add("chosen-category");
+
+        break;
+      default:
+    }
+  }
+
   function resetBtnFunction(elements) {
     elements.arenaBattleImage.classList.remove("inside-the-arena");
+    elements.chosenCategorySpan.style.display = "none";
     elements.arenaImg.style.display = "block";
     elements.fighters.style.display = "flex";
     elements.heading.textContent = "Choose the fighters";
     elements.arenaText.textContent = "To The Arena!!!";
     elements.arenaText.style.color = "black";
     elements.heading.style.display = "block";
+    elements.startBtn.style.display = "none";
     elements.categoriesArray.forEach((category) => {
       category.style.display = "none";
     });
@@ -87,6 +119,12 @@
     elements.arenaImg.addEventListener("click", () => {
       toTheArena(elements);
     });
+
+    elements.categoriesArray.forEach((category) => {
+      category.addEventListener("click", () => {
+        battle(elements, category);
+      });
+    });
   }
 
   function getElements() {
@@ -102,9 +140,12 @@
     const arenaText = document.querySelector(".arena-text");
     const heading = document.querySelector(".heading");
     const bodies = document.querySelectorAll(".body");
+    const arenaCategories = document.querySelector(".arena-categories");
+    const chosenCategorySpan = document.querySelector(".chosen-category");
     const categoriesArray = Array.from(
       document.querySelectorAll(".arena-category")
     );
+    const startBtn = document.getElementById("start-btn");
 
     return {
       fightersArray,
@@ -118,6 +159,9 @@
       bodies,
       chosenFightersArray,
       categoriesArray,
+      arenaCategories,
+      chosenCategorySpan,
+      startBtn,
     };
   }
 
