@@ -22,6 +22,18 @@ header h1 {
   font-size: 38px;
 }
 
+.heading {
+  transition: 2s ease;
+}
+
+.choose-category {
+  transition: 2s ease;
+  position: absolute;
+  top: 54%;
+  left: 45%;
+  z-index: 3;
+}
+
 .fighters {
   display: flex;
   justify-content: center;

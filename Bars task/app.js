@@ -27,11 +27,15 @@
   function toTheArena(elements) {
     if (elements.chosenFighters.children.length >= 2) {
       alert("Entering the arena!");
+      elements.categoriesArray.forEach((category) => {
+        category.style.display = "block";
+      });
       elements.arenaBattleImage.classList.add("inside-the-arena");
       elements.arenaImg.style.display = "none";
       elements.arenaText.textContent = "Good Luck";
       elements.arenaText.style.color = "red";
-      elements.heading.style.display = "none";
+      elements.heading.textContent = "Choose the torture!";
+      elements.heading.classList.add("choose-category");
       elements.bodies.forEach((body) => {
         body.style.display = "none";
       });
@@ -49,9 +53,14 @@
     elements.arenaBattleImage.classList.remove("inside-the-arena");
     elements.arenaImg.style.display = "block";
     elements.fighters.style.display = "flex";
+    elements.heading.textContent = "Choose the fighters";
     elements.arenaText.textContent = "To The Arena!!!";
     elements.arenaText.style.color = "black";
     elements.heading.style.display = "block";
+    elements.categoriesArray.forEach((category) => {
+      category.style.display = "none";
+    });
+    elements.heading.classList.remove("choose-category");
     inArena = false;
     elements.bodies.forEach((body) => {
       body.style.display = "block";
@@ -93,6 +102,9 @@
     const arenaText = document.querySelector(".arena-text");
     const heading = document.querySelector(".heading");
     const bodies = document.querySelectorAll(".body");
+    const categoriesArray = Array.from(
+      document.querySelectorAll(".arena-category")
+    );
 
     return {
       fightersArray,
@@ -105,6 +117,7 @@
       heading,
       bodies,
       chosenFightersArray,
+      categoriesArray,
     };
   }
 
