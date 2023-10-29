@@ -202,3 +202,12 @@ header h1 {
   box-shadow: 2px 2px 2px red;
   border-radius: 5px;
 }
+
+#pull-up-bar {
+  width: 100px;
+  cursor: pointer;
+  z-index: 0;
+  position: absolute;
+  bottom: 20%;
+  left: 20%;
+}

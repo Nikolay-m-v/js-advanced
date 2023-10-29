@@ -41,7 +41,7 @@
       elements.fighters.style.display = "none";
       inArena = true;
     } else {
-      alert("You must select 2 fighters!");
+      alert("You must select atleast 2 fighters!");
     }
   }
 
