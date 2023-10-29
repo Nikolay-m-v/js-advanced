@@ -100,37 +100,46 @@
     // const fighterTwo = elements.chosenFightersArray[1];
     // const fighterTwoName = fighterTwo.children.className;
     // console.log(fighterTwoName);
-    console.log(elements.chosenFighters.children[0].child);
+    const fighterOneName =
+      elements.chosenFighters.children[0].children[0].className;
+    const fighterTwoName =
+      elements.chosenFighters.children[1].children[0].className;
 
     elements.startBtn.style.display = "none";
-    let rounds = 10;
+    let rounds = 25;
+    let fighterOneReps = 0;
+    let fighterTwoReps = 0;
+    let fighterOneFails = 0;
+    let fighterTwoFails = 0;
 
     for (let i = 0; i < rounds; i++) {
       let randomNum1 = Math.floor(Math.random() * 30) + 1;
-      let fighterOneReps = 0;
-      if (randomNum1 < 3) {
-        console.log(
-          `${elements.chosenFightersArray[0].child.className} has failed to do the exercise, therefore ${elements.chosenFightersArray[1].child.className} Wins the match`
-        );
+      if (fighterOneFails > 0) {
         return;
+      }
+      if (randomNum1 < 4) {
+        fighterOneFails++;
+        console.log(
+          `${fighterOneName} has failed to do the exercise, therefore ${fighterTwoName} Wins the match \nThe total amount of reps ${fighterOneName} did are: ${fighterOneReps} and the total amount of reps ${fighterTwoName} did are: ${fighterTwoReps} `
+        );
       } else {
         fighterOneReps++;
-        console.log(
-          `${elements.chosenFightersArray[0].children.className} has successfully performed one rep!`
-        );
+        console.log(`${fighterOneName} has successfully performed one rep!`);
       }
 
       let randomNum2 = Math.floor(Math.random() * 25) + 1;
-      let fighterTwoReps = 0;
-      if (randomNum2 < 2) {
+      if (fighterTwoFails > 0) {
+        return;
+      }
+      if (randomNum2 < 3) {
+        fighterTwoFails++;
         console.log(
-          `${elements.chosenFightersArray[1].child.className} has failed to do the exercise, therefore ${elements.chosenFightersArray[0].child.className} Wins the match`
+          `${fighterTwoName} has failed to do the exercise, therefore ${fighterOneName} Wins the match \nThe total amount of reps ${fighterTwoName} did are: ${fighterTwoReps} and the total amount of reps ${fighterOneName} did are: ${fighterOneReps} `
         );
+        return;
       } else {
         fighterTwoReps++;
-        console.log(
-          `${elements.chosenFightersArray[1].child.className} has successfully performed one rep!`
-        );
+        console.log(`${fighterTwoName} has successfully performed one rep!`);
       }
     }
   }
@@ -184,7 +193,6 @@
 
     elements.startBtn.addEventListener("click", () => {
       battle(elements);
-      extractFighterNames(elements);
     });
   }
 
