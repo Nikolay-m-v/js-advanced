@@ -112,6 +112,7 @@ header h1 {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   cursor: pointer;
+  cursor: pointer;
 }
 
 .face-img:hover ~ .will-body {
