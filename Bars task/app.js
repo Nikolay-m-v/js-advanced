@@ -122,6 +122,7 @@
 
     for (let i = 0; i < rounds; i++) {
       let randomNum1 = Math.floor(Math.random() * 30) + 1;
+
       if (fighterOneFails >= 1) {
         continue;
       }
@@ -166,7 +167,10 @@
         `Both fighters failed on the same rep, therefore its a draw!!!`
       );
     }
-
+    if ((winner.length = null)) {
+      console.log("No winner!");
+      return;
+    }
     winner.classList.add("winner");
     loser.style.display = "none";
   }
