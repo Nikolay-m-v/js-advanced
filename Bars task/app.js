@@ -55,6 +55,7 @@
 
   function battlePrep(elements, category) {
     elements.chosenCategorySpan.textContent = "The chosen Category is: ";
+    elements.chosenCategorySpan.style.display = "block";
     elements.heading.style.display = "none";
     elements.startBtn.style.display = "block";
 
