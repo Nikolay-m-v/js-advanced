@@ -105,6 +105,8 @@
     const fighterTwoName =
       elements.chosenFighters.children[1].children[0].className;
 
+    let winner = "";
+
     elements.startBtn.style.display = "none";
     let rounds = 25;
     let fighterOneReps = 0;
@@ -147,12 +149,23 @@
     );
     if (fighterOneReps > fighterTwoReps) {
       console.log(`The winner of this fight is ${fighterOneName}`);
+      winner = fighterOneName;
     } else if (fighterTwoReps > fighterOneReps) {
       console.log(`The winner of this fight is ${fighterTwoName}`);
     } else if ((fighterOneReps = fighterTwoReps)) {
       console.log(
         `Both fighters failed on the same rep, therefore its a draw!!!`
       );
+    }
+    if (winner === "william") {
+      const williamAsWinner = document.querySelector(".william");
+      williamAsWinner.classList.add("winner");
+    } else if (winner === "nick") {
+      const nickAsWinner = document.querySelector(".nick");
+      nickAsWinner.classList.add("winner");
+    } else if (winner === "veso") {
+      const vesoAsWinner = document.querySelector(".veso");
+      vesoAsWinner.classList.add("winner");
     }
   }
 
