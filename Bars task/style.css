@@ -286,14 +286,30 @@ header h1 {
 }
 
 #battle-log {
+  display: none;
   font-size: 22px;
   color: rgb(78, 238, 110);
   background-color: black;
   width: 400px;
-  height: 200px;
+  height: 400px;
   border: 1px solid #ccc;
   overflow-y: scroll;
   top: 35%;
   left: 5%;
   position: absolute;
+}
+
+.battle-log-button {
+  font-size: 1.4rem;
+  top: 31%;
+  left: 11.5%;
+  position: absolute;
+  cursor: pointer;
+}
+
+.battle-log-button:hover {
+  color: white;
+  box-shadow: 0 0 25px 5px white;
+  border: none;
+  transition: 1s ease;
 }

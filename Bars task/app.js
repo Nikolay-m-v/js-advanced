@@ -89,6 +89,16 @@
     battleLog.scrollTop = battleLog.scrollHeight;
   }
 
+  function showBattleLog(elements) {
+    if (elements.battleLog.style.display === "none") {
+      elements.battleLog.style.display = "block";
+      elements.showBattleLogBtn.textContent = "Hide Battle Log!";
+    } else {
+      elements.battleLog.style.display = "none";
+      elements.showBattleLogBtn.textContent = "Show Battle Log!";
+    }
+  }
+
   // function extractFighterNames(elements) {
   //   let fightersNamesArray = [];
   //   elements.chosenFightersArray.forEach((fighter) => {
@@ -168,18 +178,26 @@
         console.log(`${fighterTwoName} has successfully performed one rep!`);
       }
     }
+    addToBattleLog(
+      `The reps our fighters were able to do are: \n${fighterOneName} did: ${fighterOneReps} \n ${fighterTwoName} did: ${fighterTwoReps}`
+    );
     console.log(
       `The reps our fighters were able to do are: \n${fighterOneName} did: ${fighterOneReps} \n ${fighterTwoName} did: ${fighterTwoReps}`
     );
     if (fighterOneReps > fighterTwoReps) {
+      addToBattleLog(`The winner of this fight is ${fighterOneName}`);
       console.log(`The winner of this fight is ${fighterOneName}`);
       winner = fighterOne;
       loser = fighterTwo;
     } else if (fighterTwoReps > fighterOneReps) {
+      addToBattleLog(`The winner of this fight is ${fighterTwoName}`);
       console.log(`The winner of this fight is ${fighterTwoName}`);
       winner = fighterTwo;
       loser = fighterOne;
     } else if ((fighterOneReps = fighterTwoReps)) {
+      addToBattleLog(
+        `Both fighters failed on the same rep, therefore its a draw!!!`
+      );
       console.log(
         `Both fighters failed on the same rep, therefore its a draw!!!`
       );
@@ -245,6 +263,10 @@
     elements.startBtn.addEventListener("click", () => {
       battle(elements);
     });
+
+    elements.showBattleLogBtn.addEventListener("click", () => {
+      showBattleLog(elements);
+    });
   }
 
   function getElements() {
@@ -268,6 +290,7 @@
     const startBtn = document.getElementById("start-btn");
     const arenaWinner = document.getElementById("arenaWinner");
     let battleLog = document.getElementById("battle-log");
+    const showBattleLogBtn = document.querySelector(".battle-log-button");
 
     return {
       fightersArray,
@@ -286,6 +309,7 @@
       startBtn,
       arenaWinner,
       battleLog,
+      showBattleLogBtn,
     };
   }
 
