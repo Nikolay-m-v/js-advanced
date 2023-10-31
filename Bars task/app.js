@@ -118,7 +118,7 @@
         battleLogElement.appendChild(newLogEntry);
         battleLogElement.scrollTop = battleLogElement.scrollHeight;
         index++;
-        setTimeout(displayNextMessage, 1000);
+        setTimeout(displayNextMessage, 800);
       }
     }
 
@@ -138,13 +138,6 @@
   // }
 
   function battle(elements) {
-    // const fighterOne = elements.chosenFightersArray[0];
-    // const fighterOneName =
-    //   elements.chosenFighters[0].children.children.className;
-    // console.log(fighterOneName);
-    // const fighterTwo = elements.chosenFightersArray[1];
-    // const fighterTwoName = fighterTwo.children.className;
-    // console.log(fighterTwoName);
     const fighterOneName =
       elements.chosenFighters.children[0].children[0].className;
     const fighterTwoName =
@@ -153,7 +146,6 @@
     // console.log(fightersInArena);
     const fighterOne = elements.chosenFighters.children[0];
     const fighterTwo = elements.chosenFighters.children[1];
-    console.log(fighterOne);
 
     let winner = "";
     let loser = "";
@@ -176,13 +168,13 @@
         addToBattleLog(
           `${fighterOneName} has failed to do the exercise, therefore ${fighterOneName} stops at ${fighterOneReps} reps `
         );
-        console.log(
-          `${fighterOneName} has failed to do the exercise, therefore ${fighterOneName} stops at ${fighterOneReps} reps `
-        );
+        // console.log(
+        //   `${fighterOneName} has failed to do the exercise, therefore ${fighterOneName} stops at ${fighterOneReps} reps `
+        // );
       } else {
         fighterOneReps++;
         addToBattleLog(`${fighterOneName} has successfully performed one rep!`);
-        console.log(`${fighterOneName} has successfully performed one rep!`);
+        // console.log(`${fighterOneName} has successfully performed one rep!`);
       }
 
       let randomNum2 = Math.floor(Math.random() * 25) + 1;
@@ -194,30 +186,30 @@
         addToBattleLog(
           `${fighterTwoName} has failed to do the exercise, therefore ${fighterTwoName} stops at ${fighterTwoReps} reps  `
         );
-        console.log(
-          `${fighterTwoName} has failed to do the exercise, therefore ${fighterTwoName} stops at ${fighterTwoReps} reps  `
-        );
+        // console.log(
+        //   `${fighterTwoName} has failed to do the exercise, therefore ${fighterTwoName} stops at ${fighterTwoReps} reps  `
+        // );
         continue;
       } else {
         fighterTwoReps++;
         addToBattleLog(`${fighterTwoName} has successfully performed one rep!`);
-        console.log(`${fighterTwoName} has successfully performed one rep!`);
+        // console.log(`${fighterTwoName} has successfully performed one rep!`);
       }
     }
     addToBattleLog(
       `The reps our fighters were able to do are: \n${fighterOneName} did: ${fighterOneReps} \n ${fighterTwoName} did: ${fighterTwoReps}`
     );
-    console.log(
-      `The reps our fighters were able to do are: \n${fighterOneName} did: ${fighterOneReps} \n ${fighterTwoName} did: ${fighterTwoReps}`
-    );
+    // console.log(
+    //   `The reps our fighters were able to do are: \n${fighterOneName} did: ${fighterOneReps} \n ${fighterTwoName} did: ${fighterTwoReps}`
+    // );
     if (fighterOneReps > fighterTwoReps) {
       addToBattleLog(`The winner of this fight is ${fighterOneName}`);
-      console.log(`The winner of this fight is ${fighterOneName}`);
+      // console.log(`The winner of this fight is ${fighterOneName}`);
       winner = fighterOne;
       loser = fighterTwo;
     } else if (fighterTwoReps > fighterOneReps) {
       addToBattleLog(`The winner of this fight is ${fighterTwoName}`);
-      console.log(`The winner of this fight is ${fighterTwoName}`);
+      // console.log(`The winner of this fight is ${fighterTwoName}`);
       winner = fighterTwo;
       loser = fighterOne;
     } else if ((fighterOneReps = fighterTwoReps)) {
@@ -228,7 +220,7 @@
         `Both fighters failed on the same rep, therefore its a draw!!!`
       );
     }
-    if ((winner.length = null)) {
+    if (winner.length === null) {
       console.log("No winner!");
       return;
     }
@@ -248,6 +240,7 @@
     elements.heading.style.display = "block";
     elements.startBtn.style.display = "none";
     elements.battleLog.innerHTML = "";
+    battleLogMessages = [];
 
     elements.categoriesArray.forEach((category) => {
       category.style.display = "none";
