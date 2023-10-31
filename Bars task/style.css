@@ -284,3 +284,16 @@ header h1 {
   scale: 1.5;
   box-shadow: 0px 0px 25px 3px rgb(59, 205, 18);
 }
+
+#battle-log {
+  font-size: 22px;
+  color: rgb(78, 238, 110);
+  background-color: black;
+  width: 400px;
+  height: 200px;
+  border: 1px solid #ccc;
+  overflow-y: scroll;
+  top: 35%;
+  left: 5%;
+  position: absolute;
+}

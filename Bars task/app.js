@@ -81,6 +81,14 @@
     }
   }
 
+  function addToBattleLog(message) {
+    let battleLog = document.getElementById("battle-log");
+    let newLogEntry = document.createElement("p");
+    newLogEntry.textContent = message;
+    battleLog.appendChild(newLogEntry);
+    battleLog.scrollTop = battleLog.scrollHeight;
+  }
+
   // function extractFighterNames(elements) {
   //   let fightersNamesArray = [];
   //   elements.chosenFightersArray.forEach((fighter) => {
@@ -129,11 +137,15 @@
       }
       if (randomNum1 < 4) {
         fighterOneFails++;
+        addToBattleLog(
+          `${fighterOneName} has failed to do the exercise, therefore ${fighterOneName} stops at ${fighterOneReps} reps `
+        );
         console.log(
           `${fighterOneName} has failed to do the exercise, therefore ${fighterOneName} stops at ${fighterOneReps} reps `
         );
       } else {
         fighterOneReps++;
+        addToBattleLog(`${fighterOneName} has successfully performed one rep!`);
         console.log(`${fighterOneName} has successfully performed one rep!`);
       }
 
@@ -143,12 +155,16 @@
       }
       if (randomNum2 < 3) {
         fighterTwoFails++;
+        addToBattleLog(
+          `${fighterTwoName} has failed to do the exercise, therefore ${fighterTwoName} stops at ${fighterTwoReps} reps  `
+        );
         console.log(
           `${fighterTwoName} has failed to do the exercise, therefore ${fighterTwoName} stops at ${fighterTwoReps} reps  `
         );
         continue;
       } else {
         fighterTwoReps++;
+        addToBattleLog(`${fighterTwoName} has successfully performed one rep!`);
         console.log(`${fighterTwoName} has successfully performed one rep!`);
       }
     }
@@ -186,6 +202,8 @@
     elements.arenaText.style.color = "black";
     elements.heading.style.display = "block";
     elements.startBtn.style.display = "none";
+    elements.battleLog.innerHTML = "";
+
     elements.categoriesArray.forEach((category) => {
       category.style.display = "none";
     });
@@ -249,6 +267,7 @@
     );
     const startBtn = document.getElementById("start-btn");
     const arenaWinner = document.getElementById("arenaWinner");
+    let battleLog = document.getElementById("battle-log");
 
     return {
       fightersArray,
@@ -266,6 +285,7 @@
       chosenCategorySpan,
       startBtn,
       arenaWinner,
+      battleLog,
     };
   }
 
