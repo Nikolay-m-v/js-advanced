@@ -1,6 +1,7 @@
 "use strict";
 (function main() {
   let inArena = false;
+  let battleLogMessages = [];
 
   function chooseFighter(elements, fighter) {
     if (inArena) {
@@ -82,11 +83,17 @@
   }
 
   function addToBattleLog(message) {
-    let battleLog = document.getElementById("battle-log");
-    let newLogEntry = document.createElement("p");
-    newLogEntry.textContent = message;
-    battleLog.appendChild(newLogEntry);
-    battleLog.scrollTop = battleLog.scrollHeight;
+    battleLogMessages.push(message);
+    // let battleLog = document.getElementById("battle-log");
+    // let newLogEntry = document.createElement("p");
+    // newLogEntry.textContent = message;
+    // battleLog.appendChild(newLogEntry);
+    // battleLog.scrollTop = battleLog.scrollHeight;
+
+    // setTimeout(function () {
+    //   battleLog.appendChild(newLogEntry);
+    //   battleLog.scrollTop = battleLogElement.scrollHeight;
+    // }, 1000);
   }
 
   function showBattleLog(elements) {
@@ -97,6 +104,25 @@
       elements.battleLog.style.display = "none";
       elements.showBattleLogBtn.textContent = "Show Battle Log!";
     }
+  }
+
+  function displayBattleLogMessages() {
+    let index = 0;
+
+    function displayNextMessage() {
+      if (index < battleLogMessages.length) {
+        let message = battleLogMessages[index];
+        var battleLogElement = document.getElementById("battle-log");
+        var newLogEntry = document.createElement("p");
+        newLogEntry.textContent = message;
+        battleLogElement.appendChild(newLogEntry);
+        battleLogElement.scrollTop = battleLogElement.scrollHeight;
+        index++;
+        setTimeout(displayNextMessage, 1000);
+      }
+    }
+
+    displayNextMessage();
   }
 
   // function extractFighterNames(elements) {
@@ -208,6 +234,7 @@
     }
     winner.classList.add("winner");
     loser.style.display = "none";
+    displayBattleLogMessages();
   }
 
   function resetBtnFunction(elements) {
