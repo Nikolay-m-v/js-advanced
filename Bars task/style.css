@@ -279,3 +279,7 @@ header h1 {
   cursor: pointer;
   display: none;
 }
+
+.winner {
+  scale: 1.5;
+}

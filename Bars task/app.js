@@ -104,8 +104,14 @@
       elements.chosenFighters.children[0].children[0].className;
     const fighterTwoName =
       elements.chosenFighters.children[1].children[0].className;
+    // const fightersInArena = Array.from(elements.chosenFighters);
+    // console.log(fightersInArena);
+    const fighterOne = elements.chosenFighters.children[0];
+    const fighterTwo = elements.chosenFighters.children[1];
+    console.log(fighterOne);
 
     let winner = "";
+    let loser = "";
 
     elements.startBtn.style.display = "none";
     let rounds = 25;
@@ -116,7 +122,7 @@
 
     for (let i = 0; i < rounds; i++) {
       let randomNum1 = Math.floor(Math.random() * 30) + 1;
-      if (fighterOneFails > 0) {
+      if (fighterOneFails >= 1) {
         continue;
       }
       if (randomNum1 < 4) {
@@ -130,15 +136,15 @@
       }
 
       let randomNum2 = Math.floor(Math.random() * 25) + 1;
-      if (fighterTwoFails > 0) {
-        return;
+      if (fighterTwoFails >= 1) {
+        continue;
       }
       if (randomNum2 < 3) {
         fighterTwoFails++;
         console.log(
           `${fighterTwoName} has failed to do the exercise, therefore ${fighterTwoName} stops at ${fighterTwoReps} reps  `
         );
-        return;
+        continue;
       } else {
         fighterTwoReps++;
         console.log(`${fighterTwoName} has successfully performed one rep!`);
@@ -149,24 +155,20 @@
     );
     if (fighterOneReps > fighterTwoReps) {
       console.log(`The winner of this fight is ${fighterOneName}`);
-      winner = fighterOneName;
+      winner = fighterOne;
+      loser = fighterTwo;
     } else if (fighterTwoReps > fighterOneReps) {
       console.log(`The winner of this fight is ${fighterTwoName}`);
+      winner = fighterTwo;
+      loser = fighterOne;
     } else if ((fighterOneReps = fighterTwoReps)) {
       console.log(
         `Both fighters failed on the same rep, therefore its a draw!!!`
       );
     }
-    if (winner === "william") {
-      const williamAsWinner = document.querySelector(".william");
-      williamAsWinner.classList.add("winner");
-    } else if (winner === "nick") {
-      const nickAsWinner = document.querySelector(".nick");
-      nickAsWinner.classList.add("winner");
-    } else if (winner === "veso") {
-      const vesoAsWinner = document.querySelector(".veso");
-      vesoAsWinner.classList.add("winner");
-    }
+
+    winner.classList.add("winner");
+    loser.style.display = "none";
   }
 
   function resetBtnFunction(elements) {
@@ -191,7 +193,8 @@
       elements.fighters.appendChild(fighter);
     });
     Array.from(elements.fighters.children).forEach((child) => {
-      child.classList.remove("face-img-arena");
+      child.style.display = "block";
+      child.classList.remove("face-img-arena", "winner");
     });
   }
 
@@ -240,6 +243,7 @@
       document.querySelectorAll(".arena-category")
     );
     const startBtn = document.getElementById("start-btn");
+    const arenaWinner = document.getElementById("arenaWinner");
 
     return {
       fightersArray,
@@ -256,6 +260,7 @@
       arenaCategories,
       chosenCategorySpan,
       startBtn,
+      arenaWinner,
     };
   }
 
