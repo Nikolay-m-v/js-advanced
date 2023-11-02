@@ -1,8 +1,14 @@
 "use strict";
-(function main() {
-  function addGift(elements) {
-    document.createElement("li");
-    li = elements.giftName.value;
+function solution() {
+  const giftName = document.querySelector("input");
+  const addBtn = document.querySelector("button");
+  addBtn.addEventListener("click", add);
+
+  function add() {
+    const gift = giftName.value;
+    const ulList = document.querySelectorAll("ul")[0];
+
+    const li = document.createElement("li");
     li.classList.add("gift");
     li.textContent = gift;
 
@@ -11,25 +17,36 @@
     sendBtn.textContent = "Send";
 
     const discardBtn = document.createElement("button");
-    discardBtn.id = "discardBtn";
+    discardBtn.id = "discardButton";
     discardBtn.textContent = "Discard";
+
+    ulList.appendChild(li);
+    ulList.appendChild(sendBtn);
+    ulList.appendChild(discardBtn);
+
+    const listOfGifts = Array.from(document.querySelectorAll(".gift"));
+    listOfGifts
+      .sort((a, b) => a.textContent.localeCompare(b.textContent))
+      .map((node) => ulList.appendChild(node));
+
+    giftName.value = "";
+
+    sendBtn.addEventListener("click", send);
+
+    function send() {
+      const ulSent = document.querySelectorAll("ul")[1];
+      ulSent.appendChild(li);
+      sendBtn.remove();
+      discardBtn.remove();
+    }
+
+    discardBtn.addEventListener("click", discard);
+
+    function discard() {
+      const ulDiscard = document.querySelectorAll("ul")[2];
+      ulDiscard.appendChild(li);
+      sendBtn.remove();
+      discardBtn.remove();
+    }
   }
-
-  function EventHandling(elements) {
-    elements.addGiftBtn.addEventListener("click", () => {
-      addGift();
-    });
-  }
-
-  function getElements() {
-    const addGiftBtn = document.querySelector("button");
-    const giftName = document.querySelector("input");
-
-    return {
-      addGiftBtn,
-      giftName,
-    };
-  }
-
-  EventHandling(getElements());
-})();
+}
