@@ -73,11 +73,16 @@ function solve() {
 
     articleElement.appendChild(h1Title);
     articleElement.appendChild(pCategory);
-    articleElement.appendChild(strongCategory);
+    pCategory.appendChild(strongCategory);
     articleElement.appendChild(pCreator);
-    articleElement.appendChild(strongCreator);
+    pCreator.appendChild(strongCreator);
     articleElement.appendChild(pContent);
     articleElement.appendChild(divButtons);
     articleSection.appendChild(articleElement);
+
+    creator.textContent = "";
+    category.textContent = "";
+    title.textContent = "";
+    creator.textContent = "";
   }
 }
