@@ -17,6 +17,10 @@ function solve() {
     const category = inputCategory.value;
     const content = inputContent.value;
 
+    if (!creator || !title || !category || !content) {
+      throw new Error("All fields must be filled out.");
+    }
+
     const articleElement = document.createElement("article");
 
     const h1Title = document.createElement("h1");
@@ -80,9 +84,9 @@ function solve() {
     articleElement.appendChild(divButtons);
     articleSection.appendChild(articleElement);
 
-    creator.textContent = "";
-    category.textContent = "";
-    title.textContent = "";
-    creator.textContent = "";
+    inputCreator.value = "";
+    inputCategory.value = "";
+    inputTitle.value = "";
+    inputContent.value = "";
   }
 }
