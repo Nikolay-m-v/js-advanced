@@ -1,0 +1,22 @@
+body {
+  background-color: rgb(18, 18, 64);
+  color: white;
+  display: flex;
+}
+
+#wrapper {
+  margin: 0 auto;
+  width: 1200px;
+  display: flex;
+  flex-flow: column;
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.competitors {
+  display: flex;
+  width: 800px;
+  justify-content: space-between;
+  align-items: center;
+}
