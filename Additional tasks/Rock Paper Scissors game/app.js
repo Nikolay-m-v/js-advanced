@@ -28,6 +28,30 @@
     }
   }
 
+  function paperButtonFunction(elements) {
+    generateComputerChoice(elements);
+    let playerChoice = "paper";
+    if (playerChoice === computerGeneratedChoice) {
+      elements.titleAnnouncer[0].textContent = "Draw!";
+    } else if (computerGeneratedChoice === "rock") {
+      elements.titleAnnouncer[0].textContent = "Player Wins!";
+    } else {
+      elements.titleAnnouncer[0].textContent = "Computer Wins!";
+    }
+  }
+
+  function scissorsButtonFunction(elements) {
+    generateComputerChoice(elements);
+    let playerChoice = "scissors";
+    if (playerChoice === computerGeneratedChoice) {
+      elements.titleAnnouncer[0].textContent = "Draw!";
+    } else if (computerGeneratedChoice === "rock") {
+      elements.titleAnnouncer[0].textContent = "Computer Wins!";
+    } else {
+      elements.titleAnnouncer[0].textContent = "Player Wins!";
+    }
+  }
+
   function generateComputerChoice(elements) {
     let numberDefiningChoice = Math.floor(Math.random() * 30) + 1;
     if (numberDefiningChoice <= 10) {
@@ -47,6 +71,14 @@
 
     elements.rockButton[0].addEventListener("click", () => {
       rockButtonFunction(elements);
+    });
+
+    elements.paperButton[0].addEventListener("click", () => {
+      paperButtonFunction(elements);
+    });
+
+    elements.scissorsButton[0].addEventListener("click", () => {
+      scissorsButtonFunction(elements);
     });
   }
 
