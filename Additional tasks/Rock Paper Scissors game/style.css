@@ -10,7 +10,7 @@ body {
   width: 1200px;
   display: flex;
   flex-flow: column;
-  gap: 150px;
+  gap: 120px;
   justify-self: center;
   justify-content: center;
   align-items: center;
@@ -39,12 +39,70 @@ body {
   margin: 2px 0;
 }
 
-#play {
+button {
   background-color: rgb(57, 110, 92);
   font-size: 18px;
   color: white;
   padding: 6px 16px;
   border-radius: 8px;
+}
+
+#player-choices {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+.available-choices {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+.available-choices img {
+  width: 180px;
+  transform: scaleX(-1);
+}
+
+.images {
+  display: flex;
+  gap: 200px;
+  width: 950px;
+  justify-content: space-between;
+}
+
+.hidden-img {
+  display: none;
+}
+
+.buttonChoices {
+  display: flex;
+  width: 900px;
+  justify-content: space-between;
+}
+
+.buttonChoices button {
+  padding: 8px 32px;
+}
+
+.rockChoice {
+  display: none;
+  align-self: flex-start;
+  justify-items: flex-start;
+}
+
+.paperChoice {
+  display: none;
+  align-self: center;
+  justify-self: center;
+  margin-left: 50px;
+}
+
+.scissorsChoice {
+  display: none;
+  align-self: flex-end;
 }
 
 /* .competitors:nth-child() {

@@ -22,7 +22,37 @@
       <div id="gameTitle">
         <h1 class="title announcer">Rock Paper and Scissors</h1>
       </div>
+      <div id="player-choices">
+        <div class="chosen"></div>
+        <div class="available-choices">
+          <div class="images">
+            <img
+              src="assets/rock.png"
+              alt="image of hand shaping a rock"
+              class="hidden-img"
+            />
+            <img
+              src="assets/paper.png"
+              alt="image of hand shaping paper"
+              class="hidden-img"
+            />
+            <img
+              src="assets/scissors.png"
+              alt="image of hand shaping scissors"
+              class="hidden-img"
+            />
+          </div>
+          <div class="buttonChoices">
+            <button class="rockChoice">rock</button>
+            <button class="paperChoice">paper</button>
+            <button class="scissorsChoice">scissors</button>
+          </div>
+        </div>
+        <img src="" alt="" class="playerChoice" />
+        <img src="" alt="" class="ComputerChoice" />
+      </div>
       <button id="play">Let's Play</button>
+      <script src="app.js"></script>
     </div>
   </body>
 </html>
