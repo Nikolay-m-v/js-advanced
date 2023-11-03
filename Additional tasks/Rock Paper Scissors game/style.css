@@ -20,3 +20,25 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
+#player {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+#computer {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.competitors h1 {
+  margin: 2px 0;
+}
+
+/* .competitors:nth-child() {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+} */
