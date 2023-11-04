@@ -86,11 +86,11 @@
   }
 
   function generateComputerChoice(elements) {
-    let numberDefiningChoice = Math.floor(Math.random() * 30) + 1;
-    if (numberDefiningChoice <= 10) {
+    let numberDefiningChoice = Math.floor(Math.random() * 3) + 1;
+    if (numberDefiningChoice === 1) {
       computerGeneratedChoice = "rock";
       elements.computerImage[0].src = "assets/rock.png";
-    } else if (numberDefiningChoice > 10 && numberDefiningChoice <= 20) {
+    } else if (numberDefiningChoice === 2) {
       computerGeneratedChoice = "paper";
       elements.computerImage[0].src = "assets/paper.png";
     } else {
