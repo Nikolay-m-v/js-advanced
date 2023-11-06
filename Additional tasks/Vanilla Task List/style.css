@@ -17,7 +17,7 @@ body {
 }
 
 .input-styling {
-  padding: 12px 0;
+  padding: 10px 0;
   width: 250px;
 }
 
@@ -29,6 +29,7 @@ body {
 .all-list-styling {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 300px;
   height: 30px;
   text-align: start;
@@ -38,4 +39,51 @@ body {
   margin: 5px 0;
   padding-left: 5px;
   font-weight: 600;
+}
+
+.input-form {
+  position: relative;
+  display: flex;
+  gap: 10px;
+}
+
+.add-task {
+  border: none;
+  cursor: pointer;
+  color: orange;
+  position: absolute;
+  right: 134px;
+  top: 11px;
+}
+
+.fas {
+  scale: 1.6;
+}
+
+.filter-todo {
+  height: 100%;
+  padding-left: 10px;
+  color: orange;
+  font-weight: bold;
+}
+
+.complete-btn {
+  padding: 8px;
+  background-color: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.complete-btn .fas,
+.delete-btn .fas {
+  scale: 0.8;
+}
+
+.delete-btn {
+  padding: 8px;
+  background-color: orange;
+  color: white;
+  border: none;
+  cursor: pointer;
 }

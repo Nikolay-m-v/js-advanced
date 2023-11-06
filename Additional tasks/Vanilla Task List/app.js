@@ -1,10 +1,23 @@
 "use strict";
 (function main() {
   function addTask(elements) {
+    if (!inputText.value) {
+      return;
+    }
     const li = document.createElement("li");
+    const completeButton = document.createElement("button");
+    const deleteButton = document.createElement("button");
+    const buttonsHolder = document.createElement("div");
+    completeButton.classList.add("complete-btn");
+    completeButton.innerHTML = `<i class="fas fa-check"></i>`;
+    deleteButton.classList.add("delete-btn");
+    deleteButton.innerHTML = `<i class="fas fa-trash"></i>`;
     li.textContent = inputText.value;
     li.classList.add("all-list-styling");
     elements.allListItems.appendChild(li);
+    li.appendChild(buttonsHolder);
+    buttonsHolder.appendChild(completeButton);
+    buttonsHolder.appendChild(deleteButton);
   }
 
   function eventHandling(elements) {
