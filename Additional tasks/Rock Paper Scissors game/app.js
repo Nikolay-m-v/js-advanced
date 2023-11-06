@@ -5,7 +5,6 @@
   let computerGeneratedChoice = "";
   let playerWin = false;
   let computerWin = false;
-  let isDraw = false;
 
   function showImages(elements) {
     elements.rockButton.style.display = "block";
@@ -22,7 +21,7 @@
     elements.playButton.style.display = "none";
   }
 
-  function classRemoval(elements) {
+  function removeClass(elements) {
     elements.computerImage.classList.remove("computer-image");
     Array.from(document.getElementsByClassName("hidden-img")).forEach((img) => {
       img.classList.remove("hidden-img");
@@ -33,7 +32,7 @@
     showImages(elements);
     renameTitle(elements);
     hideElements(elements);
-    classRemoval(elements);
+    removeClass(elements);
   }
 
   function handleRockChoice(elements) {
@@ -94,7 +93,6 @@
     }
     playerWin = false;
     computerWin = false;
-    isDraw = false;
   }
 
   function generateComputerChoice(elements) {
