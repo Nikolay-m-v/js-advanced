@@ -8,9 +8,6 @@
   let isDraw = false;
 
   function showImages(elements) {
-    Array.from(document.getElementsByClassName("hidden-img")).forEach((img) => {
-      img.classList.remove("hidden-img");
-    });
     elements.rockButton.style.display = "block";
     elements.paperButton.style.display = "block";
     elements.scissorsButton.style.display = "block";
@@ -27,6 +24,9 @@
 
   function classRemoval(elements) {
     elements.computerImage.classList.remove("computer-image");
+    Array.from(document.getElementsByClassName("hidden-img")).forEach((img) => {
+      img.classList.remove("hidden-img");
+    });
   }
 
   function startGame(elements) {
