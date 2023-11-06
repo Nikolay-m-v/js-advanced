@@ -10,8 +10,8 @@
   const pScore = document.getElementsByClassName("player-points");
   const cScore = document.getElementsByClassName("computer-points");
 
-  function playButtonFunction(elements) {
-    elements.imagesArray.forEach((img) => {
+  function startGame(elements) {
+    Array.from(document.getElementsByClassName("hidden-img")).forEach((img) => {
       img.classList.remove("hidden-img");
     });
     elements.rockButton[0].style.display = "block";
@@ -102,7 +102,7 @@
 
   function eventHandling(elements) {
     elements.playButton.addEventListener("click", () => {
-      playButtonFunction(elements);
+      startGame(elements);
     });
 
     elements.rockButton[0].addEventListener("click", () => {
@@ -127,7 +127,6 @@
     const rockButton = document.getElementsByClassName("rockChoice");
     const paperButton = document.getElementsByClassName("paperChoice");
     const scissorsButton = document.getElementsByClassName("scissorsChoice");
-    const imagesArray = Array.from(document.querySelectorAll(".hidden-img"));
     const images = document.getElementsByClassName("images");
     // const pScore = document.getElementsByClassName("player-points");
     // const cScore = document.getElementsByClassName("computer-points");
@@ -145,7 +144,6 @@
       rockButton,
       paperButton,
       scissorsButton,
-      imagesArray,
       images,
       // pScore,
       // cScore,
