@@ -7,9 +7,6 @@
   let computerWin = false;
   let isDraw = false;
 
-  const pScore = document.getElementsByClassName("player-points");
-  const cScore = document.getElementsByClassName("computer-points");
-
   function startGame(elements) {
     Array.from(document.getElementsByClassName("hidden-img")).forEach((img) => {
       img.classList.remove("hidden-img");
@@ -19,8 +16,8 @@
     elements.scissorsButton.style.display = "block";
     elements.playButton.style.display = "none";
     elements.gameTitle.textContent = "Choose an option";
-    elements.computerStartingImage.classList.remove("computer-image");
-    elements.computerStartingImage.style.display = "block";
+    elements.computerImage.classList.remove("computer-image");
+    elements.computerImage.style.display = "block";
   }
 
   function rockButtonFunction(elements) {
@@ -71,15 +68,13 @@
     }
   }
 
-  function scoreUpdate() {
+  function scoreUpdate(elements) {
     if (playerWin) {
       playerScore++;
-      pScore[0].textContent = playerScore;
+      elements.pScore.textContent = playerScore;
     } else if (computerWin) {
       computerScore++;
-      cScore[0].textContent = computerScore;
-    } else if (isDraw) {
-      return;
+      elements.cScore.textContent = computerScore;
     }
     playerWin = false;
     computerWin = false;
@@ -108,17 +103,17 @@
 
     elements.rockButton.addEventListener("click", () => {
       rockButtonFunction(elements);
-      scoreUpdate(playerWin);
+      scoreUpdate();
     });
 
     elements.paperButton.addEventListener("click", () => {
       paperButtonFunction(elements);
-      scoreUpdate(playerWin);
+      scoreUpdate();
     });
 
     elements.scissorsButton.addEventListener("click", () => {
       scissorsButtonFunction(elements);
-      scoreUpdate(playerWin);
+      scoreUpdate();
     });
   }
 
@@ -129,13 +124,10 @@
     const paperButton = document.getElementById("paperChoice");
     const scissorsButton = document.getElementById("scissorsChoice");
     const images = document.getElementsByClassName("images");
-    // const pScore = document.getElementsByClassName("player-points");
-    // const cScore = document.getElementsByClassName("computer-points");
-    const computerStartingImage = document.getElementById("computerImage");
+    const pScore = document.getElementById("playerScore");
+    const cScore = document.getElementById("computerScore");
+    const computerImage = document.getElementById("computerImage");
     const playerImage = document.getElementById("playerImage");
-    const computerImage = document.getElementsByClassName(
-      "computerChosenImage"
-    );
 
     return {
       playButton,
@@ -144,9 +136,8 @@
       paperButton,
       scissorsButton,
       images,
-      // pScore,
-      // cScore,
-      computerStartingImage,
+      pScore,
+      cScore,
       playerImage,
       computerImage,
     };
