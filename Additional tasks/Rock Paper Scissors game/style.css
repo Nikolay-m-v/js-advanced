@@ -47,13 +47,6 @@ button {
   border-radius: 8px;
 }
 
-.player-choices {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow: column;
-}
-
 .available-choices {
   display: flex;
   justify-content: center;
