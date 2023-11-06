@@ -103,17 +103,17 @@
 
     elements.rockButton.addEventListener("click", () => {
       rockButtonFunction(elements);
-      scoreUpdate();
+      scoreUpdate(elements);
     });
 
     elements.paperButton.addEventListener("click", () => {
       paperButtonFunction(elements);
-      scoreUpdate();
+      scoreUpdate(elements);
     });
 
     elements.scissorsButton.addEventListener("click", () => {
       scissorsButtonFunction(elements);
-      scoreUpdate();
+      scoreUpdate(elements);
     });
   }
 
@@ -123,7 +123,6 @@
     const rockButton = document.getElementById("rockChoice");
     const paperButton = document.getElementById("paperChoice");
     const scissorsButton = document.getElementById("scissorsChoice");
-    const images = document.getElementsByClassName("images");
     const pScore = document.getElementById("playerScore");
     const cScore = document.getElementById("computerScore");
     const computerImage = document.getElementById("computerImage");
@@ -135,7 +134,6 @@
       rockButton,
       paperButton,
       scissorsButton,
-      images,
       pScore,
       cScore,
       playerImage,
