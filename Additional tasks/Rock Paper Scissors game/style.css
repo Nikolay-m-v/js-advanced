@@ -91,24 +91,6 @@ button {
   padding: 8px 32px;
 }
 
-.rockChoice {
-  display: none;
-  align-self: flex-start;
-  justify-items: flex-start;
-}
-
-.paperChoice {
-  display: none;
-  align-self: center;
-  justify-self: center;
-  margin-left: 50px;
-}
-
-.scissorsChoice {
-  display: none;
-  align-self: flex-end;
-}
-
 .computer-image {
   transform: scaleX(1);
   display: none;
