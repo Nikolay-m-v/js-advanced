@@ -7,20 +7,36 @@
   let computerWin = false;
   let isDraw = false;
 
-  function startGame(elements) {
+  function showImages(elements) {
     Array.from(document.getElementsByClassName("hidden-img")).forEach((img) => {
       img.classList.remove("hidden-img");
     });
     elements.rockButton.style.display = "block";
     elements.paperButton.style.display = "block";
     elements.scissorsButton.style.display = "block";
-    elements.playButton.style.display = "none";
-    elements.gameTitle.textContent = "Choose an option";
-    elements.computerImage.classList.remove("computer-image");
     elements.computerImage.style.display = "block";
   }
 
-  function rockButtonFunction(elements) {
+  function renameTitle(elements) {
+    elements.gameTitle.textContent = "Choose an option";
+  }
+
+  function hideElements(elements) {
+    elements.playButton.style.display = "none";
+  }
+
+  function classRemoval(elements) {
+    elements.computerImage.classList.remove("computer-image");
+  }
+
+  function startGame(elements) {
+    showImages(elements);
+    renameTitle(elements);
+    hideElements(elements);
+    classRemoval(elements);
+  }
+
+  function handleRockChoice(elements) {
     elements.playerImage.src = "assets/rock.png";
     generateComputerChoice(elements);
     let playerChoice = "rock";
@@ -36,7 +52,7 @@
     }
   }
 
-  function paperButtonFunction(elements) {
+  function handlePaperChoice(elements) {
     generateComputerChoice(elements);
     elements.playerImage.src = "assets/paper.png";
     let playerChoice = "paper";
@@ -52,7 +68,7 @@
     }
   }
 
-  function scissorsButtonFunction(elements) {
+  function handleScissorsChoice(elements) {
     elements.playerImage.src = "assets/scissors.png";
     generateComputerChoice(elements);
     let playerChoice = "scissors";
@@ -102,17 +118,17 @@
     });
 
     elements.rockButton.addEventListener("click", () => {
-      rockButtonFunction(elements);
+      handleRockChoice(elements);
       scoreUpdate(elements);
     });
 
     elements.paperButton.addEventListener("click", () => {
-      paperButtonFunction(elements);
+      handlePaperChoice(elements);
       scoreUpdate(elements);
     });
 
     elements.scissorsButton.addEventListener("click", () => {
-      scissorsButtonFunction(elements);
+      handleScissorsChoice(elements);
       scoreUpdate(elements);
     });
   }
