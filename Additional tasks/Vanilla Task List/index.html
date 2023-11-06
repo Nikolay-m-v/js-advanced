@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-wrapper">
+      <h1 class="to-do-list">Nick's Todo List</h1>
+      <form action="">
+        <input id="inputText" class="input-styling" type="text" />
+        <button id="submitButton" class="add-task" type="submit">
+          <i class="plus-icon"></i>
+        </button>
+      </form>
+      <div class="todo-container">
+        <ul id="allListItems"></ul>
+        <ul id="completed"></ul>
+        <ul id="notCompleted"></ul>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

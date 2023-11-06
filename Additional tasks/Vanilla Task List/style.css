@@ -1,0 +1,22 @@
+body {
+  background-color: rgb(217, 189, 63);
+  font-family: sans-serif;
+}
+
+.page-wrapper {
+  margin: 0 auto;
+  width: 1200px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.to-do-list {
+  color: white;
+}
+
+.input-styling {
+  padding: 12px 0;
+  width: 300px;
+}
