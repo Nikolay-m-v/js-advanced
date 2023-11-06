@@ -14,58 +14,59 @@
     Array.from(document.getElementsByClassName("hidden-img")).forEach((img) => {
       img.classList.remove("hidden-img");
     });
-    elements.rockButton[0].style.display = "block";
-    elements.paperButton[0].style.display = "block";
-    elements.scissorsButton[0].style.display = "block";
+    elements.rockButton.style.display = "block";
+    elements.paperButton.style.display = "block";
+    elements.scissorsButton.style.display = "block";
     elements.playButton.style.display = "none";
-    elements.titleAnnouncer[0].textContent = "Choose an option";
-    elements.computerStartingImage[0].style.display = "block";
+    elements.gameTitle.textContent = "Choose an option";
+    elements.computerStartingImage.classList.remove("computer-image");
+    elements.computerStartingImage.style.display = "block";
   }
 
   function rockButtonFunction(elements) {
-    elements.chosenPlayerImage[0].src = "assets/rock.png";
+    elements.playerImage.src = "assets/rock.png";
     generateComputerChoice(elements);
     let playerChoice = "rock";
     if (playerChoice === computerGeneratedChoice) {
-      elements.titleAnnouncer[0].textContent = "Draw!";
+      elements.gameTitle.textContent = "Draw!";
       isDraw = true;
     } else if (computerGeneratedChoice === "paper") {
-      elements.titleAnnouncer[0].textContent = "Computer Wins!";
+      elements.gameTitle.textContent = "Computer Wins!";
       computerWin = true;
     } else {
-      elements.titleAnnouncer[0].textContent = "Player Wins!";
+      elements.gameTitle.textContent = "Player Wins!";
       playerWin = true;
     }
   }
 
   function paperButtonFunction(elements) {
     generateComputerChoice(elements);
-    elements.chosenPlayerImage[0].src = "assets/paper.png";
+    elements.playerImage.src = "assets/paper.png";
     let playerChoice = "paper";
     if (playerChoice === computerGeneratedChoice) {
-      elements.titleAnnouncer[0].textContent = "Draw!";
+      elements.gameTitle.textContent = "Draw!";
       isDraw = true;
     } else if (computerGeneratedChoice === "rock") {
-      elements.titleAnnouncer[0].textContent = "Player Wins!";
+      elements.gameTitle.textContent = "Player Wins!";
       playerWin = true;
     } else {
-      elements.titleAnnouncer[0].textContent = "Computer Wins!";
+      elements.gameTitle.textContent = "Computer Wins!";
       computerWin = true;
     }
   }
 
   function scissorsButtonFunction(elements) {
-    elements.chosenPlayerImage[0].src = "assets/scissors.png";
+    elements.playerImage.src = "assets/scissors.png";
     generateComputerChoice(elements);
     let playerChoice = "scissors";
     if (playerChoice === computerGeneratedChoice) {
-      elements.titleAnnouncer[0].textContent = "Draw!";
+      elements.gameTitle.textContent = "Draw!";
       isDraw = true;
     } else if (computerGeneratedChoice === "rock") {
-      elements.titleAnnouncer[0].textContent = "Computer Wins!";
+      elements.gameTitle.textContent = "Computer Wins!";
       computerWin = true;
     } else {
-      elements.titleAnnouncer[0].textContent = "Player Wins!";
+      elements.gameTitle.textContent = "Player Wins!";
       playerWin = true;
     }
   }
@@ -89,13 +90,13 @@
     let numberDefiningChoice = Math.floor(Math.random() * 3) + 1;
     if (numberDefiningChoice === 1) {
       computerGeneratedChoice = "rock";
-      elements.computerImage[0].src = "assets/rock.png";
+      elements.computerImage.src = "assets/rock.png";
     } else if (numberDefiningChoice === 2) {
       computerGeneratedChoice = "paper";
-      elements.computerImage[0].src = "assets/paper.png";
+      elements.computerImage.src = "assets/paper.png";
     } else {
       computerGeneratedChoice = "scissors";
-      elements.computerImage[0].src = "assets/scissors.png";
+      elements.computerImage.src = "assets/scissors.png";
     }
     return computerGeneratedChoice;
   }
@@ -105,17 +106,17 @@
       startGame(elements);
     });
 
-    elements.rockButton[0].addEventListener("click", () => {
+    elements.rockButton.addEventListener("click", () => {
       rockButtonFunction(elements);
       scoreUpdate(playerWin);
     });
 
-    elements.paperButton[0].addEventListener("click", () => {
+    elements.paperButton.addEventListener("click", () => {
       paperButtonFunction(elements);
       scoreUpdate(playerWin);
     });
 
-    elements.scissorsButton[0].addEventListener("click", () => {
+    elements.scissorsButton.addEventListener("click", () => {
       scissorsButtonFunction(elements);
       scoreUpdate(playerWin);
     });
@@ -123,24 +124,22 @@
 
   function getElements() {
     const playButton = document.getElementById("play");
-    const titleAnnouncer = document.getElementsByClassName("announcer");
-    const rockButton = document.getElementsByClassName("rockChoice");
-    const paperButton = document.getElementsByClassName("paperChoice");
-    const scissorsButton = document.getElementsByClassName("scissorsChoice");
+    const gameTitle = document.getElementById("gameTitle");
+    const rockButton = document.getElementById("rockChoice");
+    const paperButton = document.getElementById("paperChoice");
+    const scissorsButton = document.getElementById("scissorsChoice");
     const images = document.getElementsByClassName("images");
     // const pScore = document.getElementsByClassName("player-points");
     // const cScore = document.getElementsByClassName("computer-points");
-    const computerStartingImage = document.getElementsByClassName(
-      "computer-starting-image"
-    );
-    const chosenPlayerImage = document.getElementsByClassName("chosenByPlayer");
+    const computerStartingImage = document.getElementById("computerImage");
+    const playerImage = document.getElementById("playerImage");
     const computerImage = document.getElementsByClassName(
       "computerChosenImage"
     );
 
     return {
       playButton,
-      titleAnnouncer,
+      gameTitle,
       rockButton,
       paperButton,
       scissorsButton,
@@ -148,7 +147,7 @@
       // pScore,
       // cScore,
       computerStartingImage,
-      chosenPlayerImage,
+      playerImage,
       computerImage,
     };
   }

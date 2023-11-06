@@ -61,7 +61,7 @@ button {
   flex-flow: column;
 }
 
-.available-choices img {
+.chosen-by-player {
   width: 180px;
   transform: scaleX(-1);
 }
@@ -71,6 +71,10 @@ button {
   gap: 200px;
   width: 950px;
   justify-content: space-between;
+}
+
+.images img {
+  width: 180px;
 }
 
 .hidden-img {
@@ -112,13 +116,8 @@ button {
   display: none;
   align-self: flex-end;
 }
-.available-choices .computer-starting-image {
+
+.computer-image {
   transform: scaleX(1);
   display: none;
 }
-
-/* .competitors:nth-child() {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-} */

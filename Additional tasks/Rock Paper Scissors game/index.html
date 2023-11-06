@@ -18,10 +18,7 @@
           <h1 class="computer-points">0</h1>
         </div>
       </div>
-
-      <div id="gameTitle">
-        <h1 id="title announcer">Rock Paper and Scissors</h1>
-      </div>
+      <h1 id="gameTitle">Rock Paper and Scissors</h1>
       <div id="player-choices">
         <div class="chosen"></div>
         <div class="available-choices">
@@ -29,7 +26,8 @@
             <img
               src="assets/rock.png"
               alt="image of hand shaping a rock"
-              class="hidden-img chosenByPlayer"
+              id="playerImage"
+              class="hidden-img chosen-by-player"
             />
             <img
               src="assets/paper.png"
@@ -38,8 +36,9 @@
             />
             <img
               src="assets/rock.png"
-              alt=""
-              class="computer-starting-image computerChosenImage"
+              alt="image of hand shaping rock flipped"
+              id="computerImage"
+              class="computer-image computer-chosen-image"
             />
             <img
               src="assets/scissors.png"
@@ -48,9 +47,9 @@
             />
           </div>
           <div class="buttonChoices">
-            <button class="rockChoice">rock</button>
-            <button class="paperChoice">paper</button>
-            <button class="scissorsChoice">scissors</button>
+            <button id="rockChoice">rock</button>
+            <button id="paperChoice">paper</button>
+            <button id="scissorsChoice">scissors</button>
           </div>
         </div>
         <img src="" alt="" class="playerChoice" />
