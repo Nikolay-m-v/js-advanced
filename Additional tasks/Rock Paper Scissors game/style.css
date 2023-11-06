@@ -81,14 +81,6 @@ button {
   display: none;
 }
 
-.hidden-img-paper {
-  display: none;
-}
-
-.hidden-img-scissors {
-  display: none;
-}
-
 .buttonChoices {
   display: flex;
   width: 900px;
