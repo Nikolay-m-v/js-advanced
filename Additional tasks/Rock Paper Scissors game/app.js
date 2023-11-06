@@ -83,7 +83,7 @@
     }
   }
 
-  function scoreUpdate(elements) {
+  function updateScore(elements) {
     if (playerWin) {
       playerScore++;
       elements.pScore.textContent = playerScore;
@@ -117,17 +117,17 @@
 
     elements.rockButton.addEventListener("click", () => {
       handleRockChoice(elements);
-      scoreUpdate(elements);
+      updateScore(elements);
     });
 
     elements.paperButton.addEventListener("click", () => {
       handlePaperChoice(elements);
-      scoreUpdate(elements);
+      updateScore(elements);
     });
 
     elements.scissorsButton.addEventListener("click", () => {
       handleScissorsChoice(elements);
-      scoreUpdate(elements);
+      updateScore(elements);
     });
   }
 
