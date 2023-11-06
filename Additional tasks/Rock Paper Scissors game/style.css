@@ -47,7 +47,7 @@ button {
   border-radius: 8px;
 }
 
-#player-choices {
+.player-choices {
   display: flex;
   justify-content: center;
   align-items: center;
