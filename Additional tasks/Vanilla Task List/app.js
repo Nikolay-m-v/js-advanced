@@ -38,6 +38,8 @@
 
   function completeTask(elements, li) {
     elements.completedListItems.appendChild(li);
+    li.style.textDecoration = "line-through";
+    li.style.opacity = "0.6";
   }
 
   function changeOption(elements) {
