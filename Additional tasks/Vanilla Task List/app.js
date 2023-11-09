@@ -23,7 +23,9 @@
     buttonsHolder.appendChild(completeButton);
     buttonsHolder.appendChild(deleteButton);
 
-    completeButton.addEventListener("click", () => {});
+    completeButton.addEventListener("click", () => {
+      completeTask(elements, li);
+    });
     deleteButton.addEventListener("click", () => {
       deleteTask(elements, li);
     });
@@ -31,6 +33,10 @@
 
   function deleteTask(elements, li) {
     elements.deletedListItems.appendChild(li);
+  }
+
+  function completeTask(elements, li) {
+    elements.completedListItems.appendChild(li);
   }
 
   function changeOption(elements) {
