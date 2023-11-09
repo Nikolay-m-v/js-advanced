@@ -33,7 +33,7 @@
   }
 
   function deleteTask(elements, li) {
-    elements.deletedListItems.appendChild(li);
+    elements.uncompletedListItems.appendChild(li);
   }
 
   function completeTask(elements, li) {
@@ -50,17 +50,17 @@
       case "completed":
         elements.allListItems.style.display = "none";
         elements.completedListItems.style.display = "block";
-        elements.deletedListItems.style.display = "none";
+        elements.uncompletedListItems.style.display = "none";
         break;
       case "uncompleted":
         elements.allListItems.style.display = "none";
         elements.completedListItems.style.display = "none";
-        elements.deletedListItems.style.display = "block";
+        elements.uncompletedListItems.style.display = "block";
         break;
       default: // "all"
         elements.allListItems.style.display = "block";
         elements.completedListItems.style.display = "none";
-        elements.deletedListItems.style.display = "none";
+        elements.uncompletedListItems.style.display = "none";
     }
   }
 
@@ -80,7 +80,9 @@
     const submitButton = document.getElementById("submitButton");
     const allListItems = document.getElementById("allListItems");
     const completedListItems = document.getElementById("completed");
-    const deletedListItems = document.getElementById("deletedListItems");
+    const uncompletedListItems = document.getElementById(
+      "uncompletedListItems"
+    );
     const filterToDo = document.getElementById("filter-todo");
 
     return {
@@ -88,7 +90,7 @@
       submitButton,
       allListItems,
       completedListItems,
-      deletedListItems,
+      uncompletedListItems,
       filterToDo,
     };
   }
