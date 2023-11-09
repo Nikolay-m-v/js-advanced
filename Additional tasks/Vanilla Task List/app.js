@@ -4,6 +4,7 @@
     if (!inputText.value) {
       return;
     }
+
     const li = document.createElement("li");
     const completeButton = document.createElement("button");
     const deleteButton = document.createElement("button");
@@ -70,10 +71,6 @@
     elements.filterToDo.addEventListener("change", () => {
       changeOption(elements);
     });
-
-    // deleteButton.addEventListener("click", () => {
-    //   deleteTask(elements);
-    // });
   }
 
   function getElements() {
