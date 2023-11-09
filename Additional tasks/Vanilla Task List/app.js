@@ -30,10 +30,35 @@
 
   function deleteTask(elements) {}
 
+  function changeOption(elements) {
+    const selectedOption = elements.filterToDo.value;
+
+    switch (selectedOption) {
+      case "completed":
+        elements.allListItems.style.display = "none";
+        elements.completedListItems.style.display = "block";
+        elements.deletedListItems.style.display = "none";
+        break;
+      case "uncompleted":
+        elements.allListItems.style.display = "none";
+        elements.completedListItems.style.display = "none";
+        elements.deletedListItems.style.display = "block";
+        break;
+      default: // "all"
+        elements.allListItems.style.display = "block";
+        elements.completedListItems.style.display = "none";
+        elements.deletedListItems.style.display = "none";
+    }
+  }
+
   function eventHandling(elements) {
     elements.submitButton.addEventListener("click", (event) => {
       event.preventDefault();
       addTask(elements);
+    });
+
+    elements.filterToDo.addEventListener("change", () => {
+      changeOption(elements);
     });
   }
 
@@ -43,6 +68,7 @@
     const allListItems = document.getElementById("allListItems");
     const completedListItems = document.getElementById("completed");
     const deletedListItems = document.getElementById("deletedListItems");
+    const filterToDo = document.getElementById(".filter-todo");
 
     return {
       inputText,
@@ -50,6 +76,7 @@
       allListItems,
       completedListItems,
       deletedListItems,
+      filterToDo,
     };
   }
 
