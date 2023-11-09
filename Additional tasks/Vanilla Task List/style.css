@@ -19,6 +19,7 @@ body {
 .input-styling {
   padding: 10px 0;
   width: 250px;
+  padding-left: 6px;
 }
 
 .all-list-items {
@@ -58,6 +59,7 @@ body {
 
 .fas {
   scale: 1.6;
+  color: #ff6f47;
 }
 
 .filter-todo {
@@ -86,4 +88,9 @@ body {
   color: white;
   border: none;
   cursor: pointer;
+}
+
+.fa-check,
+.fa-trash {
+  color: white;
 }

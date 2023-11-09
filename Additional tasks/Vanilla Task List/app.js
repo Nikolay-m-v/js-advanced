@@ -54,5 +54,4 @@
   }
 
   eventHandling(getElements());
-  eventHandling(getElements());
 })();
