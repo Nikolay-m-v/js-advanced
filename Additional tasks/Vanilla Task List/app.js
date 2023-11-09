@@ -28,18 +28,18 @@
       completeTask(elements, li);
     });
     deleteButton.addEventListener("click", () => {
-      deleteTask(elements, li);
+      moveToUncomplete(elements, li);
     });
   }
 
-  function deleteTask(elements, li) {
+  function moveToUncomplete(elements, li) {
     elements.uncompletedListItems.appendChild(li);
   }
 
   function completeTask(elements, li) {
     elements.completedListItems.appendChild(li);
     li.style.textDecoration = "line-through";
-    li.style.opacity = "0.6";
+    li.style.opacity = "0.5";
   }
 
   function changeOption(elements) {
