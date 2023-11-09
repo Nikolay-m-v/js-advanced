@@ -22,16 +22,20 @@
     li.appendChild(buttonsHolder);
     buttonsHolder.appendChild(completeButton);
     buttonsHolder.appendChild(deleteButton);
-    deleteButton.addEventListener("click", () => {
-      elements.deletedListItems.appendChild(li);
-    });
+
     completeButton.addEventListener("click", () => {});
+    deleteButton.addEventListener("click", () => {
+      deleteTask(elements, li);
+    });
   }
 
-  function deleteTask(elements) {}
+  function deleteTask(elements, li) {
+    elements.deletedListItems.appendChild(li);
+  }
 
   function changeOption(elements) {
     const selectedOption = elements.filterToDo.value;
+    console.log(selectedOption);
 
     switch (selectedOption) {
       case "completed":
@@ -60,6 +64,10 @@
     elements.filterToDo.addEventListener("change", () => {
       changeOption(elements);
     });
+
+    // deleteButton.addEventListener("click", () => {
+    //   deleteTask(elements);
+    // });
   }
 
   function getElements() {
@@ -68,7 +76,7 @@
     const allListItems = document.getElementById("allListItems");
     const completedListItems = document.getElementById("completed");
     const deletedListItems = document.getElementById("deletedListItems");
-    const filterToDo = document.getElementById(".filter-todo");
+    const filterToDo = document.getElementById("filter-todo");
 
     return {
       inputText,
