@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(217, 189, 63);
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
   font-family: sans-serif;
 }
 
@@ -30,7 +30,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 300px;
+  width: 400px;
   height: 30px;
   text-align: start;
   color: black;
