@@ -34,7 +34,7 @@
     deleteBtn.textContent = "Delete story";
     deleteBtn.classList.add("delete-btn");
 
-    appendElements(elements, {
+    publishStory(elements, {
       liEl,
       articleEl,
       h4El,
@@ -61,7 +61,7 @@
     };
   }
 
-  function appendElements(elements, elementsToAppend) {
+  function publishStory(elements, elementsToAppend) {
     elements.previewStory.appendChild(elementsToAppend.liEl);
     elements.previewStory.appendChild(elementsToAppend.articleEl);
     elementsToAppend.articleEl.appendChild(elementsToAppend.h4El);
@@ -71,13 +71,25 @@
     elements.previewStory.appendChild(elementsToAppend.saveBtn);
     elements.previewStory.appendChild(elementsToAppend.editBtn);
     elements.previewStory.appendChild(elementsToAppend.deleteBtn);
+
+    elements.publishBtn.disabled = true;
   }
 
-  function publishStory(elements) {}
+  function editStory(elements) {}
 
   function eventHandling(elements) {
     elements.publishBtn.addEventListener("click", () => {
       createElements(elements);
+    });
+
+    const createdElements = createElements(elements);
+
+    createdElements.saveBtn.addEventListener("click", () => {
+      saveStory(elements);
+    });
+
+    createdElements.editBtn.addEventListener("click", () => {
+      editStory(elements);
     });
   }
 
