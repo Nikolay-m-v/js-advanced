@@ -96,18 +96,12 @@
   }
 
   function saveInput(elements) {
-    const firstNameSave = document.getElementById("first-name");
-    const lastNameSave = document.getElementById("last-name");
-    const ageSave = document.getElementById("age");
-    const titleSave = document.getElementById("title");
-    const storySave = document.getElementById("story");
-
     return {
-      firstNameSave,
-      lastNameSave,
-      ageSave,
-      titleSave,
-      storySave,
+      firstNameSave: elements.firstNameInput.value,
+      lastNameSave: elements.lastNameInput.value,
+      ageSave: elements.ageInput.value,
+      titleSave: elements.storyTitleInput.value,
+      storySave: elements.storyInput.value,
     };
   }
 
@@ -115,11 +109,11 @@
     elements.publishBtn.disabled = false;
     const savedInput = saveInput(elements);
 
-    elements.firstNameInput = savedInput.firstNameSave;
-    elements.lastNameInput = savedInput.lastNameSave;
-    elements.ageInput = saveInput.ageSave;
-    elements.storyTitleInput = saveInput.titleSave;
-    elements.storyInput = saveInput.storySave;
+    elements.firstNameInput.value = savedInput.firstNameSave;
+    elements.lastNameInput.value = savedInput.lastNameSave;
+    elements.ageInput.value = saveInput.ageSave;
+    elements.storyTitleInput.value = saveInput.titleSave;
+    elements.storyInput.value = saveInput.storySave;
   }
 
   function eventHandling(elements) {
