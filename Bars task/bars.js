@@ -89,6 +89,7 @@ dips(personTwo, [
   "90 degrees to almost extension",
   "90 degrees to almost extension",
   "90 degrees to almost extension",
+  "90 degrees to almost extension",
   "unable to go full range of motion.",
 ]);
 
