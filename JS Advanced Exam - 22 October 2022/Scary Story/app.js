@@ -62,6 +62,15 @@
   }
 
   function publishStory(elements, elementsToAppend) {
+    if (
+      !elements.firstNameInput.value ||
+      !elements.lastNameInput.value ||
+      !elements.ageInput.value ||
+      !elements.storyTitleInput ||
+      !elements.storyInput
+    ) {
+      return;
+    }
     elements.previewStory.appendChild(elementsToAppend.liEl);
     elements.previewStory.appendChild(elementsToAppend.articleEl);
     elementsToAppend.articleEl.appendChild(elementsToAppend.h4El);
