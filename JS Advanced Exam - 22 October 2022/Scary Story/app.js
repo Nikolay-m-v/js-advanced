@@ -82,9 +82,45 @@
     elements.previewStory.appendChild(elementsToAppend.deleteBtn);
 
     elements.publishBtn.disabled = true;
+
+    saveInput(elements);
+    clearInput(elements);
   }
 
-  function editStory(elements) {}
+  function clearInput(elements) {
+    elements.firstNameInput.value = "";
+    elements.lastNameInput.value = "";
+    elements.ageInput.value = "";
+    elements.storyTitleInput.value = "";
+    elements.storyInput.value = "";
+  }
+
+  function saveInput(elements) {
+    const firstNameSave = document.getElementById("first-name");
+    const lastNameSave = document.getElementById("last-name");
+    const ageSave = document.getElementById("age");
+    const titleSave = document.getElementById("title");
+    const storySave = document.getElementById("story");
+
+    return {
+      firstNameSave,
+      lastNameSave,
+      ageSave,
+      titleSave,
+      storySave,
+    };
+  }
+
+  function editStory(elements) {
+    elements.publishBtn.disabled = false;
+    const savedInput = saveInput(elements);
+
+    elements.firstNameInput = savedInput.firstNameSave;
+    elements.lastNameInput = savedInput.lastNameSave;
+    elements.ageInput = saveInput.ageSave;
+    elements.storyTitleInput = saveInput.titleSave;
+    elements.storyInput = saveInput.storySave;
+  }
 
   function eventHandling(elements) {
     elements.publishBtn.addEventListener("click", () => {
