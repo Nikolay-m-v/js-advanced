@@ -45,6 +45,10 @@
     deleteBtn.textContent = "Delete story";
     deleteBtn.classList.add("delete-btn");
 
+    deleteBtn.addEventListener("click", () => {
+      deleteStory(elements);
+    });
+
     publishStory(elements, {
       liEl,
       articleEl,
@@ -77,6 +81,14 @@
     const h1El = document.createElement("h1");
     h1El.innerText = "Your scary story is saved!";
     elements.mainDivEl.appendChild(h1El);
+  }
+
+  function deleteStory(elements) {
+    elements.publishBtn.disabled = false;
+
+    while (elements.previewStory.children.length > 1) {
+      elements.previewStory.removeChild(elements.previewStory.children[1]);
+    }
   }
 
   function publishStory(elements, elementsToAppend) {
