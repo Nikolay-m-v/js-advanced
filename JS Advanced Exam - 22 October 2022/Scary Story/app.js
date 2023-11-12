@@ -1,6 +1,8 @@
 "use strict";
 
 (function main() {
+  let savedInputValues;
+
   function createElements(elements) {
     const liEl = document.createElement("li");
     liEl.classList.add("story-info");
@@ -10,17 +12,17 @@
     const h4El = document.createElement("h4");
     h4El.textContent = `Name: ${elements.firstNameInput.value} ${elements.lastNameInput.value}`;
 
-    const pAge = document.createElement("p");
-    pAge.textContent = `Age : ${elements.ageInput.value}`;
+    const pAgeEl = document.createElement("p");
+    pAgeEl.textContent = `Age : ${elements.ageInput.value}`;
 
-    const pTitle = document.createElement("p");
-    pTitle.textContent = `Title: ${elements.storyTitleInput.value}`;
+    const pTitleEl = document.createElement("p");
+    pTitleEl.textContent = `Title: ${elements.storyTitleInput.value}`;
 
-    const pGenre = document.createElement("p");
-    pGenre.textContent = `Genre: ${elements.genreSelector.value}`;
+    const pGenreEl = document.createElement("p");
+    pGenreEl.textContent = `Genre: ${elements.genreSelector.value}`;
 
-    const pStory = document.createElement("p");
-    pStory.textContent = `${elements.storyInput.value}`;
+    const pStoryEl = document.createElement("p");
+    pStoryEl.textContent = `${elements.storyInput.value}`;
 
     const saveBtn = document.createElement("button");
     saveBtn.textContent = "Save story";
@@ -31,6 +33,7 @@
     editBtn.classList.add("edit-btn");
 
     editBtn.addEventListener("click", () => {
+      saveInput(elements);
       editStory(elements);
     });
 
@@ -42,10 +45,10 @@
       liEl,
       articleEl,
       h4El,
-      pAge,
-      pTitle,
-      pGenre,
-      pStory,
+      pAgeEl,
+      pTitleEl,
+      pGenreEl,
+      pStoryEl,
       saveBtn,
       editBtn,
       deleteBtn,
@@ -55,10 +58,10 @@
       liEl,
       articleEl,
       h4El,
-      pAge,
-      pTitle,
-      pGenre,
-      pStory,
+      pAgeEl,
+      pTitleEl,
+      pGenreEl,
+      pStoryEl,
       saveBtn,
       editBtn,
       deleteBtn,
@@ -66,6 +69,9 @@
   }
 
   function publishStory(elements, elementsToAppend) {
+    savedInputValues = saveInput(elements);
+    console.log(savedInputValues);
+
     if (
       !elements.firstNameInput.value ||
       !elements.lastNameInput.value ||
@@ -75,19 +81,19 @@
     ) {
       return;
     }
+
     elements.previewStory.appendChild(elementsToAppend.liEl);
     elements.previewStory.appendChild(elementsToAppend.articleEl);
     elementsToAppend.articleEl.appendChild(elementsToAppend.h4El);
-    elementsToAppend.articleEl.appendChild(elementsToAppend.pAge);
-    elementsToAppend.articleEl.appendChild(elementsToAppend.pTitle);
-    elementsToAppend.articleEl.appendChild(elementsToAppend.pStory);
+    elementsToAppend.articleEl.appendChild(elementsToAppend.pAgeEl);
+    elementsToAppend.articleEl.appendChild(elementsToAppend.pTitleEl);
+    elementsToAppend.articleEl.appendChild(elementsToAppend.pStoryEl);
     elements.previewStory.appendChild(elementsToAppend.saveBtn);
     elements.previewStory.appendChild(elementsToAppend.editBtn);
     elements.previewStory.appendChild(elementsToAppend.deleteBtn);
 
     elements.publishBtn.disabled = true;
 
-    saveInput(elements);
     clearInput(elements);
   }
 
@@ -110,26 +116,19 @@
   }
 
   function editStory(elements) {
-    console.log("Edit button clicked");
     elements.publishBtn.disabled = false;
 
-    const savedInput = saveInput(elements);
-
-    elements.firstNameInput.value = savedInput.firstNameSave;
-    elements.lastNameInput.value = savedInput.lastNameSave;
-    elements.ageInput.value = saveInput.ageSave;
-    elements.storyTitleInput.value = saveInput.titleSave;
-    elements.storyInput.value = saveInput.storySave;
+    elements.firstNameInput.value = savedInputValues.firstNameSave;
+    elements.lastNameInput.value = savedInputValues.lastNameSave;
+    elements.ageInput.value = savedInputValues.ageSave;
+    elements.storyTitleInput.value = savedInputValues.titleSave;
+    elements.storyInput.value = savedInputValues.storySave;
   }
 
   function eventHandling(elements) {
     elements.publishBtn.addEventListener("click", () => {
       createElements(elements);
     });
-
-    // createdElements.saveBtn.addEventListener("click", () => {
-    //   saveStory(elements);
-    // });
   }
 
   function getElements() {
