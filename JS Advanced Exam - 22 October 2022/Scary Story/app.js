@@ -30,6 +30,10 @@
     editBtn.textContent = "Edit story";
     editBtn.classList.add("edit-btn");
 
+    editBtn.addEventListener("click", () => {
+      editStory(elements);
+    });
+
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete story";
     deleteBtn.classList.add("delete-btn");
@@ -66,8 +70,8 @@
       !elements.firstNameInput.value ||
       !elements.lastNameInput.value ||
       !elements.ageInput.value ||
-      !elements.storyTitleInput ||
-      !elements.storyInput
+      !elements.storyTitleInput.value ||
+      !elements.storyInput.value
     ) {
       return;
     }
@@ -123,15 +127,9 @@
       createElements(elements);
     });
 
-    const createdElements = createElements(elements);
-
     // createdElements.saveBtn.addEventListener("click", () => {
     //   saveStory(elements);
     // });
-
-    createdElements.editBtn.addEventListener("click", () => {
-      editStory(elements);
-    });
   }
 
   function getElements() {
