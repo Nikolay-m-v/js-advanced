@@ -28,6 +28,10 @@
     saveBtn.textContent = "Save story";
     saveBtn.classList.add("save-btn");
 
+    saveBtn.addEventListener("click", () => {
+      saveStory(elements);
+    });
+
     const editBtn = document.createElement("button");
     editBtn.textContent = "Edit story";
     editBtn.classList.add("edit-btn");
@@ -66,6 +70,13 @@
       editBtn,
       deleteBtn,
     };
+  }
+
+  function saveStory(elements) {
+    elements.mainDivEl.innerHTML = "";
+    const h1El = document.createElement("h1");
+    h1El.innerText = "Your scary story is saved!";
+    elements.mainDivEl.appendChild(h1El);
   }
 
   function publishStory(elements, elementsToAppend) {
@@ -143,6 +154,7 @@
     const previewStory = document.getElementById("preview-list");
     const genreSelector = document.getElementById("genre");
     const storyInput = document.getElementById("story");
+    const mainDivEl = document.getElementById("main");
 
     return {
       firstNameInput,
@@ -153,6 +165,7 @@
       previewStory,
       genreSelector,
       storyInput,
+      mainDivEl,
     };
   }
 
