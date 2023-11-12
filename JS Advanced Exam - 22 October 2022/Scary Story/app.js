@@ -106,7 +106,9 @@
   }
 
   function editStory(elements) {
+    console.log("Edit button clicked");
     elements.publishBtn.disabled = false;
+
     const savedInput = saveInput(elements);
 
     elements.firstNameInput.value = savedInput.firstNameSave;
@@ -123,9 +125,9 @@
 
     const createdElements = createElements(elements);
 
-    createdElements.saveBtn.addEventListener("click", () => {
-      saveStory(elements);
-    });
+    // createdElements.saveBtn.addEventListener("click", () => {
+    //   saveStory(elements);
+    // });
 
     createdElements.editBtn.addEventListener("click", () => {
       editStory(elements);
@@ -154,5 +156,6 @@
     };
   }
 
+  eventHandling(getElements());
   eventHandling(getElements());
 })();
