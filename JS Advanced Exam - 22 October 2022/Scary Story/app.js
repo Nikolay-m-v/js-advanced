@@ -157,5 +157,4 @@
   }
 
   eventHandling(getElements());
-  eventHandling(getElements());
 })();
