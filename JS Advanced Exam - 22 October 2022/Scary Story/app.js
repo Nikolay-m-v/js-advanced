@@ -70,7 +70,6 @@
 
   function publishStory(elements, elementsToAppend) {
     savedInputValues = saveInput(elements);
-    console.log(savedInputValues);
 
     if (
       !elements.firstNameInput.value ||
