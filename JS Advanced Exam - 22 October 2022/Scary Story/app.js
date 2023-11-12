@@ -83,7 +83,7 @@
     }
 
     elements.previewStory.appendChild(elementsToAppend.liEl);
-    elements.previewStory.appendChild(elementsToAppend.articleEl);
+    elementsToAppend.liEl.appendChild(elementsToAppend.articleEl);
     elementsToAppend.articleEl.appendChild(elementsToAppend.h4El);
     elementsToAppend.articleEl.appendChild(elementsToAppend.pAgeEl);
     elementsToAppend.articleEl.appendChild(elementsToAppend.pTitleEl);
@@ -117,6 +117,10 @@
 
   function editStory(elements) {
     elements.publishBtn.disabled = false;
+
+    while (elements.previewStory.children.length > 1) {
+      elements.previewStory.removeChild(elements.previewStory.children[1]);
+    }
 
     elements.firstNameInput.value = savedInputValues.firstNameSave;
     elements.lastNameInput.value = savedInputValues.lastNameSave;
