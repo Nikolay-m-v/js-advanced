@@ -32,13 +32,43 @@
     sellButton.classList.add("action-btn", "sell");
 
     appendElements();
+
+    return {
+      trEl,
+      tdElCarMake,
+      tdElCarModel,
+      tdElProductionYear,
+      tdElFuelType,
+      tdElOriginalCost,
+      tdElSellingPrice,
+      tdElButtonsHolder,
+      editButton,
+      sellButton,
+    };
   }
 
-  function appendElements(elements, elementsToAppend) {}
+  function appendElements(elements, elementsToAppend) {
+    elements.tableBodyElement.appendChild(elementsToAppend.trEl);
+    elementsToAppend.trEl.appendChild(elementsToAppend.tdElCarMake);
+    elementsToAppend.trEl.appendChild(elementsToAppend.tdElCarModel);
+    elementsToAppend.trEl.appendChild(elementsToAppend.tdElProductionYear);
+    elementsToAppend.trEl.appendChild(elementsToAppend.tdElFuelType);
+    elementsToAppend.trEl.appendChild(elementsToAppend.tdElOriginalCost);
+    elementsToAppend.trEl.appendChild(elementsToAppend.tdElSellingPrice);
+    elementsToAppend.trEl.appendChild(elementsToAppend.tdElButtonsHolder);
+    elementsToAppend.tdElButtonsHolder.appendChild(elementsToAppend.editButton);
+    elementsToAppend.tdElButtonsHolder.appendChild(elementsToAppend.sellButton);
+  }
 
-  function publishCar(elements) {}
+  function publishCar(elements) {
+    createElements(elements);
+  }
 
-  function eventHandling(elements) {}
+  function eventHandling(elements) {
+    elements.publishButton.addEventListener("click", () => {
+      publishCar(elements);
+    });
+  }
 
   function gatherElements() {
     const carMake = document.getElementById("make");
