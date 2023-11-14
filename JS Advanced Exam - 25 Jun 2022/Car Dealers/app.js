@@ -2,36 +2,37 @@
 
 (function main() {
   function createElements(elements) {
+    console.log("creating elements");
     const trEl = document.createElement("tr");
     trEl.classList.add("row");
 
     const tdElCarMake = document.createElement("td");
-    tdElCarMake.value = elements.carMake.value;
+    tdElCarMake.textContent = elements.carMake.value;
 
     const tdElCarModel = document.createElement("td");
-    tdElCarModel.value = elements.carModel.value;
+    tdElCarModel.textContent = elements.carModel.value;
 
     const tdElProductionYear = document.createElement("td");
-    tdElProductionYear.value = elements.carProductionYear.value;
+    tdElProductionYear.textContent = elements.carProductionYear.value;
 
     const tdElFuelType = document.createElement("td");
-    tdElFuelType.value = elements.carFuelType.value;
+    tdElFuelType.textContent = elements.carFuelType.value;
 
     const tdElOriginalCost = document.createElement("td");
-    tdElOriginalCost.value = elements.originalCost.value;
+    tdElOriginalCost.textContent = elements.originalCost.value;
 
     const tdElSellingPrice = document.createElement("td");
-    tdElSellingPrice.value = elements.sellingPrice.value;
+    tdElSellingPrice.textContent = elements.sellingPrice.value;
 
     const tdElButtonsHolder = document.createElement("td");
 
     const editButton = document.createElement("button");
+    editButton.textContent = "edit";
     editButton.classList.add("action-btn", "edit");
 
     const sellButton = document.createElement("button");
+    sellButton.textContent = "sell";
     sellButton.classList.add("action-btn", "sell");
-
-    appendElements();
 
     return {
       trEl,
@@ -48,6 +49,7 @@
   }
 
   function appendElements(elements, elementsToAppend) {
+    console.log("appending elements");
     elements.tableBodyElement.appendChild(elementsToAppend.trEl);
     elementsToAppend.trEl.appendChild(elementsToAppend.tdElCarMake);
     elementsToAppend.trEl.appendChild(elementsToAppend.tdElCarModel);
@@ -61,11 +63,13 @@
   }
 
   function publishCar(elements) {
-    createElements(elements);
+    const createdElements = createElements(elements);
+    appendElements(elements, createdElements);
   }
 
   function eventHandling(elements) {
-    elements.publishButton.addEventListener("click", () => {
+    elements.publishButton.addEventListener("click", (event) => {
+      event.preventDefault();
       publishCar(elements);
     });
   }
