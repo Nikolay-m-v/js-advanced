@@ -35,6 +35,9 @@
     const sellButton = document.createElement("button");
     sellButton.textContent = "sell";
     sellButton.classList.add("action-btn", "sell");
+    sellButton.addEventListener("click", () => {
+      sellCar(elements, trEl);
+    });
 
     return {
       trEl,
@@ -50,9 +53,34 @@
     };
   }
 
+  function sellCar(elements, row) {
+    const liEl = document.createElement("li");
+    liEl.classList.add("each-list");
+    const spanElCarMakeAndModel = document.createElement("span");
+    spanElCarMakeAndModel.textContent = `${row.children[0].textContent} ${row.children[1].textContent}`;
+
+    const spanElCarProductionYear = document.createElement("span");
+    spanElCarProductionYear.textContent = `${row.children[2].textContent}`;
+
+    const spanElProfitFromSale = document.createElement("span");
+    spanElProfitFromSale.textContent =
+      row.children[5].textContent - row.children[4].textContent;
+
+    elements.soldCarsList.appendChild(liEl);
+    liEl.appendChild(spanElCarMakeAndModel);
+    liEl.appendChild(spanElCarProductionYear);
+    liEl.appendChild(spanElProfitFromSale);
+
+    elements.profitMade.textContent = `${(
+      parseFloat(elements.profitMade.textContent) +
+      parseFloat(spanElProfitFromSale.textContent)
+    ).toFixed(2)}`;
+
+    row.remove();
+  }
+
   function checkElements(elements) {
     const elementsToCheck = createElements(elements);
-    console.log(elementsToCheck.tdElCarMake.textContent);
 
     if (
       elementsToCheck.tdElCarMake.textContent.length < 1 ||
@@ -60,8 +88,6 @@
       elementsToCheck.tdElOriginalCost.textContent.length < 1 ||
       elementsToCheck.tdElSellingPrice.textContent.length < 1
     ) {
-      console.log(elementsToCheck.tdElCarMake.textContent);
-
       return;
     }
 
@@ -122,6 +148,8 @@
     const sellingPrice = document.getElementById("selling-price");
     const tableBodyElement = document.getElementById("table-body");
     const publishButton = document.getElementById("publish");
+    const soldCarsList = document.getElementById("cars-list");
+    const profitMade = document.getElementById("profit");
 
     return {
       carMake,
@@ -132,6 +160,8 @@
       sellingPrice,
       tableBodyElement,
       publishButton,
+      soldCarsList,
+      profitMade,
     };
   }
 
