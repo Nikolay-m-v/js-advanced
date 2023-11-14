@@ -91,6 +91,15 @@
     elementsToAppend.trEl.appendChild(elementsToAppend.tdElButtonsHolder);
     elementsToAppend.tdElButtonsHolder.appendChild(elementsToAppend.editButton);
     elementsToAppend.tdElButtonsHolder.appendChild(elementsToAppend.sellButton);
+
+    clearInputsValue(elements);
+  }
+
+  function clearInputsValue(elements) {
+    elements.carMake.value = "";
+    elements.carModel.value = "";
+    elements.originalCost.value = "";
+    elements.sellingPrice.value = "";
   }
 
   function publishCar(elements) {
