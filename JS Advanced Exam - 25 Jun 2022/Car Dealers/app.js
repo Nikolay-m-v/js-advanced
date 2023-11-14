@@ -10,6 +10,7 @@
     const carFuelType = document.getElementById("fuel");
     const originalCost = document.getElementById("original-cost");
     const sellingPrice = document.getElementById("selling-price");
+    const tableBodyElement = document.getElementById("table-body");
 
     return {
       carMake,
@@ -18,6 +19,7 @@
       carFuelType,
       originalCost,
       sellingPrice,
+      tableBodyElement,
     };
   }
 
