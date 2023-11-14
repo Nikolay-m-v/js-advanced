@@ -2,7 +2,6 @@
 
 (function main() {
   function createElements(elements) {
-    console.log("creating elements");
     const trEl = document.createElement("tr");
     trEl.classList.add("row");
 
@@ -51,6 +50,25 @@
     };
   }
 
+  function checkElements(elements) {
+    const elementsToCheck = createElements(elements);
+    console.log(elementsToCheck.tdElCarMake.textContent);
+
+    if (
+      elementsToCheck.tdElCarMake.textContent.length < 1 ||
+      elementsToCheck.tdElCarModel.textContent.length < 1 ||
+      elementsToCheck.tdElOriginalCost.textContent.length < 1 ||
+      elementsToCheck.tdElSellingPrice.textContent.length < 1
+    ) {
+      console.log(elementsToCheck.tdElCarMake.textContent);
+
+      return;
+    }
+
+    const createdElements = createElements(elements);
+    appendElements(elements, createdElements);
+  }
+
   function editCar(elements, row) {
     elements.carMake.value = row.children[0].textContent;
     elements.carModel.value = row.children[1].textContent;
@@ -63,7 +81,6 @@
   }
 
   function appendElements(elements, elementsToAppend) {
-    console.log("appending elements");
     elements.tableBodyElement.appendChild(elementsToAppend.trEl);
     elementsToAppend.trEl.appendChild(elementsToAppend.tdElCarMake);
     elementsToAppend.trEl.appendChild(elementsToAppend.tdElCarModel);
@@ -77,8 +94,7 @@
   }
 
   function publishCar(elements) {
-    const createdElements = createElements(elements);
-    appendElements(elements, createdElements);
+    checkElements(elements);
   }
 
   function eventHandling(elements) {
