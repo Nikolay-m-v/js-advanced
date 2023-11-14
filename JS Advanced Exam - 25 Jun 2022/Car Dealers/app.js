@@ -29,6 +29,9 @@
     const editButton = document.createElement("button");
     editButton.textContent = "edit";
     editButton.classList.add("action-btn", "edit");
+    editButton.addEventListener("click", () => {
+      editCar(elements, trEl);
+    });
 
     const sellButton = document.createElement("button");
     sellButton.textContent = "sell";
@@ -46,6 +49,17 @@
       editButton,
       sellButton,
     };
+  }
+
+  function editCar(elements, row) {
+    elements.carMake.value = row.children[0].textContent;
+    elements.carModel.value = row.children[1].textContent;
+    elements.carProductionYear.value = row.children[2].textContent;
+    elements.carFuelType.value = row.children[3].textContent;
+    elements.originalCost.value = row.children[4].textContent;
+    elements.sellingPrice.value = row.children[5].textContent;
+
+    row.remove();
   }
 
   function appendElements(elements, elementsToAppend) {
