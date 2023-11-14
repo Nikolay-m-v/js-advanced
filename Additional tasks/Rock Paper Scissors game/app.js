@@ -2,112 +2,181 @@
 (function main() {
   let playerScore = 0;
   let computerScore = 0;
-  let computerGeneratedChoice = "";
-  let playerWin = false;
-  let computerWin = false;
 
-  function showImages(elements) {
-    elements.rockButton.style.display = "block";
-    elements.paperButton.style.display = "block";
-    elements.scissorsButton.style.display = "block";
-    elements.computerImage.style.display = "block";
-  }
+  let computerChoice = ""; // "rock", "paper", "scissors"
+  let playerChoice = ""; // "rock", "paper", "scissors"
+
+  let winner = ""; // "player" or "computer" or "draw"
 
   function renameTitle(elements) {
     elements.gameTitle.textContent = "Choose an option";
   }
 
-  function hideElements(elements) {
+  function hidePlayButton(elements) {
     elements.playButton.style.display = "none";
   }
 
-  function removeClass(elements) {
-    elements.computerImage.classList.remove("computer-image");
-    Array.from(document.getElementsByClassName("hidden-img")).forEach((img) => {
-      img.classList.remove("hidden-img");
+  function updateChoiceImage(choiceElement, choice) {
+    choiceElement.src = `assets/${choice}.png`;
+  }
+
+  function showChoices(elements) {
+    const elementsToShow = [
+      elements.computerChoiceImage,
+      elements.playerChoiceImage,
+      elements.rockButton,
+      elements.paperButton,
+      elements.scissorsButton,
+    ];
+
+    elementsToShow.forEach((element) => {
+      element.classList.remove("hidden");
     });
   }
 
   function startGame(elements) {
-    showImages(elements);
     renameTitle(elements);
-    hideElements(elements);
-    removeClass(elements);
+    hidePlayButton(elements);
+    showChoices(elements);
+  }
+
+  function battleRockPaper(playerChoice, computerChoice) {
+    if (playerChoice === "paper" && computerChoice === "rock") {
+      return "player";
+    }
+
+    if (playerChoice === "rock" && computerChoice === "paper") {
+      return "computer";
+    }
+  }
+
+  function battleRockScissors(playerChoice, computerChoice) {
+    if (playerChoice === "rock" && computerChoice === "scissors") {
+      return "player";
+    }
+
+    if (playerChoice === "scissors" && computerChoice === "rock") {
+      return "computer";
+    }
+  }
+
+  function battleScissorsPaper(playerChoice, computerChoice) {
+    if (playerChoice === "scissors" && computerChoice === "paper") {
+      return "player";
+    }
+
+    if (playerChoice === "paper" && computerChoice === "scissors") {
+      return "computer";
+    }
+  }
+
+  function determineOutcome() {
+    if (playerChoice === computerChoice) {
+      winner = "draw";
+
+      return;
+    }
+
+    if (
+      (playerChoice === "rock" || playerChoice === "paper") &&
+      (computerChoice === "rock" || computerChoice == "paper")
+    ) {
+      winner = battleRockPaper(playerChoice, computerChoice);
+      return;
+    }
+
+    if (
+      (playerChoice === "rock" || playerChoice === "scissors") &&
+      (computerChoice === "rock" || computerChoice == "scissors")
+    ) {
+      winner = battleRockScissors(playerChoice, computerChoice);
+      return;
+    }
+
+    if (
+      (playerChoice === "paper" || playerChoice === "scissors") &&
+      (computerChoice === "scissors" || computerChoice == "paper")
+    ) {
+      winner = battleScissorsPaper(playerChoice, computerChoice);
+      return;
+    }
   }
 
   function handleRockChoice(elements) {
-    elements.playerImage.src = "assets/rock.png";
-    generateComputerChoice(elements);
-    let playerChoice = "rock";
-    if (playerChoice === computerGeneratedChoice) {
-      elements.gameTitle.textContent = "Draw!";
-      isDraw = true;
-    } else if (computerGeneratedChoice === "paper") {
-      elements.gameTitle.textContent = "Computer Wins!";
-      computerWin = true;
-    } else {
-      elements.gameTitle.textContent = "Player Wins!";
-      playerWin = true;
-    }
+    playerChoice = "rock";
+
+    updateChoiceImage(elements.playerChoiceImage, "rock");
   }
 
   function handlePaperChoice(elements) {
-    generateComputerChoice(elements);
-    elements.playerImage.src = "assets/paper.png";
-    let playerChoice = "paper";
-    if (playerChoice === computerGeneratedChoice) {
-      elements.gameTitle.textContent = "Draw!";
-      isDraw = true;
-    } else if (computerGeneratedChoice === "rock") {
-      elements.gameTitle.textContent = "Player Wins!";
-      playerWin = true;
-    } else {
-      elements.gameTitle.textContent = "Computer Wins!";
-      computerWin = true;
-    }
+    playerChoice = "paper";
+
+    updateChoiceImage(elements.playerChoiceImage, "paper");
   }
 
   function handleScissorsChoice(elements) {
-    elements.playerImage.src = "assets/scissors.png";
-    generateComputerChoice(elements);
-    let playerChoice = "scissors";
-    if (playerChoice === computerGeneratedChoice) {
-      elements.gameTitle.textContent = "Draw!";
-      isDraw = true;
-    } else if (computerGeneratedChoice === "rock") {
-      elements.gameTitle.textContent = "Computer Wins!";
-      computerWin = true;
-    } else {
-      elements.gameTitle.textContent = "Player Wins!";
-      playerWin = true;
-    }
+    playerChoice = "scissors";
+
+    updateChoiceImage(elements.playerChoiceImage, "scissors");
+  }
+
+  function resetWinner(elements) {
+    winner = "";
+  }
+
+  function upatePlayerScore(elements) {
+    playerScore++;
+    elements.pScore.textContent = playerScore;
+  }
+
+  function updateComputerScore(elements) {
+    computerScore++;
+    elements.cScore.textContent = computerScore;
   }
 
   function updateScore(elements) {
-    if (playerWin) {
-      playerScore++;
-      elements.pScore.textContent = playerScore;
-    } else if (computerWin) {
-      computerScore++;
-      elements.cScore.textContent = computerScore;
+    if (winner === "player") {
+      upatePlayerScore(elements);
+    } else if (winner === "computer") {
+      updateComputerScore(elements);
     }
-    playerWin = false;
-    computerWin = false;
+
+    resetWinner(elements);
+  }
+
+  function showResults(elements) {
+    if (winner === "draw") {
+      elements.gameTitle.textContent = "Draw!";
+    } else if (winner === "computer") {
+      elements.gameTitle.textContent = "Computer Wins!";
+    } else {
+      elements.gameTitle.textContent = "Player Wins!";
+    }
+  }
+
+  function play(elements) {
+    generateComputerChoice(elements);
+    determineOutcome();
+    showResults(elements);
+    updateScore(elements);
   }
 
   function generateComputerChoice(elements) {
     let numberDefiningChoice = Math.floor(Math.random() * 3) + 1;
+
     if (numberDefiningChoice === 1) {
-      computerGeneratedChoice = "rock";
-      elements.computerImage.src = "assets/rock.png";
+      computerChoice = "rock";
+
+      updateChoiceImage(elements.computerChoiceImage, "rock");
     } else if (numberDefiningChoice === 2) {
-      computerGeneratedChoice = "paper";
-      elements.computerImage.src = "assets/paper.png";
+      computerChoice = "paper";
+
+      updateChoiceImage(elements.computerChoiceImage, "paper");
     } else {
-      computerGeneratedChoice = "scissors";
-      elements.computerImage.src = "assets/scissors.png";
+      computerChoice = "scissors";
+
+      updateChoiceImage(elements.computerChoiceImage, "scissors");
     }
-    return computerGeneratedChoice;
   }
 
   function eventHandling(elements) {
@@ -117,17 +186,17 @@
 
     elements.rockButton.addEventListener("click", () => {
       handleRockChoice(elements);
-      updateScore(elements);
+      play(elements);
     });
 
     elements.paperButton.addEventListener("click", () => {
       handlePaperChoice(elements);
-      updateScore(elements);
+      play(elements);
     });
 
     elements.scissorsButton.addEventListener("click", () => {
       handleScissorsChoice(elements);
-      updateScore(elements);
+      play(elements);
     });
   }
 
@@ -139,8 +208,8 @@
     const scissorsButton = document.getElementById("scissorsChoice");
     const pScore = document.getElementById("playerScore");
     const cScore = document.getElementById("computerScore");
-    const computerImage = document.getElementById("computerImage");
-    const playerImage = document.getElementById("playerImage");
+    const computerChoiceImage = document.getElementById("computerChoiceImage");
+    const playerChoiceImage = document.getElementById("playerChoiceImage");
 
     return {
       playButton,
@@ -150,8 +219,8 @@
       scissorsButton,
       pScore,
       cScore,
-      playerImage,
-      computerImage,
+      playerChoiceImage,
+      computerChoiceImage,
     };
   }
 

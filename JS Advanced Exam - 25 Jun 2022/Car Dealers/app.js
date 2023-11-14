@@ -28,6 +28,7 @@
     const editButton = document.createElement("button");
     editButton.textContent = "edit";
     editButton.classList.add("action-btn", "edit");
+
     editButton.addEventListener("click", () => {
       editCar(elements, trEl);
     });

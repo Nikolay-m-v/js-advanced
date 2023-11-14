@@ -23,13 +23,8 @@ body {
   align-items: center;
 }
 
-#player {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-}
-
-#computer {
+.player-wrapper,
+.computer-wrapper {
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -70,7 +65,7 @@ button {
   width: 180px;
 }
 
-.hidden-img {
+.hidden {
   display: none;
 }
 
@@ -86,5 +81,4 @@ button {
 
 .computer-image {
   transform: scaleX(1);
-  display: none;
 }
