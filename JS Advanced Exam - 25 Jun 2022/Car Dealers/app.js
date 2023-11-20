@@ -80,19 +80,18 @@
     row.remove();
   }
 
-  function checkElements(elements) {
-    const elementsToCheck = createElements(elements);
+  function checkInputValues(elements) {
+    const createdElements = createElements(elements);
 
     if (
-      elementsToCheck.tdElCarMake.textContent.length < 1 ||
-      elementsToCheck.tdElCarModel.textContent.length < 1 ||
-      elementsToCheck.tdElOriginalCost.textContent.length < 1 ||
-      elementsToCheck.tdElSellingPrice.textContent.length < 1
+      createdElements.tdElCarMake.textContent.length < 1 ||
+      createdElements.tdElCarModel.textContent.length < 1 ||
+      createdElements.tdElOriginalCost.textContent.length < 1 ||
+      createdElements.tdElSellingPrice.textContent.length < 1
     ) {
       return;
     }
 
-    const createdElements = createElements(elements);
     appendElements(elements, createdElements);
   }
 
@@ -119,10 +118,10 @@
     elementsToAppend.tdElButtonsHolder.appendChild(elementsToAppend.editButton);
     elementsToAppend.tdElButtonsHolder.appendChild(elementsToAppend.sellButton);
 
-    clearInputsValue(elements);
+    clearInputValues(elements);
   }
 
-  function clearInputsValue(elements) {
+  function clearInputValues(elements) {
     elements.carMake.value = "";
     elements.carModel.value = "";
     elements.originalCost.value = "";
@@ -130,7 +129,7 @@
   }
 
   function publishCar(elements) {
-    checkElements(elements);
+    checkInputValues(elements);
   }
 
   function eventHandling(elements) {
