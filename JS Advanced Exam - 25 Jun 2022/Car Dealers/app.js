@@ -58,9 +58,7 @@
     const soldCarElements = createSoldCarElements(row);
 
     appendSoldCarElements(elements, row);
-
     calculateProfitMade(elements, soldCarElements.spanElProfitFromSale);
-
     removeRow(row);
   }
 
