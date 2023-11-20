@@ -77,6 +77,12 @@
       parseFloat(spanElProfitFromSale.textContent)
     ).toFixed(2)}`;
 
+    removeRow(row);
+  }
+
+  function appendElementsSellCar(elements, row) {}
+
+  function removeRow(row) {
     row.remove();
   }
 
@@ -103,7 +109,7 @@
     elements.originalCost.value = row.children[4].textContent;
     elements.sellingPrice.value = row.children[5].textContent;
 
-    row.remove();
+    removeRow(row);
   }
 
   function appendElements(elements, elementsToAppend) {
