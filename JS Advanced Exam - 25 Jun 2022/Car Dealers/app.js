@@ -55,6 +55,32 @@
   }
 
   function sellCar(elements, row) {
+    const soldCarElements = createSoldCarElements(row);
+
+    appendSoldCarElements(elements, row);
+
+    calculateProfitMade(elements, soldCarElements.spanElProfitFromSale);
+
+    removeRow(row);
+  }
+
+  function appendSoldCarElements(elements, row) {
+    const soldCarElements = createSoldCarElements(row);
+
+    elements.soldCarsList.appendChild(soldCarElements.liEl);
+    soldCarElements.liEl.appendChild(soldCarElements.spanElCarMakeAndModel);
+    soldCarElements.liEl.appendChild(soldCarElements.spanElCarProductionYear);
+    soldCarElements.liEl.appendChild(soldCarElements.spanElProfitFromSale);
+  }
+
+  function calculateProfitMade(elements, spanElProfitFromSale) {
+    elements.profitMade.textContent = `${(
+      parseFloat(elements.profitMade.textContent) +
+      parseFloat(spanElProfitFromSale.textContent)
+    ).toFixed(2)}`;
+  }
+
+  function createSoldCarElements(row) {
     const liEl = document.createElement("li");
     liEl.classList.add("each-list");
     const spanElCarMakeAndModel = document.createElement("span");
@@ -67,20 +93,13 @@
     spanElProfitFromSale.textContent =
       row.children[5].textContent - row.children[4].textContent;
 
-    elements.soldCarsList.appendChild(liEl);
-    liEl.appendChild(spanElCarMakeAndModel);
-    liEl.appendChild(spanElCarProductionYear);
-    liEl.appendChild(spanElProfitFromSale);
-
-    elements.profitMade.textContent = `${(
-      parseFloat(elements.profitMade.textContent) +
-      parseFloat(spanElProfitFromSale.textContent)
-    ).toFixed(2)}`;
-
-    removeRow(row);
+    return {
+      liEl,
+      spanElCarMakeAndModel,
+      spanElCarProductionYear,
+      spanElProfitFromSale,
+    };
   }
-
-  function appendElementsSellCar(elements, row) {}
 
   function removeRow(row) {
     row.remove();
