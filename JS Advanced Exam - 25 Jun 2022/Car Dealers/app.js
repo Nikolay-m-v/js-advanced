@@ -189,5 +189,4 @@
   }
 
   eventHandling(gatherElements());
-  eventHandling(gatherElements());
 })();
