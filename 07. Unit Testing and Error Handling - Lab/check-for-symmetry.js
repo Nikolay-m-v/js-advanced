@@ -8,3 +8,5 @@ function isSymmetric(arr) {
   let equal = JSON.stringify(arr) == JSON.stringify(reversed);
   return equal;
 }
+
+module.exports = isSymmetric;
