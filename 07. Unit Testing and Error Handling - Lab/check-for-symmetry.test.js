@@ -13,3 +13,7 @@ test("empty array is symmetric", () => {
 test("single-element array is symmetric", () => {
   expect(isSymmetric([1])).toBe(true);
 });
+
+test("numeric and strings array is symmetric", () => {
+  expect(isSymmetric(["a", 2])).toEqual(true);
+});
