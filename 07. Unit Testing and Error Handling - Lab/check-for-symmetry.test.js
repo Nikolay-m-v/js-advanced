@@ -15,5 +15,5 @@ test("empty array is symmetric", () => {
 // });
 
 test("numeric and strings array is symmetric", () => {
-  expect(isSymmetric(["a", 2])).toEqual(true);
+  expect(isSymmetric(["a", 2])).toBe(false);
 });

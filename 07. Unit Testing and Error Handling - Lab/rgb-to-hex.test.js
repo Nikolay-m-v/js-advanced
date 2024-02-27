@@ -3,7 +3,11 @@
 const rgbToHexColor = require("./rgb-to-hex");
 
 test("Works with numeric values between 0 and 255", () => {
-  expect(rgbToHexColor(255, 0, 0)).toBe("#FF0000");
+  expect(rgbToHexColor(255, 0, 0)).toBe("#FF0000"); // specific color;
+});
+
+test("should not work with more than 3 arguments", () => {
+  expect(rgbToHexColor(255, 255, 255, 255)).toBeUndefined(); // Extra argument
 });
 
 test("returns undefined for invalid RGB values", () => {
@@ -19,5 +23,4 @@ test("returns undefined for invalid RGB values", () => {
   expect(rgbToHexColor()).toBeUndefined(); // No arguments
   expect(rgbToHexColor(255)).toBeUndefined(); // Missing green and blue values
   expect(rgbToHexColor(255, 255)).toBeUndefined(); // Missing blue value
-  expect(rgbToHexColor(255, 255, 255, 255)).toBeUndefined(); // Extra argument
 });
