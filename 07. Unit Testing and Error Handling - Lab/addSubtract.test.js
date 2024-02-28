@@ -39,3 +39,9 @@ test("subtract and add functions should work with strings ", () => {
   calculator.subtract("3");
   expect(calculator.get()).toBe(2);
 });
+
+test("internal sum should not be modified directly", () => {
+  const calculator = createCalculator();
+  calculator.value = 10;
+  expect(calculator.get()).toBe(0);
+});
