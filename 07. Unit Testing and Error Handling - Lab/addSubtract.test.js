@@ -32,3 +32,10 @@ test("subtract function should subtract numbers from the interanl sum", () => {
   calculator.subtract(8);
   expect(calculator.get()).toBe(3);
 });
+
+test("subtract and add functions should work with strings ", () => {
+  const calculator = createCalculator();
+  calculator.add("5");
+  calculator.subtract("3");
+  expect(calculator.get()).toBe(2);
+});
