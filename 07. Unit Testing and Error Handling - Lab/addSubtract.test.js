@@ -25,3 +25,10 @@ test("add function should add numbers to the interal sum", () => {
   calculator.add("6");
   expect(calculator.get()).toBe(16);
 });
+
+test("subtract function should subtract numbers from the interanl sum", () => {
+  const calculator = createCalculator();
+  calculator.add(11);
+  calculator.subtract(8);
+  expect(calculator.get()).toBe(3);
+});
