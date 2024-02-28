@@ -1,7 +1,6 @@
 "use strict";
 
 const createCalculator = require("./addSubtract");
-const addSubtract = require("./addSubtract");
 
 test("should return an object with add, subtract and get functions", () => {
   const calculator = createCalculator();
@@ -10,4 +9,11 @@ test("should return an object with add, subtract and get functions", () => {
     subtract: expect.any(Function),
     get: expect.any(Function),
   });
+});
+
+test("should keep an internal sum that can't be modified from the outside", () => {
+  const calculator = createCalculator();
+  calculator.add(5);
+  calculator.subtract(3);
+  expect(calculator.get()).toBe(2);
 });
